@@ -2,7 +2,8 @@
   "name": "sheller",
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "author": "Gudjon Holm Sigurdsson",
   "engines": {
     "vscode": "^1.63.0"
   },
