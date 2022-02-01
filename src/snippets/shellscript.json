@@ -1,4 +1,21 @@
-{
+{"Text Color commands": {
+	"prefix": "TextColors",
+	"body": [
+	  "#Text Color commands",
+	  "#",
+	  "#Brief: Commands to change the color of a text",
+	  "highlight=\\$(echo -en '\\033[01;37m')",
+	  "purpleColor=\\$(echo -en '\\033[01;35m')",
+	  "cyanColor=\\$(echo -en '\\033[01;36m')",
+	  "errorColor=\\$(echo -en '\\033[01;31m')",
+	  "successColor=\\$(echo -en '\\033[01;32m')",
+	  "norm=\\$(echo -en '\\033[0m')",
+	  "",
+	  "echo \"Example color variations: \\${highlight}higlight\\${norm} text, \\${errorColor}error\\${norm} text, \\${successColor}success\\${norm} text, \\${purpleColor}purple\\${norm} text or \\${cyanColor}cyan\\${norm} text.\"",
+	  ""
+	],
+	"description": "Text Color commands"
+  },
   "Function": {
 		"prefix": "func",
 		"body": [
@@ -59,5 +76,64 @@
 			"}"
 		],
 		"description": "Function description which takes 3 argument"
-	}
+	},
+	"Create help for bash": {
+		"prefix": "printHelp",
+		"body": [
+		  "printHelp() {",
+		  "    printf 'Usage: %s [OPTIONS]...\\n' \"$(basename \"\\$0\")\"",
+		  "    echo \"  ${1:Description}\"",
+		  "    echo ",
+		  "    echo \"OPTIONS\"",
+		  "    echo \"  -help        Prints this help page\"",
+		  "    echo \"  -$2     \"",
+		  "    echo",
+		  "}",
+		  "",
+		  "if [[ \"\\$1\" == \"--help\" || \"\\$1\" == \"-h\" ]]; then printHelp; exit; fi",
+		  ""
+		],
+		"description": "Create help for the bash script"
+	  },
+	  "Start of bash": {
+		"prefix": "bash",
+		"body": [
+		  "#!/bin/bash",
+		  ""
+		],
+		"description": "Start of bash"
+	  },
+	  "Check if all options are correct ": {
+		"prefix": "parseOptions",
+		"body": [
+		  "#Function: parseOptions()",
+		  "#",
+		  "#Brief: Checks if all options are correct and saves them to variables",
+		  "#",
+		  "#Arguments all bash options",
+		  "parseOptions() {",
+		  "    while ((\"\\$#\")); do # While there are arguments still to be shifted",
+		  "",
+		  "        if [[ \"\\$1\" != \"-${1:express}\" && \"\\$1\" != \"--help\" && \"\\$1\" != \"-h\" ]]; then",
+		  "            echo \"Invalid option \"\\$1\", get help by running command: \\$0 --help\"",
+		  "            exit 1",
+		  "        fi",
+		  "        if [[ \"\\$1\" == \"--help\" || \"\\$1\" == \"-h\" ]]; then",
+		  "            printHelp",
+		  "            exit",
+		  "        fi",
+		  "        if [ \"\\$1\" = \"-$1\" ]; then ${2:EXPRESS}=\"true\"; fi",
+		  "        ",
+		  "        shift",
+		  "    done",
+		  "",
+		  "}",
+		  "",
+		  "$2=\"false\"",
+		  "parseOptions \"\\$@\"",
+		  ""
+		],
+		"description": "Check if all options are correct "
+	  }
+	
 }
