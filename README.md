@@ -8,13 +8,24 @@ Some snippets to help with bash development
 
 ## Release Notes
 
-### 0.0.1
+### 0.0.4
 
-Creating project
+Pre-release of Sheller.
+Adding boiler plate and parseOptions a little more intelligent.
+### 0.0.3
+
+Pre-release of Sheller.
+With some useful snippets, like for coloring text, help and to parse options.
 
 ### 0.0.2
 
 Adding some useful snippets, like for text color, help and to parse options.
+
+### 0.0.1
+
+Creating project
+
+
 
 
 -----------------------------------------------------------------------------------------------------------
