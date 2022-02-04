@@ -232,7 +232,7 @@
         "#  frame  -c = -f \\$(echo -en '\\033[01;34m') \"I am blue text\"",
         "#example on how to align many lines within one frame",
         "#  frame -w 50 -t",
-        "#  frame -w 50 -m \" I am left alligned with one space\" -l",
+        "#  frame -w 50 -m \"I am left alligned with no space\" -l",
         "#  frame -w 50 -m \"I am centered text\"",
         "#  frame -w 50 -m \" I am right alligned with 5 spaces     \" -r",
         "#  frame -w 50 -b",
