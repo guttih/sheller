@@ -21,9 +21,17 @@ Included snippets:
  - **Validate bash parameters** Type *parseOptions* to create a function for validating if parameters given to your bash script are correct.
  - **Does user have superuser privileges** Type *IsSuper* to check if user has superuser privileges(root).
 
+## Usage example
+
+### Boiler plate
 This is how the snippet **Boiler plate** can be used to create a bash file, with help and check for invalid parameters, making it runnable and test it.
 
 ![Boilerplate](images/boilerplate.gif)
+
+### Frame
+How to write text inside a box to the terminal using the function frame.
+
+![frame](images/frame.gif)
 
 ## Release Notes
 
