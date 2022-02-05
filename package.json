@@ -3,6 +3,7 @@
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
   "version": "1.0.0",
+  "publisher": "guttih",
   "author": "Gudjon Holm Sigurdsson",
   "icon": "sheller.png",
   "engines": {
