@@ -28,20 +28,36 @@ Documentation to look at when developing extensions
 ## Deployment
 ### Creating the package
 In this example we use 1.0.0 as the example version number, you will need to bump it every time you release.
-1. Increment the version number in files `package.json` and `package-lock.json`
+1. Increment the version number in files [package.json] and [package-lock.json].
 2. Add to [Release notes] for this version in README.md
     - Add an section under **Release Notes** called ### 1.0.0"
     - Add some notes about what was done in this release.
-3. Make the package with the command below after changing `1.0.0` to the correct version number
+    - Add section about the update to the [CHANGELOG.md]
+3. Make the package with the command below after changing `1.0.0` to the correct version number.
+
+    **vsce** should be installed, if not give command `npm install -g vsce`
     ```
     vsce package 1.0.0
     ```
-4. Distribute the file `sheller-1.0.0.vsix`
-  
-    Or test installation via command line
+    Test the package by installing it
     ```
-    code --install-extension sheller-1.1.0.vsix
+    code --install-extension sheller-1.0.0.vsix
     ```
+    Distribute the file `sheller-1.0.0.vsix`
+    ```
+    vsce publish
+    ```
+    If distribution fails you probably have an expired Personal Access Token so 
+    get a new one [here]( https://aka.ms/vscodepat) and do the following
+    1. `vsce login guttih` and press `y`and return and paste then newly created PAT
+    2. `vsce publish` This should publish an update to your extension.
+
+   
+
 
 [Release notes]:./README.md#release-notes
+[CHANGELOG.md]:./CHANGELOG.md
+[package.json]:./package.json
+[package-lock.json]:./package-lock.json
+
 

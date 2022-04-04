@@ -56,7 +56,7 @@ Snippets included
  - Validate bash parameters
  - Is Super user
 
-### 1.1.0
+### 1.1.1
 Added snippets
   - File exists
   - Dir exists

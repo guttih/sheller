@@ -2,7 +2,7 @@
   "name": "sheller",
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "guttih",
   "author": "Gudjon Holm Sigurdsson",
   "icon": "sheller.png",
