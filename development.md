@@ -1,16 +1,47 @@
 # Development for Sheller
 Some useful things for the developer of this project
 
-## Creating the package
+## Help
+Documentation to look at when developing extensions
+ - **Development** [Development](https://code.visualstudio.com/api/get-started/your-first-extension)
+ - **Snippets** [Snippet Guide](https://code.visualstudio.com/api/language-extensions/snippet-guide)
+ - **VS Code API** This [page](https://code.visualstudio.com/api/references/vscode-api) is comiled from this [file](https://github.com/microsoft/vscode/blob/main/src/vscode-dts/vscode.d.ts).
+
+
+## Development
+
+### Converting code to extension
+  - [Snippet Guide](https://code.visualstudio.com/api/language-extensions/snippet-guide)
+    -   [Variables](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables)
+  - [Language Configuration Guide](https://code.visualstudio.com/api/language-extensions/language-configuration-guide)
+  - [Snippet generator](https://snippet-generator.app/) Converting code to snippet 
+
+### Adding a new snippet file to your extension
+  1. Create the json file in [snippets](snippets) directory 
+  2. Add reference to the file in [package.json](package.json) under contributes.snippets
+
+### Testing your extension
+  1. Open the file [src\test\suite\index.ts](src\test\suite\index.ts) in vscode
+  2. Press **F5** to run the extension
+  3. Test your extension
+
+## Deployment
+### Creating the package
 In this example we use 1.0.0 as the example version number, you will need to bump it every time you release.
 1. Increment the version number in files `package.json` and `package-lock.json`
 2. Add to [Release notes] for this version in README.md
-    - Add an section under **Release Notes** called **# 1.0.0"
+    - Add an section under **Release Notes** called ### 1.0.0"
     - Add some notes about what was done in this release.
 3. Make the package with the command below after changing `1.0.0` to the correct version number
     ```
     vsce package 1.0.0
     ```
 4. Distribute the file `sheller-1.0.0.vsix`
+  
+    Or test installation via command line
+    ```
+    code --install-extension sheller-1.1.0.vsix
+    ```
 
 [Release notes]:./README.md#release-notes
+

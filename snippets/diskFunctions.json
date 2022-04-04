@@ -1,0 +1,61 @@
+{
+    "Checks if a file is found": {
+        "prefix": "File exists",
+        "body": [
+          "if test -f \"${1:filename.txt}\"",
+          "then",
+          "    ${2:echo \"File exists\"}",
+          "else",
+          "    ${3:echo \"File does not exist\"}",
+          "fi",
+          ""
+        ],
+        "description": "Checks if a file is found"
+      }
+      ,
+    "Checks if a directory is found": {
+      "prefix": "Dir exists",
+      "body": [
+        "if test -d \"${1:~/dirname}\"",
+        "then",
+        "    ${2:echo \"Directory exists\"}",
+        "else",
+        "    ${3:echo \"Directory does not exist\"}",
+        "fi",
+        ""
+      ],
+      "description": "Checks if a Directory is found"
+    },
+    "Iterate files in directory": {
+      "prefix": "List files",
+      "body": [
+        "for FILE in ${1:*.sh}; do ",
+        "    ${2:echo -e \"File name: $$FILE\";} ",
+        "done",
+        ""
+      ],
+      "description": "Iterate files in directory"
+    },
+    "Iterate only directories in directory": {
+      "prefix": "List dirs",
+      "body": [
+        "for DIR in ${1:*/}; do ",
+        "    ${2:echo -e \"Directory: $$DIR\";} ",
+        "done",
+        ""
+      ],
+      "description": "Iterate directories in directory"
+    },
+    "Iterate files in directory recursively": {
+      "prefix": "List files recursive",
+      "body": [
+        "for f in $(find . -name ${1|*,'*.sh','*.txt' -or -name '*.doc'|}); do ",
+        "    ${2:echo \"Filename: $$f\"} ",
+        "done",
+        ""
+      ],
+      "description": "Iterate files in directory recursively"
+    }
+
+  }
+  
