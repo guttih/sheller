@@ -36,6 +36,7 @@ In this example we use 1.0.0 as the example version number, you will need to bum
 3. Make the package with the command below after changing `1.0.0` to the correct version number.
 
     **vsce** should be installed, if not give command `npm install -g vsce`
+    **install** project should be installed `npm i`
     ```
     vsce package 1.0.0
     ```
