@@ -19,3 +19,6 @@ Added snippets
 Added more extensive *boilerplate* and *parseOptions* snippets does better
 parsing of parameters.  Added warningColor to coloring text functions.
 Also added two alternative help functions.
+
+### [1.1.2]
+Fixing disk functions to handle when filenames and paths have spaces.

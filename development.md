@@ -21,7 +21,7 @@ Documentation to look at when developing extensions
   2. Add reference to the file in [package.json](package.json) under contributes.snippets
 
 ### Testing your extension
-  1. Open the file [src\test\suite\index.ts](src\test\suite\index.ts) in vscode
+  1. Open the file [index.ts](src/extension.ts) in vscode
   2. Press **F5** to run the extension
   3. Test your extension
 

@@ -30,7 +30,9 @@
       "prefix": "List files",
       "body": [
         "for FILE in ${1:*.sh}; do ",
-        "    ${2:echo -e \"File name: $$FILE\";} ",
+        "    if [ -f \"\\$FILE\" ]; then",
+        "        ${2:echo -e \"File name: \\$FILE\";} ",
+        "    fi",
         "done",
         ""
       ],
@@ -40,21 +42,101 @@
       "prefix": "List dirs",
       "body": [
         "for DIR in ${1:*/}; do ",
-        "    ${2:echo -e \"Directory: $$DIR\";} ",
+        "    if [ -d \"$$DIR\" ]; then",
+        "        ${2:echo -e \"Directory: \\$DIR\";} ",
+        "    fi",
         "done",
         ""
       ],
       "description": "Iterate directories in directory"
     },
-    "Iterate files in directory recursively": {
+    "Iterate files in directory recursive": {
       "prefix": "List files recursive",
       "body": [
-        "for f in $(find . -name ${1|*,'*.sh','*.txt' -or -name '*.doc'|}); do ",
-        "    ${2:echo \"Filename: $$f\"} ",
+        "find . -type f ${1|-name '*', -name '*.txt'|} -print0 | ",
+        "while IFS= read -r -d '' FILE; do",
+        "    printf '%s\\n' \"\\$FILE\"",
         "done",
         ""
       ],
-      "description": "Iterate files in directory recursively"
+      "description": "Iterate files in directory recursive"
+    },
+    "Iterate files in directory recursive regex": {
+      "prefix": "List files recursive reg",
+      "body": [
+        "find . -type f -iregex '.*\\.\\(txt\\|}doc\\|sh\\)\\$' -print0 | ",
+        "while IFS= read -r -d '' FILE; do",
+        "${1|    printf '%s\\n' \"$FILE\",    printf 'Path:%-30s\\tName:\"%-30s\"\\n' \"$(dirname \"$FILE\")\" \"$(basename \"$FILE\")\"|}",
+        "done",
+        ""
+      ],
+      "description": "Iterate files in directory recursive regex"
+    },
+    "Iterate directories in directory recursively regex": {
+      "prefix": "List dirs recursive",
+      "body": [
+        "find . -type d -name ${1:'*'} -print0 | ",
+        "while IFS= read -r -d '' DIR; do",
+        "    printf '%s\\n' \"\\$DIR\"",
+        "done",
+        ""
+      ],
+      "description": "Iterate directories in directory recursively"
+    },
+    "Compare file names in two directories and prints out file names": {
+      "prefix": "compareFilenamesInDirectory",
+      "body": [
+        "#Function: compareFilenamesInDirectory()",
+        "#",
+        "#Brief: Compares file names in two directories and prints out file names",
+        "#",
+        "#Argument 1(\\$1): (Optional) [-matching] (default) Print filenames that exit in both directories.",
+        "#                           [-missing]            Print filenames that only exits in First directory.",
+        "#                           If this argument is skipped then -matching is used.",
+        "#Argument 2(\\$2): Dir1, first directory to compare",
+        "#Argument 3(\\$3): Dir2, second directory to be compared with Dir1",
+        "#   # Example which searches for all files existing in current directory and are missing in \"/bin\"",
+        "#   compareFilenamesInDirectory -missing \".\" \"/bin\"",
+        "compareFilenamesInDirectory() {",
+        "    declare OPTION",
+        "    if [ \\$# -eq 3 ]; then",
+        "        if [[ \"\\$1\" != \"-missing\" && \"\\$1\" != \"-matching\" && \"\\$1\" != \"\" ]]; then",
+        "            echo \"Invalid parameter \\\"\\$1\\\"\"",
+        "            return 1",
+        "        fi",
+        "        OPTION=\\$1",
+        "        shift",
+        "    fi",
+        "    if [ \\$# -ne 2 ]; then",
+        "        echo \"Invalid number of parameters\"",
+        "        return 1",
+        "    fi",
+        "    declare NAME",
+        "    if ! test -d \"\\$1\"; then",
+        "        echo \"Error: Directory: \\\"\\$1\\\" does not exist\"",
+        "        return 1",
+        "    fi",
+        "    if ! test -d \"\\$2\"; then",
+        "        echo \"Error: Directory: \\\"\\$2\\\" does not exist\"",
+        "        return 1",
+        "    fi",
+        "    for FILE in \"\\$1\"/*; do",
+        "        if [ -f \"\\$FILE\" ]; then",
+        "            NAME=\\$(echo \\$(basename \"\\$FILE\"))",
+        "            if [ \"\\$OPTION\" = \"-missing\" ]; then",
+        "                if ! test -f \"\\$2\"/\\$NAME; then",
+        "                    echo \"\\$NAME\"",
+        "                fi",
+        "            else",
+        "                if test -f \"\\$2\"/\\$NAME; then",
+        "                    echo \"\\$NAME\"",
+        "                fi",
+        "            fi",
+        "        fi",
+        "    done",
+        "}\n"
+      ],
+      "description": "Compare file names in two directories and prints out file names"
     }
 
   }
