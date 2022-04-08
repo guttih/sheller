@@ -70,3 +70,5 @@ parsing of parameters.  Added warningColor to coloring text functions.
 Also added two alternative help functions.
 ### 1.1.2
 Fixing disk functions to handle when filenames and paths have spaces.
+### 1.1.3
+Making parseOption not dependant on the newest bash

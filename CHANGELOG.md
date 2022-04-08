@@ -22,3 +22,6 @@ Also added two alternative help functions.
 
 ### [1.1.2]
 Fixing disk functions to handle when filenames and paths have spaces.
+
+### [1.1.3]
+removing usage on `declare -n` in parseOption because it is not well supported.
