@@ -83,8 +83,8 @@
       ],
       "description": "Iterate directories in directory recursively"
     },
-    "Compare file names in two directories and prints out file names": {
-      "prefix": "compareFilenamesInDirectory",
+    "Compare file names in two directories": {
+      "prefix": "compare filenames in dir",
       "body": [
         "#Function: compareFilenamesInDirectory()",
         "#",
@@ -136,8 +136,101 @@
         "    done",
         "}\n"
       ],
-      "description": "Compare file names in two directories and prints out file names"
-    }
+      "description": "Compare file names in two directories and prints out matching or missing file names"
+    },
+    "Script directory": {
+      "prefix": "Get script dir",
+      "body": [
+          "#Function: getScriptPath()",
+          "#",
+          "#Brief: Gets the path to this script",
+          "#",
+          "getScriptPath(){",
+          "    echo \"\\$( cd \"\\$( dirname \"\\${BASH_SOURCE[0]}\" )\" && pwd )\"",
+          "}",
+          "",
+          "DIR=\\$(getScriptPath)",
+          "echo \"Path to this script is \\$DIR\"\n"
+      ],
+      "description": "Get path to the the current bash file"
+  },
+  "Script Name": {
+    "prefix": "Get script name",
+    "body": [
+      "#Function: getFileName()",
+      "#",
+      "#Brief: Extracts name of file",
+      "#",
+      "#Argument 1(\\$1): filename or dir and filename",
+      "getFileName(){",
+      "    if [ \\$# -ne 1 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+      "    echo \"\\$( basename \"\\$1\" )\"",
+      "}",
+      "",
+      "FILE=\\${BASH_SOURCE[0]}",
+      "NAME=\\$(getFileName \\$FILE)",
+      "echo \"File name: \\$NAME\"",
+      ""
+    ],
+    "description": "Get name of current script"
+},
+"Extract filename": {
+  "prefix": "Get file name",
+  "body": [
+    "#Function: getFileName()",
+    "#",
+    "#Brief: Extracts name of file",
+    "#",
+    "#Argument 1(\\$1): filename or dir and filename",
+    "getFileName(){",
+    "    if [ \\$# -ne 1 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+    "    echo \"\\$( basename \"\\$1\" )\"",
+    "}",
+    "",
+    "FILE=\"/c/stuff/me.txt\"",
+    "NAME=\\$(getFileName \\$FILE)",
+    "echo \"File name: \\$NAME\"",
+    ""
+  ],
+  "description": "Extracts filename name from a file path"
+},
+"Extract file directory": {
+  "prefix": "Get file directory",
+  "body": [
+    "#Function: getFileDirectory()",
+    "#",
+    "#Brief: Extracts the path from a file path and name",
+    "#",
+    "getFileDirectory(){",
+    "    if [ \\$# -ne 1 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+    "    echo \"\\$( dirname \"\\$1\" )\"",
+    "}",
+    "",
+    "FILE=\"/c/stuff/me.txt\"",
+    "DIR=\\$(getFileDirectory \\$FILE )",
+    "echo \"Directory: \\$DIR\"\n"
+  ],
+  "description": "Extracts directory from a file path."
+},
+"Extract file extension": {
+  "prefix": "Get file extension",
+  "body": [
+    "#Function: getFileExtension()",
+    "#",
+    "#Brief: Extracts file extension from a file path.",
+    "#",
+    "#Argument 1(\\$1): Describe argument 1",
+    "getFileExtension(){",
+    "    if [ \\$# -ne 1 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+    "    echo \"\\${1##*.}\"",
+      "}",
+      "",
+      "FILE=\"/c/stuff/me.txt\"",
+      "EXTENSION=\\$(getFileExtension \\$FILE )",
+      "echo \"File extension is \\$EXTENSION\"\n"
+  ],
+  "description": " Extract file extension from a file path."
+}
 
   }
   

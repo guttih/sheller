@@ -1,0 +1,45 @@
+{
+  "Time difference  HH:mm:ss": {
+      "prefix": "Time diff",
+      "body": [
+          "#Function: dateDiff()",
+          "#",
+          "#Brief: Calculates difference between two dates with one second precision",
+          "#",
+          "#Argument 1(\\$1): Larger date",
+          "#Argument 2(\\$2): Smaller date",
+          "dateDiff() {",
+          "    if [ \\$# -ne 2 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+          "    declare d1=\\$(date -d \"\\$1\" '+%s')",
+          "    declare d2=\\$(date -d \"\\$2\" '+%s')",
+          "    declare diff=\\$(( (\\$d1-\\$d2) ))",
+          "    echo \"\\$( date -d@\\$diff '+%T' )\"",
+          "}",
+          "",
+          "START=\\$(date -d 'now');",
+          "sleep 2",
+          "END=\\$(date -d 'now');",
+          "echo \"Start time: \\$(date -d \"\\$START\" '+%T')\"",
+          "echo \"End   time: \\$(date -d \"\\$END\" '+%T')\"",
+          "echo \"Difference: \\$(dateDiff \"\\$END\" \"\\$START \")\"",
+          ""
+      ],
+      "description": "Calculate time difference"
+  },
+  "Current time": {
+    "prefix": "Time now",
+    "body": [
+        "CURRENT=\\$(date +\"%H:%M:%S\")",
+        "echo \"Current time: \\$CURRENT\""
+    ],
+    "description": "Print current time on the format HH:mm:ss"
+},
+"Add to current time": {
+  "prefix": "Time in future",
+  "body": [
+      "FEATURE=\\$(date -d '+7 minute +30 second' '+%T')",
+      "echo \"After 7.5 minutes the time is \\$FEATURE\""
+  ],
+  "description": "Add to current time"
+}
+}

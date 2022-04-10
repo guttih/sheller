@@ -24,14 +24,16 @@ Included snippets:
  - **Validate bash parameters** Type *parseOptions* to create a function for validating if parameters given to your bash script are correct.
  - **Does user have superuser privileges** Type *IsSuper* to check if user has superuser privileges(root).
  - **Disk snippets**
-   - **Does file or directory exist** 
-     - type *File exists* to check if a file is found
-     - type *Dir exists* to checks if a directory is found
-   - **List files or directories**
-     - type *List files* to list or iterate files in a directory
-     - type *List files recursive* Iterate files in directory recursively
-     - type *List dirs* to list or iterate directories in directory
+   - Does file or directory exist** 
+   - List files or directories**
+ - **Time snippets**
+   - Calulate time difference and add time
+ - **String snippets** 
+   - Match substring within a string
+   - Does string start with Type *String starts with* to check if string starts with using wild card
+   - Does string end with Type *String ends with* to check if string ends with
  - **Search for an string within an array** type *arrayContains* Searches for an string within an array of strings.
+ - ...and many more.  View [all available snippets]
 
 ## Usage example
 
@@ -47,17 +49,16 @@ How to write text inside a box to the terminal using the function frame.
 
 ## Release Notes
 
-### 1.0.0
+### 1.2.0
+Updating parseOptions to handle required options and adding snippets for time
+calculations.  Added file information snippets which allow you to extract path
+and name from a file path.  Also added snippets for matching substrings in a string.
 
-Snippets included
- - Boiler plate
- - Frame
- - menu
- - functions
- - coloring text
- - help
- - Validate bash parameters
- - Is Super user
+### 1.1.3
+Making parseOption not dependant on the newest bash
+
+### 1.1.2
+Fixing disk functions to handle when filenames and paths have spaces.
 
 ### 1.1.1
 Added snippets
@@ -71,7 +72,17 @@ Added snippets
 Added more extensive *boilerplate* and *parseOptions* snippets does better
 parsing of parameters.  Added warningColor to coloring text functions.
 Also added two alternative help functions.
-### 1.1.2
-Fixing disk functions to handle when filenames and paths have spaces.
-### 1.1.3
-Making parseOption not dependant on the newest bash
+
+### 1.0.0
+Snippets included
+ - Boiler plate
+ - Frame
+ - menu
+ - functions
+ - coloring text
+ - help
+ - Validate bash parameters
+ - Is Super user
+
+
+[all available snippets]: ./snippetList.md

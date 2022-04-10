@@ -1,0 +1,42 @@
+{
+    "Prefix search known length": {
+        "prefix": "String prefix length",
+        "body": [
+            "STRING=\"two-chars-after-3x\"",
+            "echo \"STRING: \\$STRING\"",
+            "echo \"All but last 2    : \\\\\"\\${STRING::-2}\\\\\"\"",
+            "echo \"Only show first 16: \\\\\"\\${STRING::+16}\\\\\"\"",
+            "if [[ \"\\${STRING::-2}\" == \"two-chars-after-\" ]]; then",
+            "    echo \"It's a match\"",
+            "fi",
+            ""
+        ],
+        "description": "Check if a string starts with a specific text and is of a specific lengthS"
+    },
+    "Prefix search with wildcard": {
+        "prefix": "String starts with",
+        "body": [
+            "STRING=\"Bash is great\"",
+            "echo \"STRING: \\$STRING\"",
+            "if [[ \"\\$STRING\" == \\$\"Bash is \"*  ]]; then",
+            "    echo \"It's a match STRING starts with \\\\\"Bash is \\\\\"\"",
+            "fi",
+            ""
+        ],
+        "description": "Check if string starts with using wild card"
+    },
+    "Postfix search": {
+        "prefix": "String ends with",
+        "body": [
+            "STRING=\"Bash is great\"",
+            "ENDING=\\${STRING: -7}",
+            "echo \"STRING: \\$STRING\"",
+            "echo \"Last 7    : \\\\\"\\$ENDING\\\\\"\"",
+            "if [[ \"\\$ENDING\" == \"s great\"  ]]; then",
+            "    echo \"It's a match STRING ends with \\\\\"s great\\\\\"\"",
+            "fi",
+            ""
+        ],
+        "description": "Check if string ends with"
+    }
+}

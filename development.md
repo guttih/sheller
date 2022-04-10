@@ -28,12 +28,15 @@ Documentation to look at when developing extensions
 ## Deployment
 ### Creating the package
 In this example we use 1.0.0 as the example version number, you will need to bump it every time you release.
-1. Increment the version number in files [package.json] and [package-lock.json].
-2. Add to [Release notes] for this version in README.md
+
+1. cd into the root dir of sheller
+2. Export snippet list to markdown by running `node ./src/test/exportSnippetList.js`
+3. Increment the version number in files [package.json] and [package-lock.json].
+4. Add to [Release notes] for this version in README.md
     - Add an section under **Release Notes** called ### 1.0.0"
     - Add some notes about what was done in this release.
     - Add section about the update to the [CHANGELOG.md]
-3. Make the package with the command below after changing `1.0.0` to the correct version number.
+5. Make the package with the command below after changing `1.0.0` to the correct version number.
 
     **vsce** should be installed, if not give command `npm install -g vsce`
     **install** project should be installed `npm i`

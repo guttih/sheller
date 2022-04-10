@@ -9,13 +9,9 @@ import * as vscode from 'vscode';
 export function activate(context: vscode.ExtensionContext) {
 	let outputChannel: vscode.OutputChannel | null = null;
 	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "sheller" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('sheller.message', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
@@ -38,34 +34,29 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-		// The command has been defined in the package.json file
-		// Now provide the implementation of the command with  registerCommand
-		// The commandId parameter must match the command field in package.json
-		let disposable3 = vscode.commands.registerCommand('sheller.selTextToSnippet', async () => {
+	/**
+	 * Converts text to a snippet body
+	 *
+	 * @param {string} content the text to be converted
+	 * @returns {string[]} Array of strings which can be used in a snippet body.
+	 */
+	function contentToSnippetBody(content:string):string[] {
+		content=content.replace(/\\/g, '\\\\');
+		content=content.replace(/\$/g, '\\\$');
+		return content.split('\n');
+	}
+
+		let disposable3 = vscode.commands.registerCommand('sheller.selTextToSnippetNoAsk', async () => {
 			const editor = vscode.window.activeTextEditor;
 			if (editor){
 			if (editor.selection.isEmpty) {
 				vscode.window.showErrorMessage('You need select a text first for convert to a snippet');
 			} else {
 				let txt = editor;
-				// let content = txt.document.getText(txt.selection);
-				
-				// let snippetTitle = await vscode.window.showInputBox({
-				// 	placeHolder: 'Snippet Title',
-				// 	prompt: 'A short title information about your snippet.',
-				// });
-				// let descricaoSnippet = await vscode.window.showInputBox({
-				// 	placeHolder: 'A long description about your code',
-				// 	prompt: 'Describe what this snippet will do.',
-				// });
-				// let atalhoSnippet = await vscode.window.showInputBox({
-				// 	placeHolder: 'prefix',
-				// 	prompt: 'How your snippet will be activated in code completition.',
-				// });;
 				let content = txt.document.getText(txt.selection);
 				
-				let snippetTitle = 'title'+txt.document.fileName;
-				let doc: vscode.TextDocument = editor.document;
+				let snippetTitle = 'title';//+txt.document.fileName;
+				// let doc: vscode.TextDocument = editor.document;
 				
 				
 				let snippetDescription = 'package';
@@ -89,12 +80,10 @@ export function activate(context: vscode.ExtensionContext) {
 				// 	});
 				// }
 				let snippetPrefix = 'prefixName';
-				content=content.replace(/\\/g, '\\\\');
-				content=content.replace(/\$/g, '\\\$');
 				let newSnippet = {
 					[snippetTitle]: {
 						prefix: snippetPrefix,
-						 body: content.split('\n'),
+						 body: contentToSnippetBody(content),
 						
 						description: snippetDescription,
 					}
@@ -107,8 +96,52 @@ export function activate(context: vscode.ExtensionContext) {
 				outputChannel.show();
 			}}
 		});
+		let disposable4 = vscode.commands.registerCommand('sheller.selTextToSnippet', async () => {
+			const editor = vscode.window.activeTextEditor;
+			if (editor){
+			if (editor.selection.isEmpty) {
+				vscode.window.showErrorMessage('You need select a text first for convert to a snippet');
+			} else {
+				let txt = editor;
+				
+				let snippetDescription:string|undefined = await vscode.window.showInputBox({
+					placeHolder: 'A long description about your code',
+					prompt: 'Describe what this snippet will do.',
+				});
+				if (snippetDescription === undefined) { return;	}
 
-	context.subscriptions.push(disposable, disposable2, disposable3);
+				let snippetPrefix:string|undefined = await vscode.window.showInputBox({
+					placeHolder: 'prefix',
+					prompt: 'How your snippet will be activated in code completion.',
+				});
+				if (snippetPrefix === undefined) { return;	}
+
+				let snippetTitle:string|number|symbol|undefined = await vscode.window.showInputBox({
+					value:`${snippetPrefix.toUpperCase()}`,
+					placeHolder: 'Snippet Title',
+					prompt: 'A short title information about your snippet.',
+				});
+				if (snippetTitle === undefined) { return;	}
+				
+				let content = txt.document.getText(txt.selection);
+				
+				let newSnippet = {
+					[snippetTitle]: {
+						prefix: snippetPrefix,
+						body: contentToSnippetBody(content),
+						description: snippetDescription,
+					}
+				};
+				if (outputChannel === null) {
+					outputChannel = vscode.window.createOutputChannel('Snippet');
+				}
+				outputChannel.clear();
+				outputChannel.append(JSON.stringify(newSnippet, null, 4));
+				outputChannel.show();
+			}}
+		});
+
+	context.subscriptions.push(disposable, disposable2, disposable3, disposable4);
 }
 
 // this method is called when your extension is deactivated
