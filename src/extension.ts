@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// The command has been defined in the package.json file
 		// Now provide the implementation of the command with  registerCommand
 		// The commandId parameter must match the command field in package.json
-		let disposable3 = vscode.commands.registerCommand('sheller.tosnippet', async () => {
+		let disposable3 = vscode.commands.registerCommand('sheller.selTextToSnippet', async () => {
 			const editor = vscode.window.activeTextEditor;
 			if (editor){
 			if (editor.selection.isEmpty) {
