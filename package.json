@@ -15,7 +15,8 @@
   ],
   "activationEvents": [
     "onCommand:sheller.message",
-    "onCommand:sheller.reverseWord"
+    "onCommand:sheller.reverseWord",
+    "onCommand:sheller.tosnippet"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -37,6 +38,10 @@
       {
         "command": "sheller.reverseWord",
         "title": "Reverse Word"
+      },
+      {
+        "command": "sheller.tosnippet",
+        "title": "Convert selected text to snippet"
       }
     ],
     "keybindings": [

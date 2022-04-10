@@ -1,5 +1,8 @@
 # Sheller
 
+Download this extension from the [Visual Studio Code Marketplace](/items?itemName=sheller)
+
+
 This extension contains snippets and functions to help with writing bash scripts.
 It includes, menus, parse options, text coloring, declaring functions and using them.
 
