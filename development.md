@@ -31,7 +31,7 @@ In this example we use 1.0.0 as the example version number, you will need to bum
 
 1. cd into the root dir of sheller
 2. Export snippet list to markdown by running `node ./src/test/exportSnippetList.js`
-3. Increment the version number in files [package.json] and [package-lock.json].
+3. Increment 3 version numbers, one in file [package.json] and two [package-lock.json].
 4. Add to [Release notes] for this version in README.md
     - Add an section under **Release Notes** called ### 1.0.0"
     - Add some notes about what was done in this release.
