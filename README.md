@@ -85,4 +85,4 @@ Snippets included
  - Is Super user
 
 
-[all available snippets]: ./snippetList.md
+[all available snippets]: https://github.com/guttih/sheller/blob/master/snippetList.md
