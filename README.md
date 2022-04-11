@@ -33,7 +33,7 @@ Included snippets:
    - Does string start with Type *String starts with* to check if string starts with using wild card
    - Does string end with Type *String ends with* to check if string ends with
  - **Search for an string within an array** type *arrayContains* Searches for an string within an array of strings.
- - ...and many more.  View [all available snippets]
+ - ...and many more.  View [all available snippets] or [view online](https://github.com/guttih/sheller/blob/v1.2.0/snippetList.md)
 
 ## Usage example
 
@@ -85,4 +85,4 @@ Snippets included
  - Is Super user
 
 
-[all available snippets]: ./snippetList.md
+[all available snippets]: snippetList.md
