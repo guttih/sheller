@@ -36,7 +36,7 @@
         "done",
         ""
       ],
-      "description": "Iterate files in directory"
+      "description": "Walk through each file name in a directory"
     },
     "Iterate only directories in directory": {
       "prefix": "List dirs",
@@ -48,7 +48,7 @@
         "done",
         ""
       ],
-      "description": "Iterate directories in directory"
+      "description": "Walk through each sub-directory name in a directory"
     },
     "Iterate files in directory recursive": {
       "prefix": "List files recursive",
@@ -59,7 +59,7 @@
         "done",
         ""
       ],
-      "description": "Iterate files in directory recursive"
+      "description": "Iterate file names in directory recursive. That is, walking through sub-directories also."
     },
     "Iterate files in directory recursive regex": {
       "prefix": "List files recursive reg",
@@ -70,9 +70,9 @@
         "done",
         ""
       ],
-      "description": "Iterate files in directory recursive regex"
+      "description": "Iterate file names in directory recursively using regex.  That is, walking through sub-directories also."
     },
-    "Iterate directories in directory recursively regex": {
+    "Iterate directories in directory": {
       "prefix": "List dirs recursive",
       "body": [
         "find . -type d -name ${1:'*'} -print0 | ",
@@ -81,7 +81,7 @@
         "done",
         ""
       ],
-      "description": "Iterate directories in directory recursively"
+      "description": "Iterate directory names in directory recursively.  That is, walking through sub-directories also."
     },
     "Compare file names in two directories": {
       "prefix": "compare filenames in dir",

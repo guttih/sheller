@@ -48,6 +48,12 @@ How to write text inside a box to the terminal using the function frame.
 
 ## Release Notes
 
+### 1.2.2
+Adding -line and -dLine options to the frame snippet.
+
+### 1.2.1
+Minor changes.
+
 ### 1.2.0
 Updating parseOptions to handle required options and adding snippets for time
 calculations.  Added file information snippets which allow you to extract path
@@ -94,11 +100,11 @@ Snippets included
 | Time in future | Add to current time | Add to current time |
 | File exists | Checks if a file is found | Checks if a file is found |
 | Dir exists | Checks if a directory is found | Checks if a Directory is found |
-| List files | Iterate files in directory | Iterate files in directory |
-| List dirs | Iterate only directories in directory | Iterate directories in directory |
-| List files recursive | Iterate files in directory recursive | Iterate files in directory recursive |
-| List files recursive reg | Iterate files in directory recursive regex | Iterate files in directory recursive regex |
-| List dirs recursive | Iterate directories in directory recursively regex | Iterate directories in directory recursively |
+| List files | Iterate files in directory | Walk through each file name in a directory |
+| List dirs | Iterate only directories in directory | Walk through each sub-directory name in a directory |
+| List files recursive | Iterate files in directory recursive | Iterate file names in directory recursive. That is, walking through sub-directories also. |
+| List files recursive reg | Iterate files in directory recursive regex | Iterate file names in directory recursively using regex.  That is, walking through sub-directories also. |
+| List dirs recursive | Iterate directories in directory | Iterate directory names in directory recursively.  That is, walking through sub-directories also. |
 | compare filenames in dir | Compare file names in two directories | Compare file names in two directories and prints out matching or missing file names |
 | Get script dir | Script directory | Get path to the the current bash file |
 | Get script name | Script Name | Get name of current script |

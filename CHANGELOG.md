@@ -2,6 +2,12 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+### [1.2.2]
+Adding -line and -dLine options to the frame snippet.
+
+### [1.2.1]
+Minor changes.
+
 ### [1.2.0]
 Updating parseOptions to handle required options and adding snippets for time
 calculations.  Added file information snippets which allow you to extract path
