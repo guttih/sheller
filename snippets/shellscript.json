@@ -1,6 +1,6 @@
 {
   "Start of bash": {
-    "prefix": "bash",
+    "prefix": ["bash", "#!", "shebang", "start"],
     "body": ["#!/bin/bash", ""],
     "description": "Start of bash"
   },
@@ -12,6 +12,15 @@
     ],
     "description": "File creation time"
   },
+  "source sh": {
+    "prefix": "Source sh",	
+    "body": ["source \"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE[0]}\")\" && pwd)/${1:filename}.sh\"\n"], 
+    "description": "Import another another shell script" 
+  },
+  "declare array":{ 
+    "prefix": "declare array",	
+    "body": ["declare -a ${1:name}=(${2:\"value1\" \"value2\"});\n"], 
+    "description": "Declare a new array and add initialize it." },
   "Text Color commands": {
     "prefix": "TextColors",
     "body": [

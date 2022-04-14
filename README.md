@@ -4,7 +4,8 @@ Download this extension from the [Visual Studio Code Marketplace][1]
 
 
 This extension contains snippets and functions to help with writing bash scripts.
-It includes, menus, parse options, text coloring, declaring functions and using them.
+It includes, menus, parse options, text coloring, declaring functions, finding 
+and listing files and directories and many more snippets. View the [complete snippet list](#list-of-all-snippets).
 
 ## Features
 
@@ -111,8 +112,10 @@ Snippets included
 | Get file name | Extract filename | Extracts filename name from a file path |
 | Get file directory | Extract file directory | Extracts directory from a file path. |
 | Get file extension | Extract file extension |  Extract file extension from a file path. |
-| bash | Start of bash | Start of bash |
+| bash,#!,shebang,start | Start of bash | Start of bash |
 | #Created | File creation time | File creation time |
+| Source sh | source sh | Import another another shell script |
+| declare array | declare array | Declare a new array and add initialize it. |
 | TextColors | Text Color commands | Text Color commands |
 | function | Function | Create a function which takes no argument |
 | function 1 argument | Function 1 argument | Create a function which takes 1 argument |

@@ -2,6 +2,8 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+### [1.2.3]
+Adding snippets *source sh* and *declare array*
 ### [1.2.2]
 Adding -line and -dLine options to the frame snippet.
 
