@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as fs from 'fs';
 // import * as path from 'path';
 // import * as cp from 'child_process';
 
@@ -140,8 +141,32 @@ export function activate(context: vscode.ExtensionContext) {
 				outputChannel.show();
 			}}
 		});
+		let disposable5 = vscode.commands.registerCommand('sheller.makeExecutable', function () {
+			const editor = vscode.window.activeTextEditor;
+			if (editor === undefined) { return; }
 
-	context.subscriptions.push(disposable, disposable2, disposable3, disposable4);
+			let doc: vscode.TextDocument = editor.document;
+			let fullFilename=doc.uri.fsPath;
+			let stats = fs.statSync(fullFilename);
+			// let unixFilePermissions = '0' + (stats.mode & parseInt('777', 8)).toString(8);
+			// vscode.window.showInformationMessage(`Filename: ${fullFilename}\Perm:${unixFilePermissions}: num:${(stats.mode & parseInt('777', 8))}`);
+			// let ret=0;
+			
+			try {
+				let num = (stats.mode & parseInt('777', 8)); //292 decimal = 444 octal
+				num = (num | parseInt('11', 8));//11 octal = 9 decimal (adding executable for group and public)
+				// num = (num | parseInt('111', 8));//111 octal = 73 decimal (add executable for owner, group and public)
+				// console.log(`num:${num}`);
+				fs.chmodSync(fullFilename, num.toString());
+			  } catch(err) {
+				console.error(err);
+				vscode.window.showErrorMessage("Unable to set file permissions");
+			  }
+				// let dir=path.dirname(fullFilename);
+				// let isLinux = (process.platform === "linux");
+		});
+
+	context.subscriptions.push(disposable, disposable2, disposable3, disposable4, disposable5);
 }
 
 // this method is called when your extension is deactivated

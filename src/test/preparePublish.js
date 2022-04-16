@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const path = require('path');
 const { exit } = require('process');
@@ -29,6 +30,7 @@ if (programArgs.length>0) {
         exit(1);
     }
 }
+//fs.constants.R_OK
 const packageJson = require(workspaceDir+`${slash}package.json`);
 var mdStart = () => {
 //| Prefix  | Title | Description |
@@ -45,7 +47,7 @@ var mdEnd = ()=> "\n\n";
 
 
 filenames = fs.readdirSync(snippetDirs);
-var jsons = [];
+var snippetList = [];
 var mdContent=mdStart();
 filenames.forEach(function (file, index) {
     // Make one pass and make the file complete
@@ -54,12 +56,11 @@ filenames.forEach(function (file, index) {
     
     if (stat.isFile()) {
         console.log("Reading '%s' ", filePath);
-        jsons.push(JSON.parse(fs.readFileSync(filePath)));
+        snippetList.push(JSON.parse(fs.readFileSync(filePath)));
     }
-    // console.log(jsons);
 });
 
-jsons.forEach(fileContent => {
+snippetList.forEach(fileContent => {
     Object.keys(fileContent).forEach(function(key) {
         mdContent+=mdTableEntry(key, fileContent[key]);
     });

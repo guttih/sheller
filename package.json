@@ -2,7 +2,7 @@
   "name": "sheller",
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "publisher": "guttih",
   "author": "Gudjon Holm Sigurdsson",
   "icon": "sheller.png",
@@ -28,7 +28,8 @@
     "onCommand:sheller.message",
     "onCommand:sheller.reverseWord",
     "onCommand:sheller.selTextToSnippet",
-    "onCommand:sheller.selTextToSnippetNoAsk"
+    "onCommand:sheller.selTextToSnippetNoAsk",
+    "onCommand:sheller.makeExecutable"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -66,6 +67,10 @@
       {
         "command": "sheller.selTextToSnippetNoAsk",
         "title": "Convert selected text to snippet without asking for prefix, title and description."
+      },
+      {
+        "command": "sheller.makeExecutable",
+        "title": "Makes current file executable"
       }
     ],
     "keybindings": [
