@@ -2,7 +2,7 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
-### [1.2.3]
+### [1.2.4]
 Adding for, case and read text file snippets.
 ### [1.2.3]
 Adding snippets *source sh* and *declare array*

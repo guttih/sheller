@@ -49,6 +49,8 @@ How to write text inside a box to the terminal using the function frame.
 
 ## Release Notes
 
+### 1.2.4
+Adding for, case and read text file snippets.
 ### 1.2.2
 Adding -line and -dLine options to the frame snippet.
 
