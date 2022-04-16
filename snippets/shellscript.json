@@ -1,7 +1,7 @@
 {
   "Start of bash": {
     "prefix": ["bash", "#!", "shebang", "start"],
-    "body": ["#!/bin/bash", ""],
+    "body": ["#!/usr/bin/env bash", ""],
     "description": "Start of bash"
   },
   "File creation time": {
@@ -62,7 +62,7 @@
       "#",
       "#Argument 1(\\$1): ${3:Describe argument 1}",
       "$1(){",
-      "    if [ $# -ne 1 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+      "    if [ $# -ne 1 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
       "    $4",
       "}\n"
     ],
@@ -78,7 +78,7 @@
       "#Argument 1(\\$1): ${3:Describe argument 1}",
       "#Argument 2(\\$2): ${4:Describe argument 2}",
       "$1(){",
-      "    if [ $# -ne 2 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+      "    if [ $# -ne 2 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
       "    $5",
       "}\n"
     ],
@@ -95,7 +95,7 @@
       "#Argument 2(\\$2): ${4:Describe argument 2}",
       "#Argument 3(\\$3): ${5:Describe argument 3}",
       "$1(){",
-      "    if [ $# -ne 3 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+      "    if [ $# -ne 3 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
       "    $6",
       "}\n"
     ],
@@ -773,5 +773,61 @@
       "}\n"
     ],
     "description": "Searches for an string within an array of strings"
-  }
+  },
+  "For number loop": {
+    "prefix": "for number",
+    "body": [
+        "for (( i; i<10; i++ )); do",
+        " echo -n \"\\$i \"",
+        "done\n"
+    ],
+    "description": "For loop with a number condition variable"
+},
+"For number in braces": {
+  "prefix": "for number braces",
+  "body": [
+      "for i in {1..10}",
+      "do",
+      "    echo -n \"\\$i \"",
+      "done\n"
+  ],
+  "description": "For loop with brace expancion"
+},
+"Case Example": {
+  "prefix": "case example",
+  "body": [
+      "ANIMAL=\"cat\"",
+      "echo -n \"\\$ANIMAL is \"",
+      "case \\$ANIMAL in ",
+      "    hawk)",
+      "        echo \"a bird\"",
+      "        ;;",
+      "    dog|cat) ",
+      "        echo \"a pet\"",
+      "        ;;",
+      "    *)",
+      "      echo \"unknown\"",
+      "        ;;",
+      "esac"
+  ],
+  "description": "Case Statement Example"
+
+},
+"Case": {
+  "prefix": "case",
+  "body": [
+      "case $1 in ",
+      "    ${2:hawk})",
+      "        ${3:echo \"a bird\"}",
+      "        ;;",
+      "    ${4:dog|cat}) ",
+      "        ${5:echo \"a pet\"}",
+      "        ;;",
+      "    *)",
+      "      ${6:echo \"unknown\"}",
+      "        ;;",
+      "esac\n"
+  ],
+  "description": "Case statement"
+}
 }

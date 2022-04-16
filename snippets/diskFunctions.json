@@ -230,7 +230,15 @@
       "echo \"File extension is \\$EXTENSION\"\n"
   ],
   "description": " Extract file extension from a file path."
+},
+"Read on line at a time": {
+  "prefix": "read text file",
+  "body": [
+      "while read line",
+      "    do echo \"Line \\\\\"\\$line\\\\\"\"",
+      "done < \"textfile.txt\""
+  ],
+  "description": "Read a text file one line at a time"
 }
-
   }
   

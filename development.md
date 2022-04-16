@@ -30,13 +30,14 @@ Documentation to look at when developing extensions
 In this example we use 1.0.0 as the example version number, you will need to bump it every time you release.
 
 1. cd into the root dir of sheller
-2. Export snippet list to markdown by running `node ./src/test/exportSnippetList.js`
-3. Increment 3 version numbers, one in file [package.json] and two [package-lock.json].
-4. Add to [Release notes] for this version in README.md
+2. Export snippet list to markdown by running `node ./src/test/preparePublish.js`
+   - If you want to want to increase the version number by one, run with parameter *-bump* like so
+   `node ./src/test/preparePublish.js -bump` this will increment 3 version numbers, one in file [package.json] and two [package-lock.json].
+3. Add to [Release notes] for this version in *README.md* and *CHANGELOG.md*
     - Add an section under **Release Notes** called ### 1.0.0"
     - Add some notes about what was done in this release.
     - Add section about the update to the [CHANGELOG.md]
-5. Make the package with the command below after changing `1.0.0` to the correct version number.
+4. Make the package with the command below after changing `1.0.0` to the correct version number.
 
     **vsce** should be installed, if not give command `npm install -g vsce`
     **install** project should be installed `npm i`

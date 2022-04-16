@@ -112,6 +112,7 @@ Snippets included
 | Get file name | Extract filename | Extracts filename name from a file path |
 | Get file directory | Extract file directory | Extracts directory from a file path. |
 | Get file extension | Extract file extension |  Extract file extension from a file path. |
+| read text file | Read on line at a time | Read a text file one line at a time |
 | bash,#!,shebang,start | Start of bash | Start of bash |
 | #Created | File creation time | File creation time |
 | Source sh | source sh | Import another another shell script |
@@ -132,6 +133,10 @@ Snippets included
 | frame | Frame your text | Frame your text |
 | menuOptions | Select pre defined option | Select pre defined option |
 | arrayContains | Searches for an string within an array of strings | Searches for an string within an array of strings |
+| for number | For number loop | For loop with a number condition variable |
+| for number braces | For number in braces | For loop with brace expancion |
+| case example | Case Example | Case Statement Example |
+| case | Case | Case statement |
 | String prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
 | String starts with | Prefix search with wildcard | Check if string starts with using wild card |
 | String ends with | Postfix search | Check if string ends with |
@@ -139,4 +144,14 @@ Snippets included
 
 [Top](#sheller)
 
+## Reading material
+
+Some reading material which could be helpful when working with bash.
+
+ - [Bash Guide for Beginners]
+ - [Reference Manual][Bash Reference Manual devDocs] or view it as a [single page][Bash Reference Manual]
+
 [1]: https://marketplace.visualstudio.com/items?itemName=guttih.sheller
+[Bash Reference Manual]: https://www.gnu.org/software/bash/manual/bash.html
+[Bash Reference Manual devDocs]: https://devdocs.io/bash/shell-functions
+[Bash Guide for Beginners]: https://tldp.org/LDP/Bash-Beginners-Guide/html/Bash-Beginners-Guide.html
