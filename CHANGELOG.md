@@ -2,6 +2,20 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+### [1.2.6]
+Read from and write to ini files.  That is, read and write section key value pairs.
+
+Here is an example of a content of a ini configuration file
+```
+[section1]
+key1=123
+enabled=false
+message=This is a message stored in a ini file
+
+[AnotherSection]
+anotherKey=blue is a color
+
+```
 ### [1.2.5]
 Adding command to make current file executable
 ### [1.2.4]

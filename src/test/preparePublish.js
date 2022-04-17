@@ -40,7 +40,8 @@ return `
 };
 
 var mdTableEntry = (key, snippet) => {
-    return `| ${snippet.prefix} | ${key} | ${snippet.description} |\n`;
+    let prefix=snippet.prefix.toString().replace(/,/g,",<br>");
+    return `| ${prefix} | ${key} | ${snippet.description} |\n`;
 };
 var mdEnd = ()=> "\n\n";
 

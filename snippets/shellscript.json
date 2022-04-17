@@ -154,7 +154,7 @@
     "description": "Help function with one option and one option argument"
   },
   "Boilerplate simple": {
-    "prefix": "Boilerplate 1, hello world",
+    "prefix": "Boilerplate 1",
     "body": [
       "#!/bin/bash\n",
       "printHelp() {",
@@ -201,7 +201,7 @@
     "description": "Boilerplate simple Hello bash world"
   },
   "Boilerplate, simple one option": {
-    "prefix": "Boilerplate 2, simple one option",
+    "prefix": "Boilerplate 2",
     "body": [
       "#!/bin/bash\n",
       "printHelp() {",
@@ -255,7 +255,7 @@
     "description": "Boilerplate bash script with help that accepts one optional parameter"
   },
   "Boilerplate, one option, one option argument": {
-      "prefix": "Boilerplate 3, one opt and one optArg",
+      "prefix": "Boilerplate 3",
       "body": [
         "#!/bin/bash",
         "",

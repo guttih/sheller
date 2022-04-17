@@ -27,6 +27,7 @@ Included snippets:
  - **Disk snippets**
    - Does file or directory exist
    - List files or directories
+   - Set or get values from a ini configuration file
  - **Time snippets**
    - Calulate time difference and add time
  - **String snippets** 
@@ -46,51 +47,6 @@ This is how the snippet **Boiler plate** can be used to create a bash file, with
 How to write text inside a box to the terminal using the function frame.
 
 ![frame](images/frame.gif)
-
-## Release Notes
-
-### 1.2.4
-Adding for, case and read text file snippets.
-### 1.2.2
-Adding -line and -dLine options to the frame snippet.
-
-### 1.2.1
-Minor changes.
-
-### 1.2.0
-Updating parseOptions to handle required options and adding snippets for time
-calculations.  Added file information snippets which allow you to extract path
-and name from a file path.  Also added snippets for matching substrings in a string.
-
-### 1.1.3
-Making parseOption not dependant on the newest bash
-
-### 1.1.2
-Fixing disk functions to handle when filenames and paths have spaces.
-
-### 1.1.1
-Added snippets
-  - File exists
-  - Dir exists
-  - List files
-  - List files recursive
-  - List dirs
-  - arrayContains
-
-Added more extensive *boilerplate* and *parseOptions* snippets does better
-parsing of parameters.  Added warningColor to coloring text functions.
-Also added two alternative help functions.
-
-### 1.0.0
-Snippets included
- - Boiler plate
- - Frame
- - menu
- - functions
- - coloring text
- - help
- - Validate bash parameters
- - Is Super user
 
  ## List of all snippets
 
@@ -115,7 +71,9 @@ Snippets included
 | Get file directory | Extract file directory | Extracts directory from a file path. |
 | Get file extension | Extract file extension |  Extract file extension from a file path. |
 | read text file | Read on line at a time | Read a text file one line at a time |
-| bash,#!,shebang,start | Start of bash | Start of bash |
+| iniGetSectionKeyValue,<br>getIniSectionKeyValue | Get a value from ini file | Get a value of a key(variable) under specified section in a configuration file |
+| iniSetSectionKeyValue,<br>setIniSectionKeyValue | Set a ini file value | Add or change a section key value pair in a file |
+| bash,<br>#!,<br>shebang,<br>start | Start of bash | Start of bash |
 | #Created | File creation time | File creation time |
 | Source sh | source sh | Import another another shell script |
 | declare array | declare array | Declare a new array and add initialize it. |
@@ -125,11 +83,11 @@ Snippets included
 | function 2 arguments | Function 2 arguments | Create a function which takes 2 arguments |
 | function 3 arguments | Function 3 arguments | Create a function which takes 3 arguments |
 | Print help | Script help function | Script help function |
-| Print help, one option | Help function with one option | Help function with one option |
-| Print help, one option, one option argument | Help function with one option and one option argument | Help function with one option and one option argument |
-| Boilerplate 1, hello world | Boilerplate simple | Boilerplate simple Hello bash world |
-| Boilerplate 2, simple one option | Boilerplate, simple one option | Boilerplate bash script with help that accepts one optional parameter |
-| Boilerplate 3, one opt and one optArg | Boilerplate, one option, one option argument | Boilerplate with one option and one option which requires a argument |
+| Print help,<br> one option | Help function with one option | Help function with one option |
+| Print help,<br> one option,<br> one option argument | Help function with one option and one option argument | Help function with one option and one option argument |
+| Boilerplate 1 | Boilerplate simple | Boilerplate simple Hello bash world |
+| Boilerplate 2 | Boilerplate, simple one option | Boilerplate bash script with help that accepts one optional parameter |
+| Boilerplate 3 | Boilerplate, one option, one option argument | Boilerplate with one option and one option which requires a argument |
 | parseOptions | Check if all options are valid and saves each in a variable | Check if all options are valid and saves each in a variable |
 | IsSuper | Only allow super user to run this script | Only allow super user to run this script |
 | frame | Frame your text | Frame your text |
