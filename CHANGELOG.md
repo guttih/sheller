@@ -2,6 +2,9 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+### [1.2.7]
+Adding snippet with Substring with cut examples
+
 ### [1.2.6]
 Read from and write to ini files.  That is, read and write section key value pairs.
 

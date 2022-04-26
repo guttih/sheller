@@ -52,6 +52,6 @@
             "echo \"last  3 when length is NOT known:\\$(echo \"\\$STRING\"|cut -c \\$(( STRLEN - 2))-)\"",
             ""
         ],
-        "description": "Extract substring from a string using cut"
+        "description": "Examples when extracting substring from a string using cut. (For when bash version is old)"
     }
 }

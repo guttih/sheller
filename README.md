@@ -100,6 +100,7 @@ How to write text inside a box to the terminal using the function frame.
 | String prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
 | String starts with | Prefix search with wildcard | Check if string starts with using wild card |
 | String ends with | Postfix search | Check if string ends with |
+| string cut | Substring with cut | Examples when extracting substring from a string using cut. (For when bash version is old) |
 
 
 [Top](#sheller)
