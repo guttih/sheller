@@ -2,6 +2,8 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+### [1.2.8]
+Adding snippets *replace text in file* and *replace text in file that starts with*
 ### [1.2.7]
 Adding snippet with Substring with cut examples
 

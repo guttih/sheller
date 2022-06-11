@@ -53,5 +53,67 @@
             ""
         ],
         "description": "Examples when extracting substring from a string using cut. (For when bash version is old)"
+    },
+    "Replace text in a file": {
+        "prefix": "replace text in file",
+        "body": [
+            "#Function: replaceStrings()",
+            "#",
+            "#Brief: Replaces text of all strings in a file that  ",
+            "#       match given string with a specific value. ",
+            "#",
+            "#Argument 1(\\$1): File to change",
+            "#Argument 2(\\$2): String to search for",
+            "#Argument 3(\\$3): new value",
+            "#Argument 4(\\$4): (Optional) Set to \"true\" if you want the entire line to be matched",
+            "#   # Example - Replace all lines which contain exactly the content \"Find me\" in the file test.txt",
+            "#      replaceStrings \"test.txt\" \"Find me\" \"New string\" true",
+            "#   # Example - Replace all substrings that match \"Find me\" in the file test.txt",
+            "#      replaceStrings \"test.txt\" \"Find me\" \"New string\"",
+            "replaceStrings(){",
+            "    if [ \\$# -lt 3 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
+            "    ",
+            "    declare FILE=\\$1",
+            "    declare SEARCH_FOR=\\$2",
+            "    declare REPLACE_WITH=\\$3",
+            "    declare END_TOKEN=\"\"",
+            "    declare START_TOKEN=\"\"",
+            "    if [[ \\$4 == \"true\" || \\$4 == \"TRUE\"  ]]; then START_TOKEN=\"^\";END_TOKEN=\"\\$\"; fi;",
+            "    if [[  ! -f \\$FILE  ]]; then",
+            "        echo \"File \\\\\"\\$FILE\\\\\" does not exist\"; exit 1;",
+            "    fi",
+            "    sed -i 's,'\"\\$START_TOKEN\"''\"\\$SEARCH_FOR\"''\"\\$END_TOKEN\"','\"\\$REPLACE_WITH\"',g' \\$FILE",
+            "}",
+            "",
+            ""
+        ],
+        "description": "Replace texts in a file that match a specified substring"
+    },
+    "Replace trailing text in a file that starts with": {
+        "prefix": "replace text in file that starts with",
+        "body": [
+            "#Function: replaceStringsAfter()",
+            "#",
+            "#Brief: Replaces trailing text of all strings in a file that start ",
+            "#       with a specific value.  Leading white spaces will be removed. ",
+            "#",
+            "#Argument 1(\\$1): File to change",
+            "#Argument 2(\\$2): String to search for",
+            "#Argument 3(\\$3): new value",
+            "replaceStringsAfter(){",
+            "    if [ \\$# -ne 3 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
+            "",
+            "    declare FILE=\\$1",
+            "    declare SEARCH_FOR=\\$2",
+            "    declare REPLACE_WITH=\\$3",
+            "    if [[  ! -f \\$FILE  ]]; then",
+            "        echo \"File \\\\\"\\$FILE\\\\\" does not exist\"; exit 1;",
+            "    fi",
+            "",
+            "    sed -i 's,^\\\\s*'\"\\$SEARCH_FOR\"'.*\\$,'\"\\$SEARCH_FOR\"''\"\\$REPLACE_WITH\"',g' \\$FILE",
+            "}",
+            ""
+        ],
+        "description": "Replace trailing texts in a file that begin with a specified substring"
     }
 }

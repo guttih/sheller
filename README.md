@@ -101,6 +101,8 @@ How to write text inside a box to the terminal using the function frame.
 | String starts with | Prefix search with wildcard | Check if string starts with using wild card |
 | String ends with | Postfix search | Check if string ends with |
 | string cut | Substring with cut | Examples when extracting substring from a string using cut. (For when bash version is old) |
+| replace text in file | Replace text in a file | Replace texts in a file that match a specified substring |
+| replace text in file that starts with | Replace trailing text in a file that starts with | Replace trailing texts in a file that begin with a specified substring |
 
 
 [Top](#sheller)
