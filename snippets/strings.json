@@ -84,7 +84,6 @@
             "    fi",
             "    sed -i 's,'\"\\$START_TOKEN\"''\"\\$SEARCH_FOR\"''\"\\$END_TOKEN\"','\"\\$REPLACE_WITH\"',g' \\$FILE",
             "}",
-            "",
             ""
         ],
         "description": "Replace texts in a file that match a specified substring"
@@ -100,6 +99,8 @@
             "#Argument 1(\\$1): File to change",
             "#Argument 2(\\$2): String to search for",
             "#Argument 3(\\$3): new value",
+            "#   Example - find a line that starts with \"variable=\" in the file test.txt and replace that line with the text \"variable=new_value\"",
+            "#      replaceStringsAfter test.txt \"variable=\" \"new_value\"",
             "replaceStringsAfter(){",
             "    if [ \\$# -ne 3 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
             "",
@@ -115,5 +116,30 @@
             ""
         ],
         "description": "Replace trailing texts in a file that begin with a specified substring"
+    },
+    "Create multiline file": {
+        "prefix": "create text file",
+        "body": [
+            "#Function: createFile()",
+            "#",
+            "#Brief: Creates a file with muliple lines",
+            "#",
+            "#Argument 1(\\$1): File to create",
+            "createFile() {",
+            "    declare FILE=\"\\$1\"",
+            "    echo \"Creating \\$FILE\"",
+            "    CURRENT=\\$(date +\"%Y-%m-%d %H:%M:%S\")",
+            "    read -r -d '' VAR <<EOM",
+            "# File created \\$CURRENT.",
+            "    This file contains",
+            "    multiple lines",
+            "EOM",
+            "    echo \"\\$VAR\" >\"\\$FILE\"",
+            "}",
+            "",
+            "createFile \"newFile.txt\"",
+            ""
+        ],
+        "description": "Create a text file with multiple lines"
     }
 }

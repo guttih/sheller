@@ -34,6 +34,14 @@
     ],
     "description": "Print current time on the format HH:mm:ss"
 },
+"Current date & time": {
+    "prefix": "Date and Time now",
+    "body": [
+        "CURRENT=\\$(date +\"%Y-%m-%d %H:%M:%S\")",
+        "echo \"Current date & time: \\$CURRENT\""
+    ],
+    "description": "Print current time on the format YYYY-MM-DD HH:mm:ss"
+},
 "Add to current time": {
   "prefix": "Time in future",
   "body": [

@@ -56,6 +56,7 @@ How to write text inside a box to the terminal using the function frame.
 |:--------|:------|:------------|
 | Time diff | Time difference  HH:mm:ss | Calculate time difference |
 | Time now | Current time | Print current time on the format HH:mm:ss |
+| Date and Time now | Current date & time | Print current time on the format YYYY-MM-DD HH:mm:ss |
 | Time in future | Add to current time | Add to current time |
 | File exists | Checks if a file is found | Checks if a file is found |
 | Dir exists | Checks if a directory is found | Checks if a Directory is found |
@@ -103,6 +104,7 @@ How to write text inside a box to the terminal using the function frame.
 | string cut | Substring with cut | Examples when extracting substring from a string using cut. (For when bash version is old) |
 | replace text in file | Replace text in a file | Replace texts in a file that match a specified substring |
 | replace text in file that starts with | Replace trailing text in a file that starts with | Replace trailing texts in a file that begin with a specified substring |
+| create text file | Create multiline file | Create a text file with multiple lines |
 
 
 [Top](#sheller)
