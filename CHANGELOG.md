@@ -3,6 +3,8 @@
 All notable changes to the "sheller" extension will be documented in this file.
 
 ### [1.2.9]
+Adding snippets *text colors table* which prints out all terminal colors in a table
+### [1.2.9]
 Adding snippets *Current date & time* and *Create multiline file*
 ### [1.2.8]
 Adding snippets *replace text in file* and *replace text in file that starts with*

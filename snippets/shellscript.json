@@ -1,8 +1,8 @@
 {
   "Start of bash": {
-    "prefix": ["bash", "#!", "shebang", "start"],
+    "prefix": ["bash", "shebang", "start"],
     "body": ["#!/usr/bin/env bash", ""],
-    "description": "Start of bash"
+    "description": "Start of bash\nThat is shell scripts should start with this command"
   },
   "File creation time": {
     "prefix": "#Created",
@@ -22,7 +22,7 @@
     "body": ["declare -a ${1:name}=(${2:\"value1\" \"value2\"});\n"], 
     "description": "Declare a new array and add initialize it." },
   "Text Color commands": {
-    "prefix": "TextColors",
+    "prefix": "text colors",
     "body": [
       "#Text Color commands",
       "#",
@@ -40,6 +40,44 @@
     ],
     "description": "Text Color commands"
   },
+  "Show all termianl text colors": {
+    "prefix": "text colors table",
+    "body": [
+        "#Terminal Text Colors",
+        "#",
+        "formatA=\\$(echo -en '\\\\033[100;37m')",
+        "formatC=\\$(echo -en '\\\\033[5;31m')",
+        "formatB=\\$(echo -en '\\\\033[01;32m')",
+        "formatS=\\$(echo -en '\\\\033[103;31m')",
+        "norm=\\$(echo -en '\\\\033[0m')",
+        "echo \"                ────────────────────────────────\"",
+        "echo \"              /\\${formatS}                                  \\${norm}\\\\\\\\\"",
+        "echo \"             /\\${formatS}   \\${norm}                              \\${formatS}   \\${norm}\\\\\\\\\"",
+        "echo \"            |\\${formatS}   \\${norm}      \\${formatA}Terminal\\${norm} \\${formatB}color\\${norm} \\${formatC}codes\\${norm}      \\${formatS}   \\${norm}|\"",
+        "echo \"             \\\\\\\\\\${formatS}   \\${norm}                              \\${formatS}   \\${norm}/\"",
+        "echo \"              \\\\\\\\\\${formatS}                                  \\${norm}/\"",
+        "echo \"                ────────────────────────────────\"",
+        "echo",
+        "",
+        "declare color SPACES",
+        "for ((BACKGROUND = 0; BACKGROUND < 108; BACKGROUND++)); do",
+        "    if ((BACKGROUND == 9)); then BACKGROUND=40; fi",
+        "    if ((BACKGROUND == 48)); then BACKGROUND=100; fi",
+        "    for ((TEXT = 30; TEXT < 98; TEXT++)); do",
+        "        if ((TEXT == 38)); then TEXT=90; fi",
+        "        color=\\$(echo -en \"\\\\033[\\${BACKGROUND};\\${TEXT}m\")",
+        "        SPACES=\" \"",
+        "        ((BACKGROUND < 10)) && SPACES=\"\\$SPACES \"",
+        "        ((BACKGROUND < 100)) && SPACES=\"\\$SPACES \"",
+        "",
+        "        echo -ne \"\\${color}\"",
+        "        echo -n \"\\\\033[\\${BACKGROUND};\\${TEXT}m\\${norm}\\$SPACES\"",
+        "    done",
+        "    echo",
+        "done"
+    ],
+    "description": "Show all terminal text colors and a example on how to use colors with echo"
+},
   "Function": {
     "prefix": "function",
     "body": [
@@ -777,7 +815,7 @@
   "For number loop": {
     "prefix": "for number",
     "body": [
-        "for (( i; i<10; i++ )); do",
+        "for (( i=0; i<10; i++ )); do",
         " echo -n \"\\$i \"",
         "done\n"
     ],

@@ -17,9 +17,9 @@
           "}",
           "",
           "START=\\$(date -d 'now');",
+          "echo \"Start time: \\$(date -d \"\\$START\" '+%T')\"",
           "sleep 2",
           "END=\\$(date -d 'now');",
-          "echo \"Start time: \\$(date -d \"\\$START\" '+%T')\"",
           "echo \"End   time: \\$(date -d \"\\$END\" '+%T')\"",
           "echo \"Difference: \\$(dateDiff \"\\$END\" \"\\$START \")\"",
           ""
