@@ -240,8 +240,8 @@
   ],
   "description": "Read a text file one line at a time"
 },
-"Get a value from ini file": {
-  "prefix": ["iniGetSectionKeyValue", "getIniSectionKeyValue"],
+"Read a value from a ini file": {
+  "prefix": ["ini file get value","ini file read value", "iniGetSectionKeyValue", "getIniSectionKeyValue"],
   "body": [
     "#Function: getSectionKeyValue()",
     "#",
@@ -276,8 +276,8 @@
 ],
   "description": "Get a value of a key(variable) under specified section in a configuration file"
 },
-"Set a ini file value": {
-  "prefix": ["iniSetSectionKeyValue", "setIniSectionKeyValue" ],
+"Save a value to a ini file": {
+  "prefix": ["ini file set value", "ini file write value", "iniSetSectionKeyValue", "setIniSectionKeyValue" ],
   "body": [
       "# Function: setSectionKeyValue()",
       "# ",
