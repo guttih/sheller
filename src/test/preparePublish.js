@@ -78,6 +78,6 @@ snippetList.forEach(fileContent => {
                                         );
     console.log("==================\n");console.log(newContent);console.log("==================\n");
     fs.writeFileSync(mdFile, newContent);
-    console.log(`Extension version:  ${packageJson.version}`);
+    console.log(`To create a new package with this \nversion, give the following command:\n\n    vsce package ${packageJson.version}\n`);
 
 

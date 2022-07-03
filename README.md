@@ -80,7 +80,7 @@ That is shell scripts should start with this command |
 | Source sh | source sh | Import another another shell script |
 | declare array | declare array | Declare a new array and add initialize it. |
 | text colors | Text Color commands | Text Color commands |
-| text colors table | Show all termianl text colors | Show all terminal text colors and a example on how to use colors with echo |
+| terminal colors,<br>text colors table | Show all termianl text colors | Show all terminal text colors and a example on how to use colors with echo |
 | function | Function | Create a function which takes no argument |
 | function 1 argument | Function 1 argument | Create a function which takes 1 argument |
 | function 2 arguments | Function 2 arguments | Create a function which takes 2 arguments |
