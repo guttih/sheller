@@ -2,6 +2,8 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+### [1.2.12]
+Bumping version to make repo match version on marketplace.
 ### [1.2.11]
 Minor, adding more prefixes for read from- and write to a ini file.
 ### [1.2.10]
