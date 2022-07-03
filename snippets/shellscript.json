@@ -41,7 +41,7 @@
     "description": "Text Color commands"
   },
   "Show all termianl text colors": {
-    "prefix": "text colors table",
+    "prefix": ["terminal colors","text colors table"],
     "body": [
         "#Terminal Text Colors",
         "#",

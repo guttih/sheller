@@ -2,7 +2,9 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
-### [1.2.9]
+### [1.2.11]
+Minor, adding more prefixes for read from- and write to a ini file.
+### [1.2.10]
 Adding snippets *text colors table* which prints out all terminal colors in a table
 ### [1.2.9]
 Adding snippets *Current date & time* and *Create multiline file*

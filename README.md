@@ -72,15 +72,15 @@ How to write text inside a box to the terminal using the function frame.
 | Get file directory | Extract file directory | Extracts directory from a file path. |
 | Get file extension | Extract file extension |  Extract file extension from a file path. |
 | read text file | Read on line at a time | Read a text file one line at a time |
-| iniGetSectionKeyValue,<br>getIniSectionKeyValue | Get a value from ini file | Get a value of a key(variable) under specified section in a configuration file |
-| iniSetSectionKeyValue,<br>setIniSectionKeyValue | Set a ini file value | Add or change a section key value pair in a file |
+| ini file get value,<br>ini file read value,<br>iniGetSectionKeyValue,<br>getIniSectionKeyValue | Read a value from a ini file | Get a value of a key(variable) under specified section in a configuration file |
+| ini file set value,<br>ini file write value,<br>iniSetSectionKeyValue,<br>setIniSectionKeyValue | Save a value to a ini file | Add or change a section key value pair in a file |
 | bash,<br>shebang,<br>start | Start of bash | Start of bash
 That is shell scripts should start with this command |
 | #Created | File creation time | File creation time |
 | Source sh | source sh | Import another another shell script |
 | declare array | declare array | Declare a new array and add initialize it. |
 | text colors | Text Color commands | Text Color commands |
-| text colors table | Show all termianl text colors | Show all terminal text colors and a example on how to use colors with echo |
+| terminal colors,<br>text colors table | Show all termianl text colors | Show all terminal text colors and a example on how to use colors with echo |
 | function | Function | Create a function which takes no argument |
 | function 1 argument | Function 1 argument | Create a function which takes 1 argument |
 | function 2 arguments | Function 2 arguments | Create a function which takes 2 arguments |
