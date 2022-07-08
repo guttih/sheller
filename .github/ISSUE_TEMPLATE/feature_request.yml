@@ -46,6 +46,12 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
+        - Linux
+          options:
+            - Red hat
+            - Fedora / Centos / Rocky linux
+            - Ubuntu
+        
   - type: textarea
     id: logs
     attributes:
