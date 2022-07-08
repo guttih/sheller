@@ -1,6 +1,6 @@
 name: Sheller Bug Report
 description: File a bug report on the Sheller, Visual Studio Code extension
-title: ""
+title: " "
 labels: ["bug"]
 assignees:
   - guttih
