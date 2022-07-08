@@ -1,6 +1,6 @@
 name: Sheller Bug Report
 description: File a bug report on the *app_name, Visual Studio Code extension
-title: "Reporting a bug"
+title: ["Bug"]: 
 labels: ["bug"]
 assignees:
   - guttih
@@ -97,6 +97,4 @@ body:
     attributes:
       label: Other notes
       description: If you have any other notes, about the extension or something else you can type them here
-      render: shell
-anchored_content: &anchor_name This string will appear as the value of two keys.
-other_anchor: *anchor_name   
+      render: shell 
