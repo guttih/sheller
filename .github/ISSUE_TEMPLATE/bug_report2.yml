@@ -1,5 +1,5 @@
 name: Sheller Bug Report
-description: File a bug report on the *app_name, Visual Studio Code extension
+description: File a bugon the Sheller
 title: "[Bug]:"
 labels: ["bug"]
 assignees:
@@ -8,7 +8,7 @@ body:
 - type: markdown
   attributes:
     value: |
-      Bugreport for the Sheller Visual Studio Code Extension
+      Bug report on the Sheller - Visual Studio Code Extension
 - type: input
   id: contact
   attributes:
