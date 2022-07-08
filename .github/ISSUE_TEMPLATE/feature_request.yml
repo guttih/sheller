@@ -49,11 +49,11 @@ body:
         - type: dropdown
           id: linux
           attributes:
-            label: Which linux
-            multple: true
+            label: Which linux?
+            multiple: true
             options:
               - Red hat
-              - Fedora / Centos / Rocky linux
+              - Fedora Centos Rocky linux
               - Ubuntu
               - other
         
