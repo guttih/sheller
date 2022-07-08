@@ -5,7 +5,7 @@ All notable changes to the "sheller" extension will be documented in this file.
 ## [1.2.14]
 
 ### Added
- 
+  
  - Snippets
     - *Extract argument name from option*
     - *Extract argument value from option*
