@@ -46,11 +46,16 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
-        - Linux
-          options:
-            - Red hat
-            - Fedora / Centos / Rocky linux
-            - Ubuntu
+        - type: dropdown
+          id: linux
+          attributes:
+            label: Which linux
+            multple: true
+            options:
+              - Red hat
+              - Fedora / Centos / Rocky linux
+              - Ubuntu
+              - other
         
   - type: textarea
     id: logs
