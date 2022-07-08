@@ -1,5 +1,5 @@
 name: Sheller Bug Report
-description: File a bug report on the Sheller Visual Studio code extension
+description: File a bug report on the Sheller, Visual Studio Code extension
 title: "[Bug]:"
 labels: ["bug"]
 assignees:
@@ -36,6 +36,12 @@ body:
         _Describe what should have happened_.
     validations:
       required: true
+  - type: textarea
+    attributes:
+      label: Version - Visual studio Vode 
+      description: In VS Code select "Help" > "About", then click on "Copy" and paste the text here
+    validations:
+      required: false
   - type: dropdown
     id: version
     attributes:
