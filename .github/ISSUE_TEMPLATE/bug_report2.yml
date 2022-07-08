@@ -1,7 +1,8 @@
 name: Bug Report2
 description: File a bug report
-title: "[Bug]: "
+title: "[Bug]:"
 labels: ["bug"]
+projects: ["1"]
 assignees:
   - guttih
 body:
