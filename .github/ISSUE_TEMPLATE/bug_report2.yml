@@ -1,5 +1,5 @@
 name: Sheller Bug Report
-description: File a bugon the Sheller
+description: File a bug on Sheller
 title: "[Bug]:"
 labels: ["bug"]
 assignees:
@@ -21,7 +21,7 @@ body:
   id: what-happened
   attributes:
     label: What happened?
-    description: Also tell us, what did you expect to happen?
+    description: Also tell me, what did you expect to happen?
     placeholder: asdfasdf 
 
     value: | 
