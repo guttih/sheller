@@ -97,6 +97,5 @@ body:
     attributes:
       label: Other operating system(s)
       description: If you have any other notes, about the extension or something else you can type them here
-      placeholder: I would a appreciate it :)
       render: shell
 
