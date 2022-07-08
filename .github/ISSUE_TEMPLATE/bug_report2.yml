@@ -40,7 +40,7 @@ body:
     id: version
     attributes:
       label: Version - Sheller Extension
-      description:  In VS Code select "View" > "Extensions", then type sheller and "Copy" and paste the version number here
+      description:  In VS Code select "View" > "Extensions", then type sheller and select the matching version here
       options:
         - 1.2.*
         - 1.2.15
@@ -93,16 +93,9 @@ body:
       description: Operating system(s) not in the options above can be added here
       placeholder: Other OS
   - type: textarea
-    id: logs
+    id: other
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      label: Other notes
+      description: If you have any other notes, about the extension or something else you can type them here
       render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      
