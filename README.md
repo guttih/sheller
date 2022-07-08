@@ -91,7 +91,7 @@ That is shell scripts should start with this command |
 | Boilerplate 1 | Boilerplate simple | Boilerplate simple Hello bash world |
 | Boilerplate 2 | Boilerplate, simple one option | Boilerplate bash script with help that accepts one optional parameter |
 | Boilerplate 3 | Boilerplate, one option, one option argument | Boilerplate with one option and one option which requires a argument |
-| parseOptions | Check if all options are valid and saves each in a variable | Check if all options are valid and saves each in a variable |
+| parse options | Check if all options are valid and saves each in a variable | Check if all options are valid and saves each in a variable |
 | IsSuper | Only allow super user to run this script | Only allow super user to run this script |
 | frame | Frame your text | Frame your text |
 | menuOptions | Select pre defined option | Select pre defined option |
