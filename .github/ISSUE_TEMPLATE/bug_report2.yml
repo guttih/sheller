@@ -27,6 +27,8 @@ body:
       value: | 
         ### Summary
         _Short summary of what is going on or to provide context_.
+        
+        <!-- Not required, but ment to help you along with writing a better bug report! -->
         ### Steps To Reproduce:
         1.  First I...
         2.  Then...
