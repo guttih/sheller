@@ -11,7 +11,7 @@ body:
         Bugreport for the Sheller Visual Studio Code Extension
   - type: input
     id: contact
-    attributes:
+    attributes:notes
       label: Contact Details
       description: How can I get in touch with you if we need more info?
       placeholder: ex. email@example.com
@@ -92,10 +92,5 @@ body:
       label: Other operating system(s)
       description: Operating system(s) not in the options above can be added here
       placeholder: Other OS
-- type: textarea
-    id: notesX
-    attributes:
-      label: Other operating system(s)
-      description: If you have any other notes, about the extension or something else you can type them here
-      render: shell
+
 
