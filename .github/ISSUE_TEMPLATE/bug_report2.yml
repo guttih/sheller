@@ -11,6 +11,7 @@ body:
       Bugreport for the Sheller Visual Studio Code Extension
 - type: input
   id: contact
+  attributes:
     label: Contact Details
     description: How can I get in touch with you if we need more info?
     placeholder: ex. email@example.com
