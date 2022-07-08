@@ -76,7 +76,7 @@ body:
     validations:
       required: true
     attributes:
-      label: What browsers are you seeing the problem on?
+      label: What operating system  are you seeing the problem on?
       multiple: true
       options:
         - Windows
@@ -92,9 +92,8 @@ body:
       label: Other operating system(s)
       description: Operating system(s) not in the options above can be added here
       placeholder: Other OS
-  - type: textarea
-    id: other
+    id: notes
     attributes:
-      label: Other notes
-      description: If you have any other notes, about the extension or something else you can type them here
+      label: Notes
+      description: If you have any other notes, you can provide them here :hugs:
       render: shell 
