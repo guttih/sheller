@@ -80,7 +80,7 @@ That is shell scripts should start with this command |
 | Source sh | source sh | Import another another shell script |
 | declare array | declare array | Declare a new array and add initialize it. |
 | text colors | Text Color commands | Text Color commands |
-| terminal colors,<br>text colors table | Show all termianl text colors | Show all terminal text colors and a example on how to use colors with echo |
+| terminal colors,<br>text colors table | Show all terminal text colors | Show all terminal text colors and a example on how to use colors with echo |
 | function | Function | Create a function which takes no argument |
 | function 1 argument | Function 1 argument | Create a function which takes 1 argument |
 | function 2 arguments | Function 2 arguments | Create a function which takes 2 arguments |
@@ -100,6 +100,8 @@ That is shell scripts should start with this command |
 | for number braces | For number in braces | For loop with brace expansion |
 | case example | Case Example | Case Statement Example |
 | case | Case | Case statement |
+| Extract argument name | Extract argument name from option | Extracts a name from a given argument which is on the form -name=value or name="value with spaces" |
+| extract argument value | Extract argument value from option | Extracts a value from a given argument which is on the form name=value or name="value with spaces" |
 | String prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
 | String starts with | Prefix search with wildcard | Check if string starts with using wild card |
 | String ends with | Postfix search | Check if string ends with |
