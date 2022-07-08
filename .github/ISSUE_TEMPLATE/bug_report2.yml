@@ -93,7 +93,7 @@ body:
       description: Operating system(s) not in the options above can be added here
       placeholder: Other OS
 - type: textarea
-    id: notes
+    id: notesX
     attributes:
       label: Other operating system(s)
       description: If you have any other notes, about the extension or something else you can type them here
