@@ -2,6 +2,10 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+### [1.2.13]
+Updating boilerplate 3, making it accept options that need arguments on 
+ - this new format `myscript.sh -variable="value here"`
+ - instead of old `myscript.sh -variable "value here"`
 ### [1.2.12]
 Bumping version to make repo match version on marketplace.
 ### [1.2.11]

@@ -97,7 +97,7 @@ That is shell scripts should start with this command |
 | menuOptions | Select pre defined option | Select pre defined option |
 | arrayContains | Searches for an string within an array of strings | Searches for an string within an array of strings |
 | for number | For number loop | For loop with a number condition variable |
-| for number braces | For number in braces | For loop with brace expancion |
+| for number braces | For number in braces | For loop with brace expansion |
 | case example | Case Example | Case Statement Example |
 | case | Case | Case statement |
 | String prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
