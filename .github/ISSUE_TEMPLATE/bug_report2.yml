@@ -67,7 +67,7 @@ body:
     required: true
 - type: textarea
   attributes:
-    label: Version - Visual studio Vode 
+    label: Version - Visual studio Code 
     description: In VS Code select "Help" > "About", then click on "Copy" and paste the text here
   validations:
     required: false
