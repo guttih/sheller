@@ -95,5 +95,5 @@ body:
     id: notes
     attributes:
       label: Notes
-      description: 'If you have any other notes, you can provide them here :)'
+      description: 'If you have any other notes, you can provide them here'
       render: shell 
