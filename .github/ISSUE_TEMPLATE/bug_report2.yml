@@ -98,4 +98,5 @@ body:
       label: Other notes
       description: If you have any other notes, about the extension or something else you can type them here
       render: shell
-  anchored_content: &app_name Sheller      
+anchored_content: &anchor_name This string will appear as the value of two keys.
+other_anchor: *anchor_name   
