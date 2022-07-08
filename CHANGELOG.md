@@ -2,16 +2,28 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+## [1.2.15]
+
+### Added
+ 
+ - Snippet *extract filename*
+
+### Changed 
+ - Snippets
+    - *parse options* - Using values that require arguments on the form argumentName="This is my argument value"
+    - *Boilerplate 3* - Same change as above
 ## [1.2.14]
 
 ### Added
-  
+ 
  - Snippets
     - *Extract argument name from option*
     - *Extract argument value from option*
 
 ### Changed 
- - snippet *parse options*
+ - Snippets
+    - *parse options* - Using values that require arguments on the form argumentName="This is my argument value"
+    - *Boilerplate 3* - Same change as above
 
 extractArgumentName
 ## [1.2.13]
