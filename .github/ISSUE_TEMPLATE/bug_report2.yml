@@ -1,8 +1,7 @@
-name: Bug Report2
-description: File a bug report
+name: Sheller Bug Report
+description: File a bug report on the Sheller Visual Studio code extension
 title: "[Bug]:"
 labels: ["bug"]
-project: "1"
 assignees:
   - guttih
 body:
