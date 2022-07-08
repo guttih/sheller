@@ -92,5 +92,11 @@ body:
     label: Other operating system(s)
     description: Operating system(s) not in the options above can be added here
     placeholder: Other OS
+- type: textarea
+  id: notes
+  attributes:
+    label: Notes / Anything else? 
+    description: Is there something else?  Something you want to add?  Please do :)
+    render: shell
       
      
