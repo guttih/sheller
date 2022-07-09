@@ -21,15 +21,18 @@ body:
   id: what-happened
   attributes:
     label: What happened?
-    description: |  Also tell me, what did you expect to happen?
+    description: |  
+      Also tell me, what did you expect to happen?
     
       ### Summary
       _Short summary of what is going on or to provide context_.
 
-      <!-- Not required, but ment to help you along with writing a better bug report! -->
+      Ideas to help you along with writing your bug report
+      
       ### Steps To Reproduce:
       1.  First I...
       2.  Then...
+      
       ### Expected result
       _Describe what should have happened_.
       
