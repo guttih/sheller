@@ -28,25 +28,47 @@ body:
   id: what-happened
   attributes:
     label: What happened?
-    description: |
-     
-     Ideas to help you along with writing your bug report
-      
-      ### Steps To Reproduce:
-      1.  First I...
-      2.  Then...
-      
-      ### Expected result
-      _Describe what should have happened_.
-      
+    description: |     
+    
       - Additional context
-     Add any other context or screenshots about the bug here.
+        Add any other context or screenshots about the bug here.
       
     placeholder: |
      Please write your bugreport here 
     value: 
   validations:
     required: true
+- type: textarea
+  id: reproduce
+  attributes:
+    label: Steps To Reproduce
+    description: |
+      1.  First I...
+      2.  Then...
+      - Additional context
+        Add any other context or screenshots about the bug here.
+      
+    placeholder: |
+     Please describe to me how I can reproduce the bug, so I can find out how to fix it 
+    value: 
+  validations:
+    required: false
+- type: textarea
+  id: expected_result
+  attributes:
+    label: Expected result
+    description: |
+    
+      Describe what should have happened
+      
+      - Additional context
+     Add any other context or screenshots about the bug here.
+      
+    placeholder: |
+     What should have happened?
+    value: 
+  validations:
+    required: false
 - type: dropdown
   id: version
   attributes:
