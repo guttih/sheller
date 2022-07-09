@@ -44,7 +44,7 @@ body:
   validations:
     required: false
   attributes:
-    label: Is this feature Operating System specific? Wich?
+    label: If this feature is Operating System specific, please select it?
     multiple: true
     options:
       - Windows
