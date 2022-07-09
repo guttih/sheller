@@ -58,7 +58,6 @@ body:
   attributes:
     label: Expected result
     description: |
-    
       Describe what should have happened
       
       - Additional context
