@@ -54,7 +54,7 @@ body:
   validations:
     required: false
 - type: textarea
-  id: expected_result
+  id: expected
   attributes:
     label: Expected result
     description: |
