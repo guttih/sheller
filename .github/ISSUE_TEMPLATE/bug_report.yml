@@ -28,8 +28,8 @@ body:
   id: what-happened
   attributes:
     label: What happened?
-    description: |     
-      Additional context
+    description: | 
+     Additional context
       Add any other context or screenshots about the bug here.
     placeholder: |
      Please write your bugreport here 
