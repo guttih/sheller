@@ -86,6 +86,7 @@ body:
       - Linux - Fedora/Centos/Rocky linux
       - Linux - Ubuntu
       - Linux - other
+      - Other
 - type: input
   id: os_other
   attributes:
