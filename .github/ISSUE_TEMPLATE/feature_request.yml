@@ -64,7 +64,8 @@ body:
   id: notes
   attributes:
     label: Notes / Anything else? 
-    description: Is there something else?  Something you want to add?  Please do, I would appreciate it :)
+    description: Is there something else? 
+    placeholder: Something you want to add?  Please do, I would appreciate it :)
     render: shell
       
      
