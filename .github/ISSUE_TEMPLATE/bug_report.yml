@@ -62,7 +62,7 @@ body:
      Please write your request here
     value: 
   validations:
-    required: true
+    required: false
 - type: dropdown
   id: version
   attributes:
