@@ -63,9 +63,11 @@ body:
 - type: textarea
   id: notes
   attributes:
-    label: Notes / Anything else? 
+    label: Notes
     description: Is there something else? 
-    placeholder: Something you want to add?  Please do, I would appreciate it :)
+    placeholder: | 
+                  Something you want to add?  
+                  Please do, I would appreciate it :)
     render: shell
       
      
