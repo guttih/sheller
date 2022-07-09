@@ -27,8 +27,7 @@ body:
 - type: textarea
   id: what-happened
   attributes:
-    label: What happened?
-    description: | 
+    label: What happened?    description: | 
      Additional context
       Add any other context or screenshots about the bug here.
     placeholder: |
@@ -59,7 +58,7 @@ body:
     description: |
        Describe what should have happened
       - Additional context
-     Add any other context or screenshots about the bug here.
+        Add any other context or screenshots about the bug here
      
     placeholder:  |
      Please write your request here
