@@ -17,17 +17,20 @@ body:
     placeholder: ex. email@example.com
   validations:
     required: false
+- type: input
+  id: summary
+  attributes:
+    label: Summary
+    description: Short summary of what is going on or to provide context
+  validations:
+    required: false
 - type: textarea
   id: what-happened
   attributes:
     label: What happened?
     description: |
-     Also tell me, what did you expect to happen?
-    
-      ### Summary
-      _Short summary of what is going on or to provide context_.
-
-      Ideas to help you along with writing your bug report
+     
+     Ideas to help you along with writing your bug report
       
       ### Steps To Reproduce:
       1.  First I...
