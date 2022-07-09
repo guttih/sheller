@@ -37,6 +37,17 @@ export class DiskFunctions {
 
         return true;
     }
+    static isFileAccessExecutable(fullFilename: string) {
+        try {
+            let num = fs.statSync(fullFilename).mode & parseInt("111", 8);
+            let ret = num === parseInt("111", 8);
+            return ret;
+        } catch (err) {
+            return false;
+        }
+        return false;
+    }
+
     static addFileAccessExecutable(fullFilename: string) {
         try {
             let stats = fs.statSync(fullFilename);
@@ -64,6 +75,17 @@ export class DiskFunctions {
         }
 
         return path.substring(0, pos);
+    }
+    static getFilenameFromFilePath(path: string): string {
+        let pos = path.lastIndexOf("/");
+        if (pos < 0) {
+            pos = path.lastIndexOf("\\");
+        }
+        if (pos < 0) {
+            return path;
+        }
+
+        return path.substring(pos+1);
     }
     static createDirectory(dir: string, createPathRecursively: boolean = false): Boolean {
         try {

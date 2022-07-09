@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { DiskFunctions } from "./diskFunctions";
+
 // import * as path from 'path';
 // import * as cp from 'child_process';
 
@@ -11,7 +12,25 @@ export function activate(context: vscode.ExtensionContext) {
     let outputChannel: vscode.OutputChannel | null = null;
 
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "sheller" is now active!');
+    console.log("sheller is active! ");
+
+    const showEditorMenuMakeExecutable = (value: boolean, document?: vscode.TextDocument) => {
+        if (process.platform === "win32") {
+            //No need to do this for windows
+            vscode.commands.executeCommand("setContext", "sheller.showMenuMakeScriptExecutable", false);
+            false;
+        }
+        if (value && document) {
+            value = document.languageId === "shellscript" && document.uri.scheme === "file";
+            if (value) {
+                const fullFilename = document.uri.fsPath;
+                value = DiskFunctions.fileExists(fullFilename) && !DiskFunctions.isFileAccessExecutable(fullFilename);
+            }
+        }
+        console.log(`onSelected setting sheller.showMenuMakeScriptExecutable=${value}`);
+        vscode.commands.executeCommand("setContext", "sheller.showMenuMakeScriptExecutable", value);
+    };
+    showEditorMenuMakeExecutable(false);
 
     let disposable = vscode.commands.registerCommand("sheller.message", () => {
         // The code you place here will be executed every time your command is executed
@@ -148,11 +167,17 @@ export function activate(context: vscode.ExtensionContext) {
             }
         }
     });
-    const makeScriptExecutable = (document: vscode.TextDocument) => {
-        let fullFilename = document.uri.fsPath;
-
+    const makeScriptExecutable = (document: vscode.TextDocument, displayMsgIfAccessChanged: boolean) => {
+        const fullFilename = document.uri.fsPath;
+        const wasExecutable = DiskFunctions.isFileAccessExecutable(fullFilename);
+        if (wasExecutable) {
+            return;
+        }
         if (!DiskFunctions.addFileAccessExecutable(fullFilename)) {
             vscode.window.showErrorMessage(`Unable make the current file executable\n    "${fullFilename}" `);
+        } else if (displayMsgIfAccessChanged && !wasExecutable) {
+            vscode.window.showInformationMessage(`${DiskFunctions.getFilenameFromFilePath(document.uri.path.toString())} is now executable`);
+            showEditorMenuMakeExecutable(false);
         }
     };
 
@@ -164,25 +189,66 @@ export function activate(context: vscode.ExtensionContext) {
 
         document = editor.document;
 
-        makeScriptExecutable(document);
+        makeScriptExecutable(document, true);
     });
 
     let onSaveShellScriptFile = vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (document.languageId === "shellscript" && document.uri.scheme === "file") {
-            // console.log(`${document.fileName} saved!`);
-            // let bla = vscode.env.shell;
-            // const configPropertyPath = "cpp.gepper.shellExecute.OnSave.Command";
+           
             const check = vscode.workspace.getConfiguration().get<boolean>("shellscript.sheller.onSave.makeExecutable");
-            
-            vscode.window.showInformationMessage(`now inside: ${check}`);
             if (check) {
-                makeScriptExecutable(document);
+                makeScriptExecutable(document, true);
             }
         }
     });
 
-    context.subscriptions.push(disposable, disposable2, disposable3, disposable4, disposable5, onSaveShellScriptFile);
-}
+
+    // todo: find event when user right-clicks an tree node which is not selected this will not give the right-clicked tree-item, but the already selected item which I'm pretty sure the user did not mean to change
+    // let onDidChange=vscode.workspace.onDidChangeConfiguration
+    // onDidSelectItem
+    // onDidChangeFileDecorations
+
+    // onDidExpandElement
+    // onDidChangeVisibility
+    //TreeViewSelectionChangeEvent
+
+    //onDidChangeActive
+    //onDidChangeSelection
+    //onDidChangeValue
+    //onDidChangeTextDocument
+    //onDidChangeCellStatusBarItems
+
+    // onDidChangeActiveTextEditor
+    // onDidChangeVisibleTextEditors
+
+    //vscode.TreeItem
+    //https://stackoverflow.com/questions/52797204/vscode-extension-how-to-select-a-tree-view-item-on-right-click
+
+    const onDidChangeActiveTextEditor = vscode.window.onDidChangeActiveTextEditor((activeEditor) => {
+        // const activeEditor = vscode.window.activeTextEditor;
+        if (activeEditor) {
+            //For Getting File Path
+            let filePath = activeEditor.document.uri.path;
+            console.log(`Active: ${filePath}`);
+            showEditorMenuMakeExecutable(true, activeEditor.document);
+        } else {
+            showEditorMenuMakeExecutable(false);
+        }
+    });
+
+    const onDidOpenTextDocument = vscode.workspace.onDidOpenTextDocument((document: vscode.TextDocument) => {showEditorMenuMakeExecutable(true, document);});
+
+    context.subscriptions.push(
+        disposable,
+        disposable2,
+        disposable3,
+        disposable4,
+        disposable5,
+        onSaveShellScriptFile,
+        onDidOpenTextDocument, 
+        onDidChangeActiveTextEditor);
+        
+};
 
 // this method is called when your extension is deactivated
 export function deactivate() {}

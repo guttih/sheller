@@ -2,7 +2,7 @@
   "name": "sheller",
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "publisher": "guttih",
   "author": "Gudjon Holm Sigurdsson",
   "icon": "sheller.png",
@@ -25,11 +25,13 @@
     "linux"
   ],
   "activationEvents": [
+    "onCommand:sheller.start",
     "onCommand:sheller.message",
     "onCommand:sheller.reverseWord",
     "onCommand:sheller.selTextToSnippet",
     "onCommand:sheller.selTextToSnippetNoAsk",
     "onCommand:sheller.makeScriptExecutable",
+    "onCommand:sheller.showMenuItemMakeExecutable",
     "onLanguage:shellscript"
   ],
   "main": "./dist/extension.js",
@@ -71,7 +73,7 @@
       },
       {
         "command": "sheller.makeScriptExecutable",
-        "title": "Makes a file executable (chmod +x permission)"
+        "title": "Make a file executable (chmod +x permission)"
       }
     ],
     "keybindings": [
@@ -83,22 +85,26 @@
     ],
     "languages": [
       {
-          "id": "shellscript",
-          "extensions": [
-              ".sh"
-          ]
-      },
-      {
-          "id": "gitignore",
-          "extensions": [
-              ".gitignore"
-          ],
-          "filenames": [
-              ".gitignore"
-          ],
-          "See example": "https://github.com/ldez/vscode-language-ignore/blob/master/package.json"
+        "id": "shellscript",
+        "extensions": [
+            ".sh"
+        ]
       }
-  ],
+    ],
+    "menus": {
+      "explorer/context": [
+          {
+              "command": "sheller.makeScriptExecutable",
+              "when": "resourceExtname == .sh && sheller.showMenuMakeScriptExecutable"
+          }
+      ],
+      "editor/context": [
+        {
+          "command": "sheller.makeScriptExecutable",
+          "when": "sheller.showMenuMakeScriptExecutable"
+      }
+      ]
+  },
     "configuration": [
       {
           "title": "Sheller settings",
