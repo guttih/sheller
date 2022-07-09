@@ -97,7 +97,7 @@ body:
     label: Version - Visual studio Code 
     description: In VS Code select "Help" > "About", then click on "Copy" and paste the text here
     placeholder: |
-      **Will look something like this**
+      ### Will look something like this
       Version: 1.68.1
       Commit: 30d9c6cd9483b2cc586687151bcbcd635f373630
       Date: 2022-06-15T02:58:26.441Z
