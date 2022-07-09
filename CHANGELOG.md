@@ -2,6 +2,15 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+## [1.2.16]
+
+### Added
+  - Now you can right-click in a editor window with open shellscript and 
+    select *Make a file executable (chmod +x permission)*.  No need to 
+    do this for windows, so this option is never shown there.
+  - Added a setting for the extension where user can make all shellscripts he saves
+    executable.  By default this option **Make executable** is disabled.
+
 ## [1.2.15]
 
 ### Added
@@ -28,8 +37,8 @@ All notable changes to the "sheller" extension will be documented in this file.
 extractArgumentName
 ## [1.2.13]
 Updating boilerplate 3, making it accept options that need arguments on 
- - this new format `myscript.sh -variable="value here"`
- - instead of old `myscript.sh -variable "value here"`
+ - this new format `myScript.sh -variable="value here"`
+ - instead of old `myScript.sh -variable "value here"`
 ## [1.2.12]
 Bumping version to make repo match version on marketplace.
 ## [1.2.11]

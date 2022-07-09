@@ -2,7 +2,7 @@
   "name": "sheller",
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "publisher": "guttih",
   "author": "Gudjon Holm Sigurdsson",
   "icon": "sheller.png",
@@ -25,11 +25,14 @@
     "linux"
   ],
   "activationEvents": [
+    "onCommand:sheller.start",
     "onCommand:sheller.message",
     "onCommand:sheller.reverseWord",
     "onCommand:sheller.selTextToSnippet",
     "onCommand:sheller.selTextToSnippetNoAsk",
-    "onCommand:sheller.makeExecutable"
+    "onCommand:sheller.makeScriptExecutable",
+    "onCommand:sheller.showMenuItemMakeExecutable",
+    "onLanguage:shellscript"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -69,8 +72,8 @@
         "title": "Convert selected text to snippet without asking for prefix, title and description."
       },
       {
-        "command": "sheller.makeExecutable",
-        "title": "Makes current file executable"
+        "command": "sheller.makeScriptExecutable",
+        "title": "Make a file executable (chmod +x permission)"
       }
     ],
     "keybindings": [
@@ -79,7 +82,41 @@
         "key": "###",
         "mac": "###"
       }
-    ]
+    ],
+    "languages": [
+      {
+        "id": "shellscript",
+        "extensions": [
+            ".sh"
+        ]
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+          {
+              "command": "sheller.makeScriptExecutable",
+              "when": "resourceExtname == .sh && sheller.showMenuMakeScriptExecutable"
+          }
+      ],
+      "editor/context": [
+        {
+          "command": "sheller.makeScriptExecutable",
+          "when": "sheller.showMenuMakeScriptExecutable"
+      }
+      ]
+  },
+    "configuration": [
+      {
+          "title": "Sheller settings",
+          "properties": {
+              "shellscript.sheller.onSave.makeExecutable": {
+                  "type": "boolean",
+                  "default": false,
+                  "markdownDescription": "### When a script is saved, make it executable?\n\nIf enabled, and your script does not already have execution access, it will be added.\n"
+              }
+          }
+      }
+  ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
