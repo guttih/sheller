@@ -27,7 +27,8 @@ body:
 - type: textarea
   id: what-happened
   attributes:
-    label: What happened?    description: | 
+    label: What happened?    
+    description: | 
      Additional context
       Add any other context or screenshots about the bug here.
     placeholder: |
