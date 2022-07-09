@@ -31,7 +31,6 @@ body:
     description: |     
       Additional context
       Add any other context or screenshots about the bug here.
-      
     placeholder: |
      Please write your bugreport here 
     value: 
