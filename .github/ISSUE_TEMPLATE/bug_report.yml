@@ -29,9 +29,8 @@ body:
   attributes:
     label: What happened?
     description: |     
-    
-      - Additional context
-        Add any other context or screenshots about the bug here.
+      Additional context
+      Add any other context or screenshots about the bug here.
       
     placeholder: |
      Please write your bugreport here 
