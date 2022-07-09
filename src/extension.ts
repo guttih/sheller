@@ -1,172 +1,187 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
-import * as fs from 'fs';
+import * as vscode from "vscode";
+import { DiskFunctions } from "./diskFunctions";
 // import * as path from 'path';
 // import * as cp from 'child_process';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	let outputChannel: vscode.OutputChannel | null = null;
-	
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "sheller" is now active!');
+    let outputChannel: vscode.OutputChannel | null = null;
 
-	let disposable = vscode.commands.registerCommand('sheller.message', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('This is a message from sheller!');
-	});
+    // This line of code will only be executed once when your extension is activated
+    console.log('Congratulations, your extension "sheller" is now active!');
 
-	let disposable2 = vscode.commands.registerCommand('sheller.reverseWord', function () {
-		const editor = vscode.window.activeTextEditor;
+    let disposable = vscode.commands.registerCommand("sheller.message", () => {
+        // The code you place here will be executed every time your command is executed
+        // Display a message box to the user
+        vscode.window.showInformationMessage("This is a message from sheller!");
+    });
 
-		if (editor) {
-			const document = editor.document;
-			const selection = editor.selection;
+    let disposable2 = vscode.commands.registerCommand("sheller.reverseWord", function () {
+        const editor = vscode.window.activeTextEditor;
 
-			// Get the word within the selection
-			const word = document.getText(selection);
-			const reversed = word.split('').reverse().join('');
-			editor.edit(editBuilder => {
-				editBuilder.replace(selection, reversed);
-			});
-		}
-	});
+        if (editor) {
+            const document = editor.document;
+            const selection = editor.selection;
 
-	/**
-	 * Converts text to a snippet body
-	 *
-	 * @param {string} content the text to be converted
-	 * @returns {string[]} Array of strings which can be used in a snippet body.
-	 */
-	function contentToSnippetBody(content:string):string[] {
-		content=content.replace(/\\/g, '\\\\');
-		content=content.replace(/\$/g, '\\\$');
-		return content.split('\n');
-	}
+            // Get the word within the selection
+            const word = document.getText(selection);
+            const reversed = word.split("").reverse().join("");
+            editor.edit((editBuilder) => {
+                editBuilder.replace(selection, reversed);
+            });
+        }
+    });
 
-		let disposable3 = vscode.commands.registerCommand('sheller.selTextToSnippetNoAsk', async () => {
-			const editor = vscode.window.activeTextEditor;
-			if (editor){
-			if (editor.selection.isEmpty) {
-				vscode.window.showErrorMessage('You need select a text first for convert to a snippet');
-			} else {
-				let txt = editor;
-				let content = txt.document.getText(txt.selection);
-				
-				let snippetTitle = 'title';//+txt.document.fileName;
-				// let doc: vscode.TextDocument = editor.document;
-				
-				
-				let snippetDescription = 'package';
-				// let fullFilename=doc.uri.fsPath;
-				// let dir=path.dirname(fullFilename);
-				// let isLinux = (process.platform === "linux");
-				// let strCmd = `chmod +x "${fullFilename}\n"`;
-				// let showInfo=vscode.window.showInformationMessage;
-				// let showErr=vscode.window.showErrorMessage;
-				// if (isLinux) {
-				// 	cp.execFile(strCmd, (err, stdout, stderr) => {
-				// 		console.log("stdoutX: " + stdout);
-				// 		console.log("stderr: " + stderr);
-				// 		if (err) {
-				// 			console.log(`Unable to run command: ${strCmd}`);
-				// 			showErr    (`Unable to run command: ${strCmd}`);
-				// 			console.log("error: " + err);
-				// 		} else {
-				// 			showInfo(`Ran: ${strCmd}`);
-				// 		}
-				// 	});
-				// }
-				let snippetPrefix = 'prefixName';
-				let newSnippet = {
-					[snippetTitle]: {
-						prefix: snippetPrefix,
-						 body: contentToSnippetBody(content),
-						
-						description: snippetDescription,
-					}
-				};
-				if (outputChannel === null) {
-					outputChannel = vscode.window.createOutputChannel('Snippet');
-				}
-				outputChannel.clear();
-				outputChannel.append(JSON.stringify(newSnippet, null, 4));
-				outputChannel.show();
-			}}
-		});
-		let disposable4 = vscode.commands.registerCommand('sheller.selTextToSnippet', async () => {
-			const editor = vscode.window.activeTextEditor;
-			if (editor){
-			if (editor.selection.isEmpty) {
-				vscode.window.showErrorMessage('You need select a text first for convert to a snippet');
-			} else {
-				let txt = editor;
-				
-				let snippetDescription:string|undefined = await vscode.window.showInputBox({
-					placeHolder: 'A long description about your code',
-					prompt: 'Describe what this snippet will do.',
-				});
-				if (snippetDescription === undefined) { return;	}
+    /**
+     * Converts text to a snippet body
+     *
+     * @param {string} content the text to be converted
+     * @returns {string[]} Array of strings which can be used in a snippet body.
+     */
+    function contentToSnippetBody(content: string): string[] {
+        content = content.replace(/\\/g, "\\\\");
+        content = content.replace(/\$/g, "\\$");
+        return content.split("\n");
+    }
 
-				let snippetPrefix:string|undefined = await vscode.window.showInputBox({
-					placeHolder: 'prefix',
-					prompt: 'How your snippet will be activated in code completion.',
-				});
-				if (snippetPrefix === undefined) { return;	}
+    let disposable3 = vscode.commands.registerCommand("sheller.selTextToSnippetNoAsk", async () => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            if (editor.selection.isEmpty) {
+                vscode.window.showErrorMessage("You need select a text first for convert to a snippet");
+            } else {
+                let txt = editor;
+                let content = txt.document.getText(txt.selection);
 
-				let snippetTitle:string|number|symbol|undefined = await vscode.window.showInputBox({
-					value:`${snippetPrefix.toUpperCase()}`,
-					placeHolder: 'Snippet Title',
-					prompt: 'A short title information about your snippet.',
-				});
-				if (snippetTitle === undefined) { return;	}
-				
-				let content = txt.document.getText(txt.selection);
-				
-				let newSnippet = {
-					[snippetTitle]: {
-						prefix: snippetPrefix,
-						body: contentToSnippetBody(content),
-						description: snippetDescription,
-					}
-				};
-				if (outputChannel === null) {
-					outputChannel = vscode.window.createOutputChannel('Snippet');
-				}
-				outputChannel.clear();
-				outputChannel.append(JSON.stringify(newSnippet, null, 4));
-				outputChannel.show();
-			}}
-		});
-		let disposable5 = vscode.commands.registerCommand('sheller.makeExecutable', function () {
-			const editor = vscode.window.activeTextEditor;
-			if (editor === undefined) { return; }
+                let snippetTitle = "title"; //+txt.document.fileName;
+                // let doc: vscode.TextDocument = editor.document;
 
-			let doc: vscode.TextDocument = editor.document;
-			let fullFilename=doc.uri.fsPath;
-			let stats = fs.statSync(fullFilename);
-			// let unixFilePermissions = '0' + (stats.mode & parseInt('777', 8)).toString(8);
-			// vscode.window.showInformationMessage(`Filename: ${fullFilename}\Perm:${unixFilePermissions}: num:${(stats.mode & parseInt('777', 8))}`);
-			// let ret=0;
-			
-			try {
-				let num = (stats.mode & parseInt('777', 8)); //292 decimal = 444 octal
-				num = (num | parseInt('11', 8));//11 octal = 9 decimal (adding executable for group and public)
-				// num = (num | parseInt('111', 8));//111 octal = 73 decimal (add executable for owner, group and public)
-				// console.log(`num:${num}`);
-				fs.chmodSync(fullFilename, num.toString());
-			  } catch(err) {
-				console.error(err);
-				vscode.window.showErrorMessage("Unable to set file permissions");
-			  }
-				// let dir=path.dirname(fullFilename);
-				// let isLinux = (process.platform === "linux");
-		});
+                let snippetDescription = "package";
+                // let fullFilename=doc.uri.fsPath;
+                // let dir=path.dirname(fullFilename);
+                // let isLinux = (process.platform === "linux");
+                // let strCmd = `chmod +x "${fullFilename}\n"`;
+                // let showInfo=vscode.window.showInformationMessage;
+                // let showErr=vscode.window.showErrorMessage;
+                // if (isLinux) {
+                // 	cp.execFile(strCmd, (err, stdout, stderr) => {
+                // 		console.log("stdoutX: " + stdout);
+                // 		console.log("stderr: " + stderr);
+                // 		if (err) {
+                // 			console.log(`Unable to run command: ${strCmd}`);
+                // 			showErr    (`Unable to run command: ${strCmd}`);
+                // 			console.log("error: " + err);
+                // 		} else {
+                // 			showInfo(`Ran: ${strCmd}`);
+                // 		}
+                // 	});
+                // }
+                let snippetPrefix = "prefixName";
+                let newSnippet = {
+                    [snippetTitle]: {
+                        prefix: snippetPrefix,
+                        body: contentToSnippetBody(content),
 
-	context.subscriptions.push(disposable, disposable2, disposable3, disposable4, disposable5);
+                        description: snippetDescription,
+                    },
+                };
+                if (outputChannel === null) {
+                    outputChannel = vscode.window.createOutputChannel("Snippet");
+                }
+                outputChannel.clear();
+                outputChannel.append(JSON.stringify(newSnippet, null, 4));
+                outputChannel.show();
+            }
+        }
+    });
+    let disposable4 = vscode.commands.registerCommand("sheller.selTextToSnippet", async () => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            if (editor.selection.isEmpty) {
+                vscode.window.showErrorMessage("You need select a text first for convert to a snippet");
+            } else {
+                let txt = editor;
+
+                let snippetDescription: string | undefined = await vscode.window.showInputBox({
+                    placeHolder: "A long description about your code",
+                    prompt: "Describe what this snippet will do.",
+                });
+                if (snippetDescription === undefined) {
+                    return;
+                }
+
+                let snippetPrefix: string | undefined = await vscode.window.showInputBox({
+                    placeHolder: "prefix",
+                    prompt: "How your snippet will be activated in code completion.",
+                });
+                if (snippetPrefix === undefined) {
+                    return;
+                }
+
+                let snippetTitle: string | number | symbol | undefined = await vscode.window.showInputBox({
+                    value: `${snippetPrefix.toUpperCase()}`,
+                    placeHolder: "Snippet Title",
+                    prompt: "A short title information about your snippet.",
+                });
+                if (snippetTitle === undefined) {
+                    return;
+                }
+
+                let content = txt.document.getText(txt.selection);
+
+                let newSnippet = {
+                    [snippetTitle]: {
+                        prefix: snippetPrefix,
+                        body: contentToSnippetBody(content),
+                        description: snippetDescription,
+                    },
+                };
+                if (outputChannel === null) {
+                    outputChannel = vscode.window.createOutputChannel("Snippet");
+                }
+                outputChannel.clear();
+                outputChannel.append(JSON.stringify(newSnippet, null, 4));
+                outputChannel.show();
+            }
+        }
+    });
+    const makeScriptExecutable = (document: vscode.TextDocument) => {
+        let fullFilename = document.uri.fsPath;
+
+        if (!DiskFunctions.addFileAccessExecutable(fullFilename)) {
+            vscode.window.showErrorMessage(`Unable make the current file executable\n    "${fullFilename}" `);
+        }
+    };
+
+    let disposable5 = vscode.commands.registerCommand("sheller.makeScriptExecutable", (document: vscode.TextDocument) => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor === undefined) {
+            return;
+        }
+
+        document = editor.document;
+
+        makeScriptExecutable(document);
+    });
+
+    let onSaveShellScriptFile = vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
+        if (document.languageId === "shellscript" && document.uri.scheme === "file") {
+            // console.log(`${document.fileName} saved!`);
+            // let bla = vscode.env.shell;
+            // const configPropertyPath = "cpp.gepper.shellExecute.OnSave.Command";
+            const check = vscode.workspace.getConfiguration().get<boolean>("shellscript.sheller.onSave.makeExecutable");
+            
+            vscode.window.showInformationMessage(`now inside: ${check}`);
+            if (check) {
+                makeScriptExecutable(document);
+            }
+        }
+    });
+
+    context.subscriptions.push(disposable, disposable2, disposable3, disposable4, disposable5, onSaveShellScriptFile);
 }
 
 // this method is called when your extension is deactivated
