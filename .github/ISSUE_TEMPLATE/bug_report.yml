@@ -1,4 +1,4 @@
-name: Report Report form for Sheller 
+name: Bug report - form
 description: File a bug on Sheller using a easy to use form
 title: "[Bug]:"
 labels: ["bug"]
