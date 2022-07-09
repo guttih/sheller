@@ -58,8 +58,7 @@ body:
     label: Expected result
     description: |
       Describe what should have happened
-        - Additional context
-          Add any other context or screenshots about the bug here.
+        - **Additional context** Add any other context or screenshots about the bug here.
      
     placeholder:  |
      Please write your request here
