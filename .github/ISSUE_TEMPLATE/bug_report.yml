@@ -58,15 +58,12 @@ body:
     label: Expected result
     description: |
       Describe what should have happened
-      
       - Additional context
      Add any other context or screenshots about the bug here.
       
     placeholder: |
      What should have happened?
     value: 
-  validations:
-    required: false
 - type: dropdown
   id: version
   attributes:
