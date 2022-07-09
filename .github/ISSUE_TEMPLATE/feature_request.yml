@@ -21,8 +21,8 @@ body:
   id: why
   attributes:
     label: Why do you want this feature?
-    description: |
-      Ideas to help you along, you do not need to use any of Them
+    description: :  |
+     Ideas to help you along, you do not need to use any of Them
      - Is your feature request related to a problem? Please describe.
        A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
        
@@ -34,6 +34,7 @@ body:
 
      - Additional context**
      Add any other context or screenshots about the feature request here. 
+     
     placeholder:  |
      Ideas to help you along, you do not need to use any of Them
      - Is your feature request related to a problem? Please describe.
