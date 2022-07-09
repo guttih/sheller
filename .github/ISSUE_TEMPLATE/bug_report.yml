@@ -29,8 +29,7 @@ body:
   attributes:
     label: What happened?    
     description: | 
-     Additional context
-      Add any other context or screenshots about the bug here.
+      - **Additional context** Add any other context or screenshots about the bug here.
     placeholder: |
      Please write your bugreport here 
     value: 
@@ -44,8 +43,7 @@ body:
       1.  First I...
       2.  Then...
       
-      - Additional context
-        Add any other context or screenshots about the bug here.
+      - **Additional context** Add any other context or screenshots about the bug here.
       
     placeholder: |
      Please describe to me how I can reproduce the bug, so I can find out how to fix it 
