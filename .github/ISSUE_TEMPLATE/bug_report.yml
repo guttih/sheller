@@ -53,7 +53,7 @@ body:
   validations:
     required: false
 - type: textarea
-  id: why
+  id: expected
   attributes:
     label: Why do you want this feature?
     description: |
