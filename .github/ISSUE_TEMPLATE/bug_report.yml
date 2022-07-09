@@ -45,6 +45,7 @@ body:
     description: |
       1.  First I...
       2.  Then...
+      
       - Additional context
         Add any other context or screenshots about the bug here.
       
