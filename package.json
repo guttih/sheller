@@ -2,7 +2,7 @@
   "name": "sheller",
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
-  "version": "1.2.16",
+  "version": "1.2.17",
   "publisher": "guttih",
   "author": "Gudjon Holm Sigurdsson",
   "icon": "sheller.png",
@@ -87,36 +87,36 @@
       {
         "id": "shellscript",
         "extensions": [
-            ".sh"
+          ".sh"
         ]
       }
     ],
     "menus": {
       "explorer/context": [
-          {
-              "command": "sheller.makeScriptExecutable",
-              "when": "resourceExtname == .sh && sheller.showMenuMakeScriptExecutable"
-          }
+        {
+          "command": "sheller.makeScriptExecutable",
+          "when": "resourceExtname == .sh && sheller.showMenuMakeScriptExecutable"
+        }
       ],
       "editor/context": [
         {
           "command": "sheller.makeScriptExecutable",
           "when": "sheller.showMenuMakeScriptExecutable"
-      }
+        }
       ]
-  },
+    },
     "configuration": [
       {
-          "title": "Sheller settings",
-          "properties": {
-              "shellscript.sheller.onSave.makeExecutable": {
-                  "type": "boolean",
-                  "default": false,
-                  "markdownDescription": "### When a script is saved, make it executable?\n\nIf enabled, and your script does not already have execution access, it will be added.\n"
-              }
+        "title": "Sheller settings",
+        "properties": {
+          "shellscript.sheller.onSave.makeExecutable": {
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "### When a script is saved, make it executable?\n\nIf enabled, and your script does not already have execution access, it will be added.\n"
           }
+        }
       }
-  ]
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

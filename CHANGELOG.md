@@ -2,7 +2,7 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
-## [1.2.16]
+## [1.2.17]
 
 ### Added
   - Now you can right-click in a editor window with open shellscript and 
