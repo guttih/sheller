@@ -1,5 +1,5 @@
 ---
-name: Bug report markdown style
+name: Bug report - markdown
 about: Create a report to help me improve
 title: ''
 labels: bug
