@@ -96,6 +96,16 @@ body:
   attributes:
     label: Version - Visual studio Code 
     description: In VS Code select "Help" > "About", then click on "Copy" and paste the text here
+    placeholder: |
+      Will look something like this
+      Version: 1.68.1
+      Commit: 30d9c6cd9483b2cc586687151bcbcd635f373630
+      Date: 2022-06-15T02:58:26.441Z
+      Electron: 17.4.7
+      Chromium: 98.0.4758.141
+      Node.js: 16.13.0
+      V8: 9.8.177.13-electron.0
+      OS: Linux x64 4.18.0-348.23.1.el8_5.x86_64
   validations:
     required: false
 - type: dropdown
