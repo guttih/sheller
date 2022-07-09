@@ -21,10 +21,8 @@ body:
   id: what-happened
   attributes:
     label: What happened?
-    description: Also tell me, what did you expect to happen?
-    placeholder: asdfasdf 
-
-    value: | 
+    description: |  Also tell me, what did you expect to happen?
+    
       ### Summary
       _Short summary of what is going on or to provide context_.
 
@@ -34,6 +32,13 @@ body:
       2.  Then...
       ### Expected result
       _Describe what should have happened_.
+      
+      - Additional context
+     Add any other context or screenshots about the bug here.
+      
+    placeholder: Please add your bugreport here 
+
+    value: 
   validations:
     required: true
 - type: dropdown
