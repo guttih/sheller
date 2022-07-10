@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
     let outputChannel: vscode.OutputChannel | null = null;
 
     // This line of code will only be executed once when your extension is activated
-    console.log("sheller is active! ");
+    // console.log("sheller is active! ");
 
     const showEditorMenuMakeExecutable = (value: boolean, document?: vscode.TextDocument) => {
         if (process.platform === "win32") {
@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
                 value = DiskFunctions.fileExists(fullFilename) && !DiskFunctions.isFileAccessExecutable(fullFilename);
             }
         }
-        console.log(`onSelected setting sheller.showMenuMakeScriptExecutable=${value}`);
+        // console.log(`onSelected setting sheller.showMenuMakeScriptExecutable=${value}`);
         vscode.commands.executeCommand("setContext", "sheller.showMenuMakeScriptExecutable", value);
     };
     showEditorMenuMakeExecutable(false);
@@ -229,7 +229,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (activeEditor) {
             //For Getting File Path
             let filePath = activeEditor.document.uri.path;
-            console.log(`Active: ${filePath}`);
+            // console.log(`Active: ${filePath}`);
             showEditorMenuMakeExecutable(true, activeEditor.document);
         } else {
             showEditorMenuMakeExecutable(false);

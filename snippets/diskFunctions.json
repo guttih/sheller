@@ -42,7 +42,7 @@
       "prefix": "List dirs",
       "body": [
         "for DIR in ${1:*/}; do ",
-        "    if [ -d \"$$DIR\" ]; then",
+        "    if [ -d \"\\$DIR\" ]; then",
         "        ${2:echo -e \"Directory: \\$DIR\";} ",
         "    fi",
         "done",
