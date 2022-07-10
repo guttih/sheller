@@ -1,5 +1,5 @@
-name: Bug report
-description: File a bug on Sheller
+name: Bug report - form
+description: Create a bug report from a form to help me improve Sheller.
 title: "[Bug]:"
 labels: ["bug"]
 assignees:
@@ -70,6 +70,7 @@ body:
     description:  In VS Code select "View" > "Extensions", then type sheller and select the matching version here
     options:
       - 1.2.*
+      - 1.2.17
       - 1.2.15
       - 1.2.14
       - 1.2.13
@@ -116,14 +117,14 @@ body:
     label: What operating system  are you seeing the problem on?
     multiple: true
     options:
-      - Windows
-      - Mac OS
-      - Mac OS X
-      - Linux - Red hat
-      - Linux - Fedora/Centos/Rocky linux
-      - Linux - Ubuntu
-      - Linux - other
-      - Other
+      - 'Windows'
+      - 'Mac OS'
+      - 'Mac OS X'
+      - 'Linux - Red hat'
+      - 'Linux - Fedora/Centos/Rocky linux'
+      - 'Linux - Ubuntu'
+      - 'Linux - other'
+      - 'Other'
 - type: input
   id: os_other
   attributes:
@@ -133,7 +134,7 @@ body:
 - type: textarea
   id: notes
   attributes:
-    label: Notes
+    label: Notes 
     description: Is there something else? 
     placeholder: | 
                   Something you want to add?  

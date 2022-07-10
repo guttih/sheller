@@ -1,6 +1,6 @@
 ---
 name: Bug report - markdown
-about: Create a report to help me improve
+about: Create a report markdown style, to help me improve Sheller
 title: ''
 labels: bug
 assignees: ''
@@ -31,15 +31,22 @@ _When the bug occurred what environment where you using the **sheller** extensio
 #### Operating system(s)
 
  - [ ] Windows
+ 
     - [ ] Windows 10
+    
     - [ ] Windows 11
+    
     - [ ] Other
+    
  - [ ] Linux
+ 
     - [ ] Rocky / Centos / Fedora
+    
     - [ ] Ubuntu
+    
     - [ ] Other
 
- - [X] Other.. what?
+ - [x] Other.. what?
  
 #### VS Code version
  
