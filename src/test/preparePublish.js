@@ -83,17 +83,18 @@ let newContent = lib.replaceContent(fs.readFileSync(mdFile).toString(),
 
 console.log("==================\n"); console.log(newContent); console.log("==================\n");
 fs.writeFileSync(mdFile, newContent);
-console.log(`To create a new package with this \nversion, give the following command:\n\n    vsce package ${packageJson.version}\n`);
-//https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
-const highlight = "\x1b[1m";
-const bright = "\x1b[1m";
-const norm = "\x1b[0m";
+
+logger.display(
+    "Bug report form : ",
+    logger.format.cyanFg, "https://github.com/guttih/sheller/edit/master/.github/ISSUE_TEMPLATE/bug_report.yml",
+    logger.format.reset, "\n");
 if (bumping) {
     logger.display(
-        logger.format.yellowFg, "Remember to add this line: ", 
-        logger.format.reverse    , `      - ${packageJson.version}`,
-        logger.format.reset, logger.format.yellowFg , " to this form ", 
-        logger.format.reset, logger.format.cyanFg,   "https://github.com/guttih/sheller/edit/master/.github/ISSUE_TEMPLATE/bug_report.yml", 
-        logger.format.reset    , "\n");
-
+        logger.format.yellowFg, "Remember to add this line: ",
+        logger.format.reverse, `      - ${packageJson.version}`,
+        logger.format.reset,
+        logger.format.yellowFg, " to ", logger.format.cyanFg, "bug report form\n ",
+        logger.format.reset);
 }
+
+console.log(`To create a new package with this version, give the following command:\n\n    vsce package ${packageJson.version}\n`);
