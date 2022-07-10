@@ -129,7 +129,8 @@
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
     "prepare": "node src/test/preparePublish.js",
-    "bump": "node src/test/preparePublish.js -bump"
+    "bump": "node src/test/preparePublish.js -bump",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.63.0",
