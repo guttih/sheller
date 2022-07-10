@@ -97,4 +97,7 @@ if (bumping) {
         logger.format.reset);
 }
 
-console.log(`To create a new package with this version, give the following command:\n\n    vsce package ${packageJson.version}\n`);
+console.log(`vsce commands   :`);
+console.log(`    To publish sheller with current package.json settings  :  vsce publish`);
+console.log(`    To create a new package with this version for testing  :  vsce package ${packageJson.version}`);
+console.log();
