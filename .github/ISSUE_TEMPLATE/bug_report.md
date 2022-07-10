@@ -1,6 +1,6 @@
 ---
 name: Bug report - markdown
-about: Create a report to help me improve
+about: Create a report markdown style, to help me improve Sheller
 title: ''
 labels: bug
 assignees: ''
