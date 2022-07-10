@@ -1,5 +1,5 @@
-name: Bug report
-description: File a bug on Sheller
+name: Bug report - form
+description: Create a bug report from a form to help me improve Sheller.
 title: "[Bug]:"
 labels: ["bug"]
 assignees:
