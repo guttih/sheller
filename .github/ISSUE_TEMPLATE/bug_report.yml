@@ -70,6 +70,7 @@ body:
     description:  In VS Code select "View" > "Extensions", then type sheller and select the matching version here
     options:
       - 1.2.*
+      - 1.2.18
       - 1.2.17
       - 1.2.15
       - 1.2.14
