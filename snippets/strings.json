@@ -1,6 +1,6 @@
 {
     "Prefix search known length": {
-        "prefix": "String prefix length",
+        "prefix": "string prefix length",
         "body": [
             "STRING=\"two-chars-after-3x\"",
             "echo \"STRING: \\$STRING\"",
@@ -14,7 +14,7 @@
         "description": "Check if a string starts with a specific text and is of a specific lengthS"
     },
     "Prefix search with wildcard": {
-        "prefix": "String starts with",
+        "prefix": "string starts with",
         "body": [
             "STRING=\"Bash is great\"",
             "echo \"STRING: \\$STRING\"",
@@ -26,7 +26,7 @@
         "description": "Check if string starts with using wild card"
     },
     "Postfix search": {
-        "prefix": "String ends with",
+        "prefix": "string ends with",
         "body": [
             "STRING=\"Bash is great\"",
             "ENDING=\\${STRING: -7}",

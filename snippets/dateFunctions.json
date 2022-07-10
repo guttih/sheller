@@ -1,6 +1,6 @@
 {
   "Time difference  HH:mm:ss": {
-      "prefix": "Time diff",
+      "prefix": "time diff",
       "body": [
           "#Function: dateDiff()",
           "#",
@@ -27,7 +27,7 @@
       "description": "Calculate time difference"
   },
   "Current time": {
-    "prefix": "Time now",
+    "prefix": "time now",
     "body": [
         "CURRENT=\\$(date +\"%H:%M:%S\")",
         "echo \"Current time: \\$CURRENT\""
@@ -35,7 +35,7 @@
     "description": "Print current time on the format HH:mm:ss"
 },
 "Current date & time": {
-    "prefix": "Date and Time now",
+    "prefix": "date and time now",
     "body": [
         "CURRENT=\\$(date +\"%Y-%m-%d %H:%M:%S\")",
         "echo \"Current date & time: \\$CURRENT\""
@@ -43,7 +43,7 @@
     "description": "Print current time on the format YYYY-MM-DD HH:mm:ss"
 },
 "Add to current time": {
-  "prefix": "Time in future",
+  "prefix": "time in future",
   "body": [
       "FEATURE=\\$(date -d '+7 minute +30 second' '+%T')",
       "echo \"After 7.5 minutes the time is \\$FEATURE\""

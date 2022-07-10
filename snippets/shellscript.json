@@ -5,12 +5,12 @@
         "description": "Start of bash\nThat is shell scripts should start with this command"
     },
     "File creation time": {
-        "prefix": "#Created",
+        "prefix": ["created","file created"],
         "body": ["# ${TM_FILENAME} Created: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}", ""],
-        "description": "File creation time"
+        "description": "Add comment with file name and, file creation time"
     },
     "source sh": {
-        "prefix": "Source sh",
+        "prefix": "source sh",
         "body": ["source \"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE[0]}\")\" && pwd)/${1:filename}.sh\"\n"],
         "description": "Import another another shell script"
     },
@@ -130,7 +130,7 @@
         "description": "Create a function which takes 3 arguments"
     },
     "Script help function": {
-        "prefix": "Print help",
+        "prefix": "print help",
         "body": [
             "printHelp() {",
             "    printf 'Usage: %s [OPTIONS]...\\n' \"$(basename \"\\$0\")\"",
@@ -145,7 +145,7 @@
         "description": "Script help function"
     },
     "Help function with one option": {
-        "prefix": "Print help, one option",
+        "prefix": "print help, one option",
         "body": [
             "printHelp() {",
             "    printf 'Usage: %s [OPTIONS]...\\n' \"$(basename \"\\$0\")\"",
@@ -161,7 +161,7 @@
         "description": "Help function with one option"
     },
     "Help function with one option and one option argument": {
-        "prefix": "Print help, one option, one option argument",
+        "prefix": "print help, one option, one option argument",
         "body": [
             "printHelp() {",
             "    printf 'Usage: %s [OPTIONS]...\\n' \"$(basename \"\\$0\")\"",
@@ -182,7 +182,7 @@
         "description": "Help function with one option and one option argument"
     },
     "Boilerplate simple": {
-        "prefix": "Boilerplate 1",
+        "prefix": "boilerplate 1",
         "body": [
             "#!/bin/bash\n",
             "printHelp() {",
@@ -229,7 +229,7 @@
         "description": "Boilerplate simple Hello bash world"
     },
     "Boilerplate, simple one option": {
-        "prefix": "Boilerplate 2",
+        "prefix": "boilerplate 2",
         "body": [
             "#!/bin/bash\n",
             "printHelp() {",
@@ -283,7 +283,7 @@
         "description": "Boilerplate bash script with help that accepts one optional parameter"
     },
     "Boilerplate, one option, one option argument": {
-        "prefix": "Boilerplate 3",
+        "prefix": "boilerplate 3",
         "body": [
             "#!/bin/bash",
             "",
@@ -537,14 +537,14 @@
         "description": "Check if all options are valid and saves each in a variable"
     },
     "Only allow super user to run this script": {
-        "prefix": "IsSuper",
+        "prefix": ["is super", "is root", "is sudo"],
         "body": [
             "if ((\\$EUID != 0)); then",
             "    echo \"Error: This command has to be run with superuser privileges (under the root user on most systems).\"",
             "    exit 1",
             "fi"
         ],
-        "description": "Only allow super user to run this script"
+        "description": "Only allow super user to run this script."
     },
 
     "Frame your text": {
@@ -861,7 +861,7 @@
         "description": "Case statement"
     },
     "Extract argument name from option": {
-        "prefix": "Extract argument name",
+        "prefix": "extract argument name",
         "body": [
             "    #Function: extractArgumentName()",
             "    #",

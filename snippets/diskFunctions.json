@@ -1,6 +1,6 @@
 {
     "Checks if a file is found": {
-        "prefix": "File exists",
+        "prefix": "file exists",
         "body": [
           "if test -f \"${1:filename.txt}\"",
           "then",
@@ -14,7 +14,7 @@
       }
       ,
     "Checks if a directory is found": {
-      "prefix": "Dir exists",
+      "prefix": "dir exists",
       "body": [
         "if test -d \"${1:~/dirname}\"",
         "then",
@@ -27,7 +27,7 @@
       "description": "Checks if a Directory is found"
     },
     "Iterate files in directory": {
-      "prefix": "List files",
+      "prefix": "list files",
       "body": [
         "for FILE in ${1:*.sh}; do ",
         "    if [ -f \"\\$FILE\" ]; then",
@@ -39,7 +39,7 @@
       "description": "Walk through each file name in a directory"
     },
     "Iterate only directories in directory": {
-      "prefix": "List dirs",
+      "prefix": "list dirs",
       "body": [
         "for DIR in ${1:*/}; do ",
         "    if [ -d \"\\$DIR\" ]; then",
@@ -51,7 +51,7 @@
       "description": "Walk through each sub-directory name in a directory"
     },
     "Iterate files in directory recursive": {
-      "prefix": "List files recursive",
+      "prefix": "list files recursive",
       "body": [
         "find . -type f ${1|-name '*', -name '*.txt'|} -print0 | ",
         "while IFS= read -r -d '' FILE; do",
@@ -62,7 +62,7 @@
       "description": "Iterate file names in directory recursive. That is, walking through sub-directories also."
     },
     "Iterate files in directory recursive regex": {
-      "prefix": "List files recursive reg",
+      "prefix": "list files recursive reg",
       "body": [
         "find . -type f -iregex '.*\\.\\(txt\\|}doc\\|sh\\)\\$' -print0 | ",
         "while IFS= read -r -d '' FILE; do",
@@ -73,7 +73,7 @@
       "description": "Iterate file names in directory recursively using regex.  That is, walking through sub-directories also."
     },
     "Iterate directories in directory": {
-      "prefix": "List dirs recursive",
+      "prefix": "list dirs recursive",
       "body": [
         "find . -type d -name ${1:'*'} -print0 | ",
         "while IFS= read -r -d '' DIR; do",
@@ -139,7 +139,7 @@
       "description": "Compare file names in two directories and prints out matching or missing file names"
     },
     "Script directory": {
-      "prefix": "Get script dir",
+      "prefix": "get script dir",
       "body": [
           "#Function: getScriptPath()",
           "#",
@@ -155,7 +155,7 @@
       "description": "Get path to the the current bash file"
   },
   "Script Name": {
-    "prefix": "Get script name",
+    "prefix": "get script name",
     "body": [
       "#Function: getFileName()",
       "#",
@@ -175,7 +175,7 @@
     "description": "Get name of current script"
 },
 "Extract filename": {
-  "prefix": "Get file name",
+  "prefix": "get file name",
   "body": [
     "#Function: getFileName()",
     "#",
@@ -195,7 +195,7 @@
   "description": "Extracts filename name from a file path"
 },
 "Extract file directory": {
-  "prefix": "Get file directory",
+  "prefix": "get file directory",
   "body": [
     "#Function: getFileDirectory()",
     "#",
@@ -213,7 +213,7 @@
   "description": "Extracts directory from a file path."
 },
 "Extract file extension": {
-  "prefix": "Get file extension",
+  "prefix": "get file extension",
   "body": [
     "#Function: getFileExtension()",
     "#",

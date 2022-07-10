@@ -2,6 +2,62 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+## [1.3.0]
+
+### Removed
+
+  - Snippets
+    - *IsSuper*
+    * *#Created*
+### Added
+
+  - Snippet *created*
+  - Snippets which all now point to the same snippet code that was *IsSuper*
+    - *is super*
+    - *is root*
+    - *is sudo*
+
+### Changed 
+  - Snippets should not start with a capital letter so I lower cased 
+    the following snippets.  (Snowing the old prefix value)
+    - *Time diff*
+    - *Time now*
+    - *Date and Time now*
+    - *Time in future*
+    - *File exists*
+    - *Dir exists*
+    - *List files*
+    - *List dirs*
+    - *List files recursive*
+    - *List files recursive reg*
+    - *List dirs recursive*
+    - *Get script dir*
+    - *Get script name*
+    - *Get file name*
+    - *Get file directory*
+    - *Get file extension*
+    - *#Created* - now `created`
+    - *Source sh*
+    - *Print help*
+    - *Print help*
+    - *Print help*
+    - *Boilerplate 1*
+    - *Boilerplate 2*
+    - *Boilerplate 3*
+    - *parse options*
+    - *IsSuper* - now `is super`
+    - *Extract argument name*
+    - *String prefix length*
+    - *String starts with*
+    - *String ends with*
+
+## [1.2.18]
+
+### Changed
+  - Fixed these snippets by escaping the $ sign
+    - *IsSuper*
+    - *List dirs*
+
 ## [1.2.17]
 
 ### Added

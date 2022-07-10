@@ -23,7 +23,7 @@ Included snippets:
  - **coloring text** Type *TextColors* to change the color of printed terminal text.
  - **help** Type *printHelp* To  create a help function for your bash script.
  - **Validate bash parameters** Type *parseOptions* to create a function for validating if parameters given to your bash script are correct.
- - **Does user have superuser privileges** Type *IsSuper* to check if user has superuser privileges(root).
+ - **Does user have superuser privileges** Type *is super* to check if user has superuser privileges(root).
  - **Disk snippets**
    - Does file or directory exist
    - List files or directories
@@ -54,30 +54,30 @@ How to write text inside a box to the terminal using the function frame.
 
 | Prefix  | Title | Description |
 |:--------|:------|:------------|
-| Time diff | Time difference  HH:mm:ss | Calculate time difference |
-| Time now | Current time | Print current time on the format HH:mm:ss |
-| Date and Time now | Current date & time | Print current time on the format YYYY-MM-DD HH:mm:ss |
-| Time in future | Add to current time | Add to current time |
-| File exists | Checks if a file is found | Checks if a file is found |
-| Dir exists | Checks if a directory is found | Checks if a Directory is found |
-| List files | Iterate files in directory | Walk through each file name in a directory |
-| List dirs | Iterate only directories in directory | Walk through each sub-directory name in a directory |
-| List files recursive | Iterate files in directory recursive | Iterate file names in directory recursive. That is, walking through sub-directories also. |
-| List files recursive reg | Iterate files in directory recursive regex | Iterate file names in directory recursively using regex.  That is, walking through sub-directories also. |
-| List dirs recursive | Iterate directories in directory | Iterate directory names in directory recursively.  That is, walking through sub-directories also. |
+| time diff | Time difference  HH:mm:ss | Calculate time difference |
+| time now | Current time | Print current time on the format HH:mm:ss |
+| date and time now | Current date & time | Print current time on the format YYYY-MM-DD HH:mm:ss |
+| time in future | Add to current time | Add to current time |
+| file exists | Checks if a file is found | Checks if a file is found |
+| dir exists | Checks if a directory is found | Checks if a Directory is found |
+| list files | Iterate files in directory | Walk through each file name in a directory |
+| list dirs | Iterate only directories in directory | Walk through each sub-directory name in a directory |
+| list files recursive | Iterate files in directory recursive | Iterate file names in directory recursive. That is, walking through sub-directories also. |
+| list files recursive reg | Iterate files in directory recursive regex | Iterate file names in directory recursively using regex.  That is, walking through sub-directories also. |
+| list dirs recursive | Iterate directories in directory | Iterate directory names in directory recursively.  That is, walking through sub-directories also. |
 | compare filenames in dir | Compare file names in two directories | Compare file names in two directories and prints out matching or missing file names |
-| Get script dir | Script directory | Get path to the the current bash file |
-| Get script name | Script Name | Get name of current script |
-| Get file name | Extract filename | Extracts filename name from a file path |
-| Get file directory | Extract file directory | Extracts directory from a file path. |
-| Get file extension | Extract file extension |  Extract file extension from a file path. |
+| get script dir | Script directory | Get path to the the current bash file |
+| get script name | Script Name | Get name of current script |
+| get file name | Extract filename | Extracts filename name from a file path |
+| get file directory | Extract file directory | Extracts directory from a file path. |
+| get file extension | Extract file extension |  Extract file extension from a file path. |
 | read text file | Read on line at a time | Read a text file one line at a time |
 | ini file get value,<br>ini file read value,<br>iniGetSectionKeyValue,<br>getIniSectionKeyValue | Read a value from a ini file | Get a value of a key(variable) under specified section in a configuration file |
 | ini file set value,<br>ini file write value,<br>iniSetSectionKeyValue,<br>setIniSectionKeyValue | Save a value to a ini file | Add or change a section key value pair in a file |
 | bash,<br>shebang,<br>start | Start of bash | Start of bash
 That is shell scripts should start with this command |
-| #Created | File creation time | File creation time |
-| Source sh | source sh | Import another another shell script |
+| created,<br>file created | File creation time | Add comment with file name and, file creation time |
+| source sh | source sh | Import another another shell script |
 | declare array | declare array | Declare a new array and add initialize it. |
 | text colors | Text Color commands | Text Color commands |
 | terminal colors,<br>text colors table | Show all terminal text colors | Show all terminal text colors and a example on how to use colors with echo |
@@ -85,14 +85,14 @@ That is shell scripts should start with this command |
 | function 1 argument | Function 1 argument | Create a function which takes 1 argument |
 | function 2 arguments | Function 2 arguments | Create a function which takes 2 arguments |
 | function 3 arguments | Function 3 arguments | Create a function which takes 3 arguments |
-| Print help | Script help function | Script help function |
-| Print help,<br> one option | Help function with one option | Help function with one option |
-| Print help,<br> one option,<br> one option argument | Help function with one option and one option argument | Help function with one option and one option argument |
-| Boilerplate 1 | Boilerplate simple | Boilerplate simple Hello bash world |
-| Boilerplate 2 | Boilerplate, simple one option | Boilerplate bash script with help that accepts one optional parameter |
-| Boilerplate 3 | Boilerplate, one option, one option argument | Boilerplate with one option and one option which requires a argument |
+| print help | Script help function | Script help function |
+| print help,<br> one option | Help function with one option | Help function with one option |
+| print help,<br> one option,<br> one option argument | Help function with one option and one option argument | Help function with one option and one option argument |
+| boilerplate 1 | Boilerplate simple | Boilerplate simple Hello bash world |
+| boilerplate 2 | Boilerplate, simple one option | Boilerplate bash script with help that accepts one optional parameter |
+| boilerplate 3 | Boilerplate, one option, one option argument | Boilerplate with one option and one option which requires a argument |
 | parse options | Check if all options are valid and saves each in a variable | Check if all options are valid and saves each in a variable |
-| IsSuper | Only allow super user to run this script | Only allow super user to run this script |
+| is super,<br>is root,<br>is sudo | Only allow super user to run this script | Only allow super user to run this script. |
 | frame | Frame your text | Frame your text |
 | menuOptions | Select pre defined option | Select pre defined option |
 | arrayContains | Searches for an string within an array of strings | Searches for an string within an array of strings |
@@ -100,12 +100,12 @@ That is shell scripts should start with this command |
 | for number braces | For number in braces | For loop with brace expansion |
 | case example | Case Example | Case Statement Example |
 | case | Case | Case statement |
-| Extract argument name | Extract argument name from option | Extracts a name from a given argument which is on the form -name=value or name="value with spaces" |
+| extract argument name | Extract argument name from option | Extracts a name from a given argument which is on the form -name=value or name="value with spaces" |
 | extract argument value | Extract argument value from option | Extracts a value from a given argument which is on the form name=value or name="value with spaces" |
 | extract filename,<br>remove directory from path,<br>remove prefix from path | Extracts filename from the last argument | Extracts filename from the last argument and echos out all all arguments, where the last argument has been stripped of preceding path or url |
-| String prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
-| String starts with | Prefix search with wildcard | Check if string starts with using wild card |
-| String ends with | Postfix search | Check if string ends with |
+| string prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
+| string starts with | Prefix search with wildcard | Check if string starts with using wild card |
+| string ends with | Postfix search | Check if string ends with |
 | string cut | Substring with cut | Examples when extracting substring from a string using cut. (For when bash version is old) |
 | replace text in file | Replace text in a file | Replace texts in a file that match a specified substring |
 | replace text in file that starts with | Replace trailing text in a file that starts with | Replace trailing texts in a file that begin with a specified substring |
