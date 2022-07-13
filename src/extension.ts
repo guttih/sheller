@@ -16,9 +16,9 @@ export function activate(context: vscode.ExtensionContext) {
 
     const showEditorMenuMakeExecutable = (value: boolean, document?: vscode.TextDocument) => {
         if (process.platform === "win32") {
-            //No need to do this for windows
+            //No need to make files executable on windows
             vscode.commands.executeCommand("setContext", "sheller.showMenuMakeScriptExecutable", false);
-            false;
+            return;
         }
         if (value && document) {
             value = document.languageId === "shellscript" && document.uri.scheme === "file";
@@ -194,14 +194,12 @@ export function activate(context: vscode.ExtensionContext) {
 
     let onSaveShellScriptFile = vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (document.languageId === "shellscript" && document.uri.scheme === "file") {
-           
             const check = vscode.workspace.getConfiguration().get<boolean>("shellscript.sheller.onSave.makeExecutable");
             if (check) {
                 makeScriptExecutable(document, true);
             }
         }
     });
-
 
     // todo: find event when user right-clicks an tree node which is not selected this will not give the right-clicked tree-item, but the already selected item which I'm pretty sure the user did not mean to change
     // let onDidChange=vscode.workspace.onDidChangeConfiguration
@@ -236,7 +234,9 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    const onDidOpenTextDocument = vscode.workspace.onDidOpenTextDocument((document: vscode.TextDocument) => {showEditorMenuMakeExecutable(true, document);});
+    const onDidOpenTextDocument = vscode.workspace.onDidOpenTextDocument((document: vscode.TextDocument) => {
+        showEditorMenuMakeExecutable(true, document);
+    });
 
     context.subscriptions.push(
         disposable,
@@ -245,10 +245,10 @@ export function activate(context: vscode.ExtensionContext) {
         disposable4,
         disposable5,
         onSaveShellScriptFile,
-        onDidOpenTextDocument, 
-        onDidChangeActiveTextEditor);
-        
-};
+        onDidOpenTextDocument,
+        onDidChangeActiveTextEditor
+    );
+}
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
