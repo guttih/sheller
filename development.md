@@ -58,8 +58,9 @@ In this example we use 1.0.0 as the example version number, you will need to bum
     vsce publish
     ```
     If distribution fails you probably have an expired Personal Access Token so 
-    get a new one [here]( https://aka.ms/vscodepat) and do the following
+    get a new one [here]( https://aka.ms/vscodepat) or [maybe here](https://guttih.visualstudio.com/_usersSettings/tokens) and do the following
     1. `vsce login guttih` and press `y`and return and paste then newly created PAT
+    
     2. `vsce publish` This should publish an update to your extension.
 
    
