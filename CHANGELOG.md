@@ -2,6 +2,17 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+## [1.3.1]
+
+### Added
+
+  - Snippets
+    - *is script sourced* - Check if your script is being sourced or not.  That is, if f.example environment variables created will effect the  calling shell
+    - *string remove trailing numbers* - Function to removes all digits from the end of a string
+
+  - In the project build process, when releasing a new version of Sheller.  When a version is bumped, the version string is added to the list of versions in the *bug_report.yml* automatically.
+
+
 ## [1.3.0]
 
 ### Removed

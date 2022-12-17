@@ -103,6 +103,7 @@ That is shell scripts should start with this command |
 | extract argument name | Extract argument name from option | Extracts a name from a given argument which is on the form -name=value or name="value with spaces" |
 | extract argument value | Extract argument value from option | Extracts a value from a given argument which is on the form name=value or name="value with spaces" |
 | extract filename,<br>remove directory from path,<br>remove prefix from path | Extracts filename from the last argument | Extracts filename from the last argument and echos out all all arguments, where the last argument has been stripped of preceding path or url |
+| is script sourced | Is script sourced | Check if your script is being sourced or not.  That is, if f.example environment variables created will effect the  calling shell |
 | string prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
 | string starts with | Prefix search with wildcard | Check if string starts with using wild card |
 | string ends with | Postfix search | Check if string ends with |
@@ -110,6 +111,7 @@ That is shell scripts should start with this command |
 | replace text in file | Replace text in a file | Replace texts in a file that match a specified substring |
 | replace text in file that starts with | Replace trailing text in a file that starts with | Replace trailing texts in a file that begin with a specified substring |
 | create text file | Create multiline file | Create a text file with multiple lines |
+| string remove trailing numbers | String remove trailing numbers | Function to removes all digits from the end of a string |
 
 
 [Top](#sheller)

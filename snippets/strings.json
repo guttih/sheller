@@ -141,5 +141,32 @@
             ""
         ],
         "description": "Create a text file with multiple lines"
+    },
+    "String remove trailing numbers": {
+        "prefix": "string remove trailing numbers",
+        "body": [
+            "#Function: removeTrailingNumber()",
+            "#",
+            "#Brief: Removes a trailing number from a string",
+            "#Argument 1(\\$1): Input string",
+            "#Returns: Echos the input string with no trailing number",
+            "#",
+            "#Usage example:",
+            "#    NO_TRAIL_NUMBER=\\$(removeTrailingNumber \"asdf123\")",
+            "#    echo \"NO_TRAIL_NUMBER: \\$NO_TRAIL_NUMBER\"",
+            "removeTrailingNumber() {",
+            "    if [ \\$# -ne 1 ]; then",
+            "        echo \"Invalid number of parameters provided to \\$FUNCNAME\"",
+            "        exit 1",
+            "    fi",
+            "    declare PREV_STATE=\"\\$(shopt -p extglob)\"",
+            "    if [[ \\$PREV_STATE != \"shopt -s extglob\" ]]; then shopt -s extglob; fi",
+            "    declare NO_DIGIT=\\$(echo \"\\${1%%+([[:digit:]])}\")",
+            "    if [[ \\$PREV_STATE != \"shopt -s extglob\" ]]; then shopt -u extglob; fi",
+            "    echo \"\\$NO_DIGIT\"",
+            "",
+            "}"
+        ],
+        "description": "Function to removes all digits from the end of a string"
     }
 }

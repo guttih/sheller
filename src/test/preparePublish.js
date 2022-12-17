@@ -16,7 +16,7 @@ let mdFile = workspaceDir + `${slash}README.md`;
 
 
 let programArgs = process.argv.slice(2);
-let bumping = false;
+let bumping = true;
 if (programArgs.length > 0) {
 
     if (programArgs.includes('-bump')) {
@@ -72,8 +72,8 @@ snippetList.forEach(fileContent => {
 });
 mdContent += mdEnd();
 console.log(`Exporting snippet list to markdown file ${mdFile}`);
-if (lib.fileExists(mdFile)) {
-    console.log('File exists');
+if (!lib.fileExists(mdFile)) {
+    console.error(`File ${mdFile} does not exist`);
 }
 let newContent = lib.replaceContent(fs.readFileSync(mdFile).toString(),
     "| Prefix  | Title | Description |",
@@ -81,21 +81,13 @@ let newContent = lib.replaceContent(fs.readFileSync(mdFile).toString(),
     mdContent
 );
 
-console.log("==================\n"); console.log(newContent); console.log("==================\n");
+// console.log("==================\n"); console.log(newContent); console.log("==================\n");
 fs.writeFileSync(mdFile, newContent);
 
 logger.display(
-    "Bug report form : ",
+    "Version should have been added to Bug report form : ",
     logger.format.cyanFg, "https://github.com/guttih/sheller/edit/master/.github/ISSUE_TEMPLATE/bug_report.yml",
     logger.format.reset, "\n");
-if (bumping) {
-    logger.display(
-        logger.format.yellowFg, "Remember to add this line: ",
-        logger.format.reverse, `      - ${packageJson.version}`,
-        logger.format.reset,
-        logger.format.yellowFg, " to ", logger.format.cyanFg, "bug report form\n ",
-        logger.format.reset);
-}
 
 console.log(`vsce commands   :`);
 console.log(`    To publish sheller with current package.json settings  :  vsce publish`);

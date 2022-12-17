@@ -950,5 +950,28 @@
           "}\n"
       ],
       "description": "Extracts filename from the last argument and echos out all all arguments, where the last argument has been stripped of preceding path or url"
-  }
+  },"Is script sourced": {
+    "prefix": "is script sourced",
+    "body": [
+        " #Function: isSourced()",
+        " #",
+        " #Brief: Checks if the running bash script is being sourced",
+        " #Example:",
+        " #    if isSourced; then",
+        " #        echo \"This script is being sourced\"",
+        " #    else",
+        " #        echo \"This script is NOT being sourced\"",
+        " #    fi",
+        " isSourced() {",
+        "   if [ -n \"\\$ZSH_VERSION\" ]; then ",
+        "       case \\$ZSH_EVAL_CONTEXT in *:file:*) return 0;; esac",
+        "   else  # Add additional POSIX-compatible shell names here, if needed.",
+        "       case \\${0##*/} in dash|-dash|bash|-bash|ksh|-ksh|sh|-sh) return 0;; esac",
+        "   fi",
+        "   return 1  # NOT sourced.",
+        " }",
+        ""
+    ],
+    "description": "Check if your script is being sourced or not.  That is, if f.example environment variables created will effect the  calling shell"
+}
 }
