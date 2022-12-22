@@ -41,24 +41,37 @@ module.exports.getSubStringAndIndices = function getSubStringAndIndices(content,
 
 module.exports.getAddedSnippets = function getAddedSnippets(snippetFile) {
     let command = cp.spawnSync('git', ["--no-pager", "diff", "origin/master", snippetFile]);
-    let diff = command.stdout.toString();
+    let out = command.stdout.toString();
+
+    let outArr=out.split("\n+");
+    outArr=outArr.map(elm=> elm.trimStart());
+    let diff=outArr.join('\n+');
+    
+
     let subTitle, subPrefix, subDesc;
+    let lines=[];
     subTitle = module.exports.getSubStringAndIndices(diff, "+\"", "\"", 0);
-    if (subTitle === null) { return null; }
-    subPrefix = module.exports.getSubStringAndIndices(diff, "+    \"prefix\": \"", "\"", subTitle.end);
-    if (subPrefix === null) { return null; }
-    subDesc = module.exports.getSubStringAndIndices(diff, "+    \"description\": \"", "\"", subPrefix.end);
-    if (subDesc === null) { return null; }
-    let lines = [];
+    if (subTitle === null) { return lines; }
+    subPrefix = module.exports.getSubStringAndIndices(diff, "+\"prefix\": [\"", "\"", subTitle.end);
+    if (subPrefix === null) {
+        subPrefix = module.exports.getSubStringAndIndices(diff, "+\"prefix\": \"", "\"", subTitle.end);
+        if (subPrefix === null) {
+            return lines;
+        }
+    }
+    subDesc = module.exports.getSubStringAndIndices(diff, "+\"description\": \"", "\"", subPrefix.end);
+    if (subDesc === null) { return lines; }
 
     while (subTitle !== null && subPrefix !== null && subDesc !== null) {
         lines.push({ "title": `${subTitle.str}`, "prefix": `${subPrefix.str}`, "description": `${subDesc.str}` });
-
         subTitle = module.exports.getSubStringAndIndices(diff, "+\"", "\"", subDesc.end);
         if (subTitle !== null) {
-            subPrefix = module.exports.getSubStringAndIndices(diff, "+    \"prefix\": \"", "\"", subTitle.end);
+            subPrefix = module.exports.getSubStringAndIndices(diff, "+\"prefix\": [\"", "\"", subTitle.end);
+            if (subPrefix === null) {
+                subPrefix = module.exports.getSubStringAndIndices(diff, "+\"prefix\": \"", "\"", subTitle.end);
+            }
             if (subPrefix !== null) {
-                subDesc = module.exports.getSubStringAndIndices(diff, "+    \"description\": \"", "\"", subPrefix.end);
+                subDesc = module.exports.getSubStringAndIndices(diff, "+\"description\": \"", "\"", subPrefix.end);
             }
         }
 
@@ -66,14 +79,16 @@ module.exports.getAddedSnippets = function getAddedSnippets(snippetFile) {
     return lines;
 };
 module.exports.getAddedSnippetsNames = function getAddedSnippetsNames() {
-    let arr = [ "shellscript.json",
+    let fileList = [ "shellscript.json",
                 "strings.json",
                 "dateFunctions.json",
                 "diskFunctions.json",
                ];
-
+    
+               let command = cp.spawnSync('ls', ["snippets"]);
+               let out = command.stdout.toString().split('\n').filter(elm=>elm.length>0);
     let totalChanges=[];
-    arr.forEach(elm => {
+    fileList.forEach(elm => {
         let fileChanges = module.exports.getAddedSnippets(`./snippets/${elm}`);
         if (fileChanges !== null) {
             fileChanges.forEach(change => { totalChanges.push(change); });

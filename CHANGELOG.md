@@ -2,6 +2,15 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+## [1.3.3]
+
+### Added
+
+  - Snippets
+    - Extract text between two tokens: `string substring` - Extract text between two tokens
+    - Trim string: `string trim` - Remove leading and/or trailing whitespace characters
+
+
 ## [1.3.2]
 
 ### Added

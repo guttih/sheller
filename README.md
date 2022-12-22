@@ -113,6 +113,8 @@ That is shell scripts should start with this command |
 | replace text in file that starts with | Replace trailing text in a file that starts with | Replace trailing texts in a file that begin with a specified substring |
 | create text file | Create multiline file | Create a text file with multiple lines |
 | string remove trailing numbers | String remove trailing numbers | Function to removes all digits from the end of a string |
+| string substring,<br>extract sub string | Extract text between two tokens | Extract text between two tokens |
+| string trim | Trim string | Remove leading and/or trailing whitespace characters |
 
 
 [Top](#sheller)

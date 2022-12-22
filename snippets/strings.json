@@ -168,5 +168,53 @@
             "}"
         ],
         "description": "Function to removes all digits from the end of a string"
+    },
+    "Extract text between two tokens": {
+        "prefix": ["string substring","extract sub string"],
+        "body": [
+            "#Function: subString()",
+            "#",
+            "#Brief: Extract text between two tokens",
+            "#",
+            "#Argument 1(\\$1): Input text",
+            "#Argument 2(\\$2): Start token",
+            "#Argument 3(\\$3): End token",
+            "#Returns On success: The string between the two tokens.",
+            "#        On error  : Empty string if tokens are not found",
+            "# ",
+            "#Usage example:",
+            "#  THE_STRING=\"The thing about windows is that it's a wonderful operating system dude!\"",
+            "#  RESULT=\\$(subString \"\\$THE_STRING\" \"thing about \" \" is that it\")",
+            "#  echo \"\\${RESULT}, does not have a good shell\"",
+            "subString(){",
+            "    if [ \\$# -ne 3 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
+            "    echo \"\\$1\" | grep -o -P \"(?<=\\$2).*(?=\\$3)\"",
+            "}\n\n"
+        ],
+        "description": "Extract text between two tokens"
+    },
+    "Trim string": {
+        "prefix": "string trim",
+        "body": [
+            "#Function: trim()",
+            "#",
+            "#Brief: Remove leading and/or trailing whitespace characters",
+            "#",
+            "#Argument 1(\\$1): Text that can possibly have leading or trailing spaces",
+            "#",
+            "#Usage exampe:",
+            "#  TEXT=\" crap goes wireal sometimes \"",
+            "#  echo \"--\\$TEXT--\"",
+            "#  RES=\\$(trim \"\\$TEXT\")",
+            "#  echo \"--\\$RES--\"",
+            " trim(){",
+            "     if [ \\$# -ne 1 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
+            "      declare var=\"\\$*\"",
+            "    var=\"\\${var#\"\\${var%%[![:space:]]*}\"}\"",
+            "    var=\"\\${var%\"\\${var##*[![:space:]]}\"}\"",
+            "    printf '%s' \"\\$var\"",
+            "}\n\n"
+        ],
+        "description": "Remove leading and/or trailing whitespace characters"
     }
 }
