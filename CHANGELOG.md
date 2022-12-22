@@ -2,6 +2,14 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+## [1.3.2]
+
+### Added
+
+  - Snippets
+    - Is command installed: `is command installed` - Check if a command is installed
+
+
 ## [1.3.1]
 
 ### Added

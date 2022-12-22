@@ -41,7 +41,7 @@ In this example we use 1.0.0 as the example version number, you will need to bum
     ```
     which will increment three version numbers, one in file [package.json] and two [package-lock.json].
 3. Add to Release notes for this version in *CHANGELOG.md*
-    - Add section about the update to the [CHANGELOG.md]
+    - Supply information about what changed in the automatically added version section in the [CHANGELOG.md]
 4. Make the package with the command below after changing `1.0.0` to the correct version number.
 
     **vsce** should be installed, if not give command `npm install -g vsce`

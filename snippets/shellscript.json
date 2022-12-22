@@ -973,5 +973,27 @@
         ""
     ],
     "description": "Check if your script is being sourced or not.  That is, if f.example environment variables created will effect the  calling shell"
+},
+"Is command installed": {
+    "prefix": "is command installed",
+    "body": [
+        "#Function: isCommandInstalled()",
+        "#",
+        "#Brief: Checks if a command or a package is installed, by trying to run it",
+        "#",
+        "#Argument 1(\\$1): command to test if it's installed",
+        "#Usage example :",
+        "#  if ! isCommandInstalled  ls ; then echo \"You can install it with \\\\\"sudo dnf install tree\\\\\"\"; fi",
+        "isCommandInstalled(){",
+        "    if [ \\$# -ne 1 ]; then echo \"Invalid number of parameters provided to \\$FUNCNAME\"; exit 1; fi",
+        "    if ! command -v \"\\$1\" &> /dev/null; then ",
+        "        echo \"\\$1 is not installed\"; ",
+        "        return 1",
+        "        fi",
+        "}",
+        "",
+        ""
+    ],
+    "description": "Check if a command is installed"
 }
 }

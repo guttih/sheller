@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const cp = require("child_process");
+const gitLib = require('./gitLib');
 
 // Returns true if file exists otherwise it returns false.
 module.exports.fileExists = function fileExists(filePath){
@@ -75,8 +77,9 @@ module.exports.replaceContentString = function replaceContentString (content, st
  */
 module.exports.bump = function bump(workspaceDir){
     let filePackage     = path.join(workspaceDir, "package.json"),
-        filePackageLock = path.join(workspaceDir, "package-lock.json");
-        fileBugReportYml = path.join(workspaceDir, ".github/ISSUE_TEMPLATE/bug_report.yml");
+        filePackageLock = path.join(workspaceDir, "package-lock.json"),
+        fileBugReportYml = path.join(workspaceDir, ".github/ISSUE_TEMPLATE/bug_report.yml"),
+        fileChangeLog    = path.join(workspaceDir, "CHANGELOG.md");
 
 	if (! module.exports.fileExists(filePackage) || ! module.exports.fileExists(filePackageLock)) {
         console.error(`Files "package.json" and "package-lock.json" must be found in provided directory (${workspaceDir}).`);
@@ -96,12 +99,14 @@ module.exports.bump = function bump(workspaceDir){
     packageLockContent.version=newVersion;
     packageLockContent.packages[""].version=newVersion;
     var newContent = JSON.stringify(packageContent, null, 2);
+
     try { fs.writeFileSync(filePackage, newContent); } catch(err) { console.error(err);console.log('Unable to write to file package.json');return null; }
 
     newContent = JSON.stringify(packageLockContent, null, 2);
     try { fs.writeFileSync(filePackageLock, newContent); } catch(err) { console.error(err);console.log('Unable to write to file package-lock.json');return null; }
     module.exports.bumpBugReportFile(fileBugReportYml, oldVersion, newVersion);
-      
+    module.exports.bumpChangeLog(fileChangeLog, newVersion);
+
     return newVersion;
 };
 module.exports.isPositiveInteger = function isPositiveInteger(str, treatZeroAsPositive) {
@@ -119,30 +124,52 @@ module.exports.isPositiveInteger = function isPositiveInteger(str, treatZeroAsPo
 };
 
 module.exports.bumpBugReportFile = function bumpBugReportFile(file, oldVersion, newVersion) {
-    console.log(`  file ${file}  OldVersion ${oldVersion}  NewVersion ${newVersion}`);
     let content = fs.readFileSync(file).toString();
-    const versionPrefix = "      - ";
-    let versionListString = module.exports.extractContent(content, `    options:\r\n${versionPrefix}`, "  validations:");
-    versionListString = `${versionPrefix}${versionListString}`;
+    const TOKEN_VERSION_PREFIX = "      - ";
+    const TOKEN_CONTENT_START = "    options:\r\n";
+    const TOKEN_CONTENT_END = "  validations:";
+    let versionListString = module.exports.extractContent(content, `${TOKEN_CONTENT_START}${TOKEN_VERSION_PREFIX}`, TOKEN_CONTENT_END);
+    versionListString = `${TOKEN_VERSION_PREFIX}${versionListString}`;
     let arr = versionListString.split('\n').map((element) => {
-        return element.substring(versionPrefix.length).replace('\r', '');
+        return element.substring(TOKEN_VERSION_PREFIX.length).replace('\r', '');
     });
     arr.push(newVersion);
-    console.log(arr);
     arr = arr.filter(element => { return module.exports.isVersionValid(element); });
 
     newArr = [...new Set(arr)];
-    console.log(newArr);
     newArr = newArr.sort(function (a, b) { return module.exports.compareVersionStrings(a, b); }).reverse();
 
     let outArray = newArr.map(element => {
-        return `${versionPrefix}${element}\r\n`;
+        return `${TOKEN_VERSION_PREFIX}${element}\r\n`;
     });
-    outArray[0] = outArray[0].substring(versionPrefix.length);
+    outArray[0] = outArray[0].substring(TOKEN_VERSION_PREFIX.length);
 
-    let newContent = module.exports.replaceContent(content, `    options:\r\n${versionPrefix}`, "  validations:", outArray.join(""));
+    let newContent = module.exports.replaceContent(content, `${TOKEN_CONTENT_START}${TOKEN_VERSION_PREFIX}`, TOKEN_CONTENT_END, outArray.join(""));
     fs.writeFileSync(file, newContent);
 
+};
+
+module.exports.bumpChangeLog = function bumpChangeLog(file, newVersion) {
+    console.log(`  file ${file}  NewVersion ${newVersion}`);
+    let content = fs.readFileSync(file).toString();
+    const TOKEN_VERSION_SECTION=`\n\n## [${newVersion}]\n\n`;
+    const TOKEN_CONTENT_START = "All notable changes to the \"sheller\" extension will be documented in this file.";
+    const TOKEN_CONTENT_END = "## [";
+    let addedSnippets=gitLib.getAddedSnippetsNames();
+    let snippetList="";
+    if (addedSnippets.length > 0) {
+        addedSnippets.forEach(elm =>{
+            snippetList+=`    - ${elm.title}: \`${elm.prefix}\` - ${elm.description}\n`;
+        });
+    } else { 
+        addedSnippets = "    - *name_of_snippet_added* - description_for_snippet_added \n"; 
+    }
+    let newText = `${TOKEN_VERSION_SECTION}### Added\n\n  - Snippets\n${snippetList}`;
+    newText+=`\n\n`;
+    newContent = module.exports.replaceContent(content, TOKEN_CONTENT_START, TOKEN_CONTENT_END, newText);
+    // gitLib.getLastCommitId();
+    fs.writeFileSync(file, newContent);
+    cp.exec(file);
 };
 
 /**
@@ -152,6 +179,7 @@ module.exports.bumpBugReportFile = function bumpBugReportFile(file, oldVersion, 
 isNumInvalid = function isNumInvalid(strNum) {
     return (strNum === null || strNum.length < 1 || isNaN(strNum));
 };
+
 /**
  * Compares two version strings
  *

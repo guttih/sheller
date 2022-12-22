@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { exit } = require('process');
 var lib = require('./prepareLib');
+const gitLib = require('./gitLib');
 
 let slash = '/';
 if (__dirname.indexOf('\\') > 0) {
@@ -13,10 +14,9 @@ if (__dirname.indexOf('\\') > 0) {
 let workspaceDir = __dirname.replace(`${slash}src${slash}test`, "");
 let snippetDirs = workspaceDir + `${slash}snippets`;
 let mdFile = workspaceDir + `${slash}README.md`;
-
-
 let programArgs = process.argv.slice(2);
 let bumping = true;
+
 if (programArgs.length > 0) {
 
     if (programArgs.includes('-bump')) {
@@ -84,10 +84,10 @@ let newContent = lib.replaceContent(fs.readFileSync(mdFile).toString(),
 // console.log("==================\n"); console.log(newContent); console.log("==================\n");
 fs.writeFileSync(mdFile, newContent);
 
-logger.display(
-    "Version should have been added to Bug report form : ",
-    logger.format.cyanFg, "https://github.com/guttih/sheller/edit/master/.github/ISSUE_TEMPLATE/bug_report.yml",
-    logger.format.reset, "\n");
+// logger.display(
+//     "Version should have been added to Bug report form : ",
+//     logger.format.cyanFg, "https://github.com/guttih/sheller/edit/master/.github/ISSUE_TEMPLATE/bug_report.yml",
+//     logger.format.reset, "\n");
 
 console.log(`vsce commands   :`);
 console.log(`    To publish sheller with current package.json settings  :  vsce publish`);

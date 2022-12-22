@@ -104,6 +104,7 @@ That is shell scripts should start with this command |
 | extract argument value | Extract argument value from option | Extracts a value from a given argument which is on the form name=value or name="value with spaces" |
 | extract filename,<br>remove directory from path,<br>remove prefix from path | Extracts filename from the last argument | Extracts filename from the last argument and echos out all all arguments, where the last argument has been stripped of preceding path or url |
 | is script sourced | Is script sourced | Check if your script is being sourced or not.  That is, if f.example environment variables created will effect the  calling shell |
+| is command installed | Is command installed | Check if a command is installed |
 | string prefix length | Prefix search known length | Check if a string starts with a specific text and is of a specific lengthS |
 | string starts with | Prefix search with wildcard | Check if string starts with using wild card |
 | string ends with | Postfix search | Check if string ends with |
