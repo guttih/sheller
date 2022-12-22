@@ -9,7 +9,7 @@
           "#Argument 1(\\$1): Larger date",
           "#Argument 2(\\$2): Smaller date",
           "dateDiff() {",
-          "    if [ \\$# -ne 2 ]; then echo \"Invalid number of parameters\"; exit 1; fi",
+          "    if [ \\$# -ne 2 ]; then echo \"Invalid number of parameters\"; $(return >/dev/null 2>&1) && return 1 ||  exit 1; fi",
           "    declare d1=\\$(date -d \"\\$1\" '+%s')",
           "    declare d2=\\$(date -d \"\\$2\" '+%s')",
           "    declare diff=\\$(( (\\$d1-\\$d2) ))",
