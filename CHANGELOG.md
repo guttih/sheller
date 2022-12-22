@@ -2,6 +2,13 @@
 
 All notable changes to the "sheller" extension will be documented in this file.
 
+## [1.3.4]
+
+### Fixex
+
+  Exiting correctly from a script if script is being sourced
+
+
 ## [1.3.3]
 
 ### Added
