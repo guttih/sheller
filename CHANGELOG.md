@@ -1,6 +1,14 @@
 # Change Log
 
-All notable changes to the "sheller" extension will be documented in this file.
+All notable changes to the "sheller" extension.
+
+## [1.3.5]
+
+### Added
+
+ Added command "Create a GUID text string" which creates and 
+ prints a few  variants of a guid string to the output window.
+
 
 ## [1.3.4]
 

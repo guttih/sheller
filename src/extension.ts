@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { DiskFunctions } from "./diskFunctions";
+import { GuidGenerator, GUIDLength } from "./misc";
 
 // import * as path from 'path';
 // import * as cp from 'child_process';
@@ -66,6 +67,48 @@ export function activate(context: vscode.ExtensionContext) {
         return content.split("\n");
     }
 
+    let disposable6 = vscode.commands.registerCommand("sheller.GenerateGuid", async () => {
+        if (outputChannel === null) {
+            outputChannel = vscode.window.createOutputChannel("Snippet");
+        }
+
+
+        const printGuid = (guidString: string, title: string = "") => {
+            const guidHyphenated = GuidGenerator.hyphenateGuid(guidString);
+            const isOdd = guidHyphenated.length % 2;
+            let boxLength = guidHyphenated.length + 4 + isOdd + (String(guidString.length).length % 2);
+            const titleMaxLength =  title.length + String(guidString.length).length + 4 + (title.length % 2);
+            boxLength = Math.max(boxLength, titleMaxLength + 2);
+            const topDashCount = boxLength - titleMaxLength;
+            const topDashes = "-".repeat(topDashCount / 2);
+            const titleSegment = `${title}(${guidString.length})`;
+            const remainingDashes = "-".repeat(topDashCount / 2 + (title.length % 2));
+            const box = `+${topDashes}${titleSegment}${remainingDashes}+\n`;
+
+            //guid without hyphens
+            const guidLine = `| ${guidString}${" ".repeat((boxLength-4)-guidString.length)} |\n`;
+
+            //guid with hyphens
+            // const hyphenatedLine = `| ${guidHyphenated} |\n`;
+            const hyphenatedLine = `| ${guidHyphenated}${" ".repeat((boxLength-4)-guidHyphenated.length)} |\n`;
+            const bottomLine = `+${"-".repeat(boxLength - 2)}+\n`;
+            
+            return box + guidLine + hyphenatedLine + bottomLine;
+          };
+          const guid=GuidGenerator.generate(false, GUIDLength.guid128);
+          let str=`${printGuid(guid.substring(0, 20), "GUID")}`;
+          str+=`${printGuid(guid.substring(0, 24), "GUID")}`;
+          str+=`${printGuid(guid.substring(0, 64), "GUID")}`;
+          str+=`${printGuid(guid.substring(0, 128), "GUID")}\n`;
+          
+          str+=`${printGuid(guid.substring(0, 32), "Normal GUID")}\n`;
+          outputChannel.clear();
+          outputChannel.append(str);
+          outputChannel.show();
+    });
+
+    
+
     let disposable3 = vscode.commands.registerCommand("sheller.selTextToSnippetNoAsk", async () => {
         const editor = vscode.window.activeTextEditor;
         if (editor) {
@@ -75,29 +118,9 @@ export function activate(context: vscode.ExtensionContext) {
                 let txt = editor;
                 let content = txt.document.getText(txt.selection);
 
-                let snippetTitle = "title"; //+txt.document.fileName;
-                // let doc: vscode.TextDocument = editor.document;
+                let snippetTitle = "title"; 
 
                 let snippetDescription = "package";
-                // let fullFilename=doc.uri.fsPath;
-                // let dir=path.dirname(fullFilename);
-                // let isLinux = (process.platform === "linux");
-                // let strCmd = `chmod +x "${fullFilename}\n"`;
-                // let showInfo=vscode.window.showInformationMessage;
-                // let showErr=vscode.window.showErrorMessage;
-                // if (isLinux) {
-                // 	cp.execFile(strCmd, (err, stdout, stderr) => {
-                // 		console.log("stdoutX: " + stdout);
-                // 		console.log("stderr: " + stderr);
-                // 		if (err) {
-                // 			console.log(`Unable to run command: ${strCmd}`);
-                // 			showErr    (`Unable to run command: ${strCmd}`);
-                // 			console.log("error: " + err);
-                // 		} else {
-                // 			showInfo(`Ran: ${strCmd}`);
-                // 		}
-                // 	});
-                // }
                 let snippetPrefix = "prefixName";
                 let newSnippet = {
                     [snippetTitle]: {
@@ -116,6 +139,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
         }
     });
+
+
     let disposable4 = vscode.commands.registerCommand("sheller.selTextToSnippet", async () => {
         const editor = vscode.window.activeTextEditor;
         if (editor) {
@@ -192,6 +217,7 @@ export function activate(context: vscode.ExtensionContext) {
         makeScriptExecutable(document, true);
     });
 
+
     let onSaveShellScriptFile = vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (document.languageId === "shellscript" && document.uri.scheme === "file") {
             const check = vscode.workspace.getConfiguration().get<boolean>("shellscript.sheller.onSave.makeExecutable");
@@ -244,6 +270,7 @@ export function activate(context: vscode.ExtensionContext) {
         disposable3,
         disposable4,
         disposable5,
+        disposable6,
         onSaveShellScriptFile,
         onDidOpenTextDocument,
         onDidChangeActiveTextEditor
