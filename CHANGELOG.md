@@ -2,6 +2,14 @@
 
 All notable changes to the "sheller" extension.
 
+## [1.3.6]
+
+### Added
+
+### Removed
+
+ - Code snippet *parse options* was removed because it can be accessed from the boilerplate 2 3 snippets.
+
 ## [1.3.5]
 
 ### Added
@@ -12,7 +20,7 @@ All notable changes to the "sheller" extension.
 
 ## [1.3.4]
 
-### Fixex
+### Fixed
 
   Exiting correctly from a script if script is being sourced
 
@@ -107,7 +115,7 @@ All notable changes to the "sheller" extension.
   - Now you can right-click in a editor window with open shellscript and 
     select *Make a file executable (chmod +x permission)*.  No need to 
     do this for windows, so this option is never shown there.
-  - Added a setting for the extension where user can make all shellscripts he saves
+  - Added a setting for the extension where user can make all shell scripts he saves
     executable.  By default this option **Make executable** is disabled.
 
 ## [1.2.15]
