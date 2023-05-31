@@ -1,6 +1,13 @@
 # Change Log
 
-All notable changes to the "sheller" extension.
+All notable changes to the "sheller" extension are documented in this file.
+
+## [1.3.7]
+
+### Added
+
+  - Snippets
+
 
 ## [1.3.6]
 
