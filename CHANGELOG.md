@@ -4,8 +4,6 @@ All notable changes to the "sheller" extension are documented in this file.
 
 ## [1.3.6]
 
-### Added
-
 ### Fixed the following bugs
 
 - [#31](https://github.com/guttih/sheller/issues/31) boilerplate 3 when single char switch
