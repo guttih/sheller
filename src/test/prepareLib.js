@@ -153,7 +153,7 @@ module.exports.bumpChangeLog = function bumpChangeLog(file, newVersion) {
     console.log(`  file ${file}  NewVersion ${newVersion}`);
     let content = fs.readFileSync(file).toString();
     const TOKEN_VERSION_SECTION=`\n\n## [${newVersion}]\n\n`;
-    const TOKEN_CONTENT_START = "All notable changes to the \"sheller\" extension will be documented in this file.";
+    const TOKEN_CONTENT_START = "All notable changes to the \"sheller\" extension are documented in this file.";
     const TOKEN_CONTENT_END = "## [";
     let addedSnippets=gitLib.getAddedSnippetsNames();
     let snippetList="";

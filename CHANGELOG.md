@@ -1,6 +1,21 @@
 # Change Log
 
-All notable changes to the "sheller" extension.
+All notable changes to the "sheller" extension are documented in this file.
+
+## [1.3.6]
+
+### Fixed the following bugs
+
+- [#31](https://github.com/guttih/sheller/issues/31) boilerplate 3 when single char switch
+- [#28](https://github.com/guttih/sheller/issues/28) Declare UNPROCESSED as an empty array above parseOptions
+- [#25](https://github.com/guttih/sheller/issues/25) Allow option names to have dash in their names in boilerplate function parseOptions
+- [#23](https://github.com/guttih/sheller/issues/23) Boilerplate 3 / parseOptions does not handle first param correctly
+- [#20](https://github.com/guttih/sheller/issues/20) parseOptions fails if option is named with a dash
+- [#19](https://github.com/guttih/sheller/issues/19) In Boilerplate 3 snippet declares UNPROCESSED array but does not initialise it 
+
+### Removed
+
+ - Code snippet *parse options* was removed because it can be accessed from the boilerplate 2 3 snippets.
 
 ## [1.3.5]
 
@@ -12,7 +27,7 @@ All notable changes to the "sheller" extension.
 
 ## [1.3.4]
 
-### Fixex
+### Fixed
 
   Exiting correctly from a script if script is being sourced
 
@@ -107,7 +122,7 @@ All notable changes to the "sheller" extension.
   - Now you can right-click in a editor window with open shellscript and 
     select *Make a file executable (chmod +x permission)*.  No need to 
     do this for windows, so this option is never shown there.
-  - Added a setting for the extension where user can make all shellscripts he saves
+  - Added a setting for the extension where user can make all shell scripts he saves
     executable.  By default this option **Make executable** is disabled.
 
 ## [1.2.15]

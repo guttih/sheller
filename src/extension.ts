@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { DiskFunctions } from "./diskFunctions";
-import { GuidGenerator, GUIDLength } from "./misc";
+import { GuidGenerator, GUIDLength, TextHelper } from "./misc";
 
 // import * as path from 'path';
 // import * as cp from 'child_process';
@@ -71,40 +71,44 @@ export function activate(context: vscode.ExtensionContext) {
         if (outputChannel === null) {
             outputChannel = vscode.window.createOutputChannel("Snippet");
         }
-
-
-        const printGuid = (guidString: string, title: string = "") => {
+    
+        const printGuid = (guidString: string, title: string = "", sides = 'single') => {
             const guidHyphenated = GuidGenerator.hyphenateGuid(guidString);
-            const isOdd = guidHyphenated.length % 2;
-            let boxLength = guidHyphenated.length + 4 + isOdd + (String(guidString.length).length % 2);
-            const titleMaxLength =  title.length + String(guidString.length).length + 4 + (title.length % 2);
-            boxLength = Math.max(boxLength, titleMaxLength + 2);
-            const topDashCount = boxLength - titleMaxLength;
-            const topDashes = "-".repeat(topDashCount / 2);
             const titleSegment = `${title}(${guidString.length})`;
-            const remainingDashes = "-".repeat(topDashCount / 2 + (title.length % 2));
-            const box = `+${topDashes}${titleSegment}${remainingDashes}+\n`;
-
-            //guid without hyphens
-            const guidLine = `| ${guidString}${" ".repeat((boxLength-4)-guidString.length)} |\n`;
-
-            //guid with hyphens
-            // const hyphenatedLine = `| ${guidHyphenated} |\n`;
-            const hyphenatedLine = `| ${guidHyphenated}${" ".repeat((boxLength-4)-guidHyphenated.length)} |\n`;
-            const bottomLine = `+${"-".repeat(boxLength - 2)}+\n`;
-            
-            return box + guidLine + hyphenatedLine + bottomLine;
-          };
-          const guid=GuidGenerator.generate(false, GUIDLength.guid128);
-          let str=`${printGuid(guid.substring(0, 20), "GUID")}`;
-          str+=`${printGuid(guid.substring(0, 24), "GUID")}`;
-          str+=`${printGuid(guid.substring(0, 64), "GUID")}`;
-          str+=`${printGuid(guid.substring(0, 128), "GUID")}\n`;
-          
-          str+=`${printGuid(guid.substring(0, 32), "Normal GUID")}\n`;
-          outputChannel.clear();
-          outputChannel.append(str);
-          outputChannel.show();
+            let maxTextLength = Math.max(guidHyphenated.length, titleSegment.length);
+            maxTextLength += maxTextLength % 2; // make sure it is even
+            const boxLength = maxTextLength + 4; // add 4 for the 2 spaces and 2 | characters
+    
+            let box = "-++++|";
+            if (sides === 'double') {
+                box = "═╔╗╚╝║";
+            } else if (sides === 'single') {
+                box = "─┌┐└┘│";
+            }
+    
+            const dash = box[0];
+            const side = box[5];
+    
+            const header = `${box[1]}${TextHelper.centerText(titleSegment, boxLength - 2, dash)}${box[2]}\n`;
+            const guidLine = `${side} ${guidString}${" ".repeat((boxLength - 4) - guidString.length)} ${side}\n`;
+            const hyphenatedLine = `${side} ${guidHyphenated}${" ".repeat((boxLength - 4) - guidHyphenated.length)} ${side}\n`;
+            const bottomLine = `${box[3]}${dash.repeat(boxLength - 2)}${box[4]}\n`;
+    
+            return header + guidLine + hyphenatedLine + bottomLine;
+        };
+    
+        const guid = GuidGenerator.generate(false, GUIDLength.guid128);
+        let str = `${printGuid(guid.substring(0, 16), "GUID", "double")}`;
+        str += `${printGuid(guid.substring(0, 20), "GUID", "double")}`;
+        str += `${printGuid(guid.substring(0, 24), "GUID", "double")}`;
+        str += `${printGuid(guid.substring(0, 64), "GUID", "double")}`;
+        str += `${printGuid(guid.substring(0, 128), "GUID", "double")}\n`;
+    
+        str += `${printGuid(guid.substring(0, 32), "Normal GUID", 'single')}\n`;
+    
+        outputChannel.clear();
+        outputChannel.append(str);
+        outputChannel.show();
     });
 
     

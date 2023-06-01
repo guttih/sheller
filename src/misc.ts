@@ -9,6 +9,19 @@ export enum GUIDLength {
    guid128= 128
 }
 
+export class TextHelper {
+    static centerText(text: string, width: number, padding: string = " "): string {
+        if (text.length > width) {
+            return text;
+        }
+
+        let leftPadding = Math.floor((width - text.length) / 2);
+        let rightPadding = width - text.length - leftPadding;
+
+        return padding.repeat(leftPadding) + text + padding.repeat(rightPadding);
+    }
+}
+
 export class GuidGenerator {
 
     /**
@@ -51,7 +64,7 @@ export class GuidGenerator {
     /// Supports 16, 20, 24, 32, 64, 128 length strings
     /// </summary>
     /// <param name="guid">The GUID.</param>
-    /// <returns>A guid string with hyphens added for better readability.</returns>
+    /// <returns>A guid string with hyphens added for better readability. On error, original string is returned</returns>
 
     static hyphenateGuid(guid: string): string {
         switch (guid.length) {
@@ -61,7 +74,7 @@ export class GuidGenerator {
             case 32: return guid.replace(/(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})/, '$1-$2-$3-$4-$5');
             case 64: return guid.replace(/(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})/, '$1-$2-$3-$4-$5-$6-$7-$8-$9-$10');
             case 128: return guid.replace(/(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})/, '$1-$2-$3-$4-$5-$6-$7-$8-$9-$10-$11-$12-$13-$14-$15-$16-$17-$18-$19-$20');
-            default: return guid+"x";
+            default: return guid;
         }
     }
 }
