@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import { DiskFunctions } from "./diskFunctions";
+import { DiskFunctions, FileExecutionStatus } from "./diskFunctions";
 import { GuidGenerator, GUIDLength, TextHelper } from "./misc";
 
 // import * as path from 'path';
@@ -202,9 +202,12 @@ export function activate(context: vscode.ExtensionContext) {
         if (wasExecutable) {
             return;
         }
-        if (!DiskFunctions.addFileAccessExecutable(fullFilename)) {
+
+       
+        const newStatus = DiskFunctions.makeFileExecutable(fullFilename);
+        if (newStatus === FileExecutionStatus.failedToChangeAccess ) {
             vscode.window.showErrorMessage(`Unable make the current file executable\n    "${fullFilename}" `);
-        } else if (displayMsgIfAccessChanged && !wasExecutable) {
+        } else if ( displayMsgIfAccessChanged ) {
             vscode.window.showInformationMessage(`${DiskFunctions.getFilenameFromFilePath(document.uri.path.toString())} is now executable`);
             showEditorMenuMakeExecutable(false);
         }
@@ -226,7 +229,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (document.languageId === "shellscript" && document.uri.scheme === "file") {
             const check = vscode.workspace.getConfiguration().get<boolean>("shellscript.sheller.onSave.makeExecutable");
             if (check) {
-                makeScriptExecutable(document, true);
+                makeScriptExecutable(document, false);
             }
         }
     });
