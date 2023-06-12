@@ -2,6 +2,21 @@
 
 All notable changes to the "sheller" extension are documented in this file.
 
+## [1.3.7]
+
+### Added
+
+  - Feature requests
+    - [#34](https://github.com/guttih/sheller/issues/34) Boilerplate snippet which support arguments with both postfix "=" and space enhancement
+
+  - Snippets
+    -  Boilerplate plus, one option, one option argument: `boilerplate 4` - Boilerplate with one option and one option which requires a argument and option argument can be supplied with or without equal sign
+
+### Fixed the following bugs/feature requests
+- [#26](https://github.com/guttih/sheller/issues/26) boilerplate 3 when single char switch. By providing the new Boilerplate 4 snippet, which handles this issue I consider this issue closed.
+- Changing make file executable functionality.  Not a message every time a file is saved.
+
+
 ## [1.3.6]
 
 ### Fixed the following bugs

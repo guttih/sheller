@@ -124,9 +124,9 @@ module.exports.isPositiveInteger = function isPositiveInteger(str, treatZeroAsPo
 };
 
 module.exports.bumpBugReportFile = function bumpBugReportFile(file, oldVersion, newVersion) {
-    let content = fs.readFileSync(file).toString();
+    let content = fs.readFileSync(file).toString().replaceAll("\r\n", "\n");
     const TOKEN_VERSION_PREFIX = "      - ";
-    const TOKEN_CONTENT_START = "    options:\r\n";
+    const TOKEN_CONTENT_START = "    options:\n";
     const TOKEN_CONTENT_END = "  validations:";
     let versionListString = module.exports.extractContent(content, `${TOKEN_CONTENT_START}${TOKEN_VERSION_PREFIX}`, TOKEN_CONTENT_END);
     versionListString = `${TOKEN_VERSION_PREFIX}${versionListString}`;
