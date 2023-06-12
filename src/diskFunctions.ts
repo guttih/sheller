@@ -1,5 +1,12 @@
 import { BlobOptions } from "buffer";
-import * as fs from "fs";
+const fs = require('fs');
+
+export enum FileExecutionStatus {
+    alreadyExecutable = 'already_executable',
+    nowExecutable = 'now_executable',
+    failedToChangeAccess = 'failed_to_change_access',
+    unknownStatus = 'unknown_status',
+  }
 
 export class DiskFunctions {
     static readFromFile(file: string): String | null {
@@ -37,29 +44,32 @@ export class DiskFunctions {
 
         return true;
     }
+    static makeFileExecutable(filePath: string): FileExecutionStatus {
+        let status: FileExecutionStatus = FileExecutionStatus.unknownStatus;
+    
+        try {
+          fs.accessSync(filePath, fs.constants.X_OK);
+          status = FileExecutionStatus.alreadyExecutable;
+        } catch (error) {
+          try {
+            fs.chmodSync(filePath, '755');
+            status = FileExecutionStatus.nowExecutable;
+          } catch (error) {
+            status = FileExecutionStatus.failedToChangeAccess;
+          }
+        }
+    
+        return status;
+    }
     static isFileAccessExecutable(fullFilename: string) {
         try {
-            let num = fs.statSync(fullFilename).mode & parseInt("111", 8);
-            let ret = num === parseInt("111", 8);
-            return ret;
-        } catch (err) {
+            fs.accessSync(fullFilename, fs.constants.X_OK);
+            return true;
+          } catch (error) {
             return false;
-        }
-        return false;
+          }
     }
-
-    static addFileAccessExecutable(fullFilename: string) {
-        try {
-            let stats = fs.statSync(fullFilename);
-            // 775 == -rwxrwxr-x.
-            //to view all file permission numbers in a directory:  stat -c "%a %n" *
-            let num = stats.mode & parseInt("777", 8);
-            num = num | parseInt("111", 8); //111 octal = 73 decimal (adding executable for user group and public)
-            return this.chmod(fullFilename, num);
-        } catch (err) {
-            return false;
-        }
-    }
+    
     /**
      * Extract a path from a path to a file
      * @param path path to a file (must include a directory / or \\ )
