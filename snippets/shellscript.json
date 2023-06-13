@@ -433,8 +433,6 @@
             "#Options that end with \"=\" require an argument",
             "options=( \"-h\" \"--help\" \"${1:-express}\" \"${2:-source=}\" )",
             "",
-            "# Option   names: \"${1/^(\\-+)([^=]+)(=)?$/$2/}\" and \"${2/^(\\-+)([^=]+)(=)?$/$2/}\".  ",
-            "",
             "#Options that must be provided by the user, leave blank for no required options",
             "optionsRequired=( ${3:\"${1}\" \"$2\"} )",
             "",
@@ -616,7 +614,7 @@
             "}",
             "",
             "# You could test code below by running this script with these Arguments",
-            "#   ./thisScript.sh --one ---the-source=\"~/Downloads /home/gandalf\" -weird",
+            "#   ./thisScript.sh ${1} ${2}\"~/Downloads /home/gandalf\" -weird",
             "if ! parseOptions \"\\$@\"; then \\$(return >/dev/null 2>&1) && return 1 || exit 1; fi",
             "",
             "#########################################################################",
@@ -624,8 +622,8 @@
             "#########################################################################",
             "",
             "# print ONE if empty",
-            "if [[ -z \"\\$${1/(^-+)?([^-=]+)(-?)(=?)/${2:/upcase}${3:+_}/g}\" ]]; then echo \"Option -one was NOT given\"; fi",
-            "if [[ -n \"\\$${1/(^-+)?([^-=]+)(-?)(=?)/${2:/upcase}${3:+_}/g}\" ]]; then echo \"Option -one was given\"    ; fi",
+            "if [[ -z \"\\$${1/(^-+)?([^-=]+)(-?)(=?)/${2:/upcase}${3:+_}/g}\" ]]; then echo \"Option ${1} was NOT given\"; fi",
+            "if [[ -n \"\\$${1/(^-+)?([^-=]+)(-?)(=?)/${2:/upcase}${3:+_}/g}\" ]]; then echo \"Option ${1} was given\"    ; fi",
             "",
             "echo -e \"\\\\nPrinting given options stored as environment variables\\\\n\"",
             "printf \"%-15s %-15s%-15s \\\\n%-15s %-15s%-15s \\\\n\" \"Option\" \"Variable name\" \"Value stored in variable\" \"------\" \"-------------\" \"------------------------\"",
@@ -640,7 +638,7 @@
             "done",
             ""
         ],
-        "description": "Boilerplate with one option and one option which requires a argument and option argument can be supplied with or without equal sign"
+        "description": "Boilerplate with one true or false option and an option that requires a argument.  The snippet *boilerplate 4* allows users to give scripts options which require arguments on the form `myScript.sh -variable=\"value here\"` like *boilerplate 3* but it also supports the old format myScript.sh -variable \"value here\".          allowing users to use both formats and there for, making globbing possible.  That is use the ~ symbol to expand the home directory and tabbing to complete the paths while user types in the argument value."
     },
     "Check if all options are valid and saves each in a variable": {
         "prefix": "parse options",

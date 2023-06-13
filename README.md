@@ -91,7 +91,7 @@ That is shell scripts should start with this command |
 | boilerplate 1 | Boilerplate simple | Boilerplate simple Hello bash world |
 | boilerplate 2 | Boilerplate, simple one option | Boilerplate bash script with help that accepts one optional parameter |
 | boilerplate 3 | Boilerplate, one option, one option argument | Boilerplate with one option and one option which requires a argument |
-| boilerplate 4 | Boilerplate plus, one option, one option argument | Boilerplate with one option and one option which requires a argument and option argument can be supplied with or without equal sign |
+| boilerplate 4 | Boilerplate plus, one option, one option argument | Boilerplate with one true or false option and an option that requires a argument.  The snippet *boilerplate 4* allows users to give scripts options which require arguments on the form `myScript.sh -variable="value here"` like *boilerplate 3* but it also supports the old format myScript.sh -variable "value here".          allowing users to use both formats and there for, making globbing possible.  That is use the ~ symbol to expand the home directory and tabbing to complete the paths while user types in the argument value. |
 | parse options | Check if all options are valid and saves each in a variable | Check if all options are valid and saves each in a variable |
 | is super,<br>is root,<br>is sudo | Only allow super user to run this script | Only allow super user to run this script. |
 | frame | Frame your text | Frame your text |
