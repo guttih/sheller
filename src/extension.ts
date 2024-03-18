@@ -71,47 +71,45 @@ export function activate(context: vscode.ExtensionContext) {
         if (outputChannel === null) {
             outputChannel = vscode.window.createOutputChannel("Snippet");
         }
-    
-        const printGuid = (guidString: string, title: string = "", sides = 'single') => {
+
+        const printGuid = (guidString: string, title: string = "", sides = "single") => {
             const guidHyphenated = GuidGenerator.hyphenateGuid(guidString);
             const titleSegment = `${title}(${guidString.length})`;
             let maxTextLength = Math.max(guidHyphenated.length, titleSegment.length);
             maxTextLength += maxTextLength % 2; // make sure it is even
             const boxLength = maxTextLength + 4; // add 4 for the 2 spaces and 2 | characters
-    
+
             let box = "-++++|";
-            if (sides === 'double') {
+            if (sides === "double") {
                 box = "═╔╗╚╝║";
-            } else if (sides === 'single') {
+            } else if (sides === "single") {
                 box = "─┌┐└┘│";
             }
-    
+
             const dash = box[0];
             const side = box[5];
-    
+
             const header = `${box[1]}${TextHelper.centerText(titleSegment, boxLength - 2, dash)}${box[2]}\n`;
             const guidLine = `${side} ${guidString}${" ".repeat((boxLength - 4) - guidString.length)} ${side}\n`;
             const hyphenatedLine = `${side} ${guidHyphenated}${" ".repeat((boxLength - 4) - guidHyphenated.length)} ${side}\n`;
             const bottomLine = `${box[3]}${dash.repeat(boxLength - 2)}${box[4]}\n`;
-    
+
             return header + guidLine + hyphenatedLine + bottomLine;
         };
-    
+
         const guid = GuidGenerator.generate(false, GUIDLength.guid128);
         let str = `${printGuid(guid.substring(0, 16), "GUID", "double")}`;
         str += `${printGuid(guid.substring(0, 20), "GUID", "double")}`;
         str += `${printGuid(guid.substring(0, 24), "GUID", "double")}`;
         str += `${printGuid(guid.substring(0, 64), "GUID", "double")}`;
         str += `${printGuid(guid.substring(0, 128), "GUID", "double")}\n`;
-    
-        str += `${printGuid(guid.substring(0, 32), "Normal GUID", 'single')}\n`;
-    
+
+        str += `${printGuid(guid.substring(0, 32), "Normal GUID", "single")}\n`;
+
         outputChannel.clear();
         outputChannel.append(str);
         outputChannel.show();
     });
-
-    
 
     let disposable3 = vscode.commands.registerCommand("sheller.selTextToSnippetNoAsk", async () => {
         const editor = vscode.window.activeTextEditor;
@@ -122,7 +120,7 @@ export function activate(context: vscode.ExtensionContext) {
                 let txt = editor;
                 let content = txt.document.getText(txt.selection);
 
-                let snippetTitle = "title"; 
+                let snippetTitle = "title";
 
                 let snippetDescription = "package";
                 let snippetPrefix = "prefixName";
@@ -143,7 +141,6 @@ export function activate(context: vscode.ExtensionContext) {
             }
         }
     });
-
 
     let disposable4 = vscode.commands.registerCommand("sheller.selTextToSnippet", async () => {
         const editor = vscode.window.activeTextEditor;
@@ -203,11 +200,10 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
 
-       
         const newStatus = DiskFunctions.makeFileExecutable(fullFilename);
-        if (newStatus === FileExecutionStatus.failedToChangeAccess ) {
+        if (newStatus === FileExecutionStatus.failedToChangeAccess) {
             vscode.window.showErrorMessage(`Unable make the current file executable\n    "${fullFilename}" `);
-        } else if ( displayMsgIfAccessChanged ) {
+        } else if (displayMsgIfAccessChanged) {
             vscode.window.showInformationMessage(`${DiskFunctions.getFilenameFromFilePath(document.uri.path.toString())} is now executable`);
             showEditorMenuMakeExecutable(false);
         }
@@ -224,13 +220,35 @@ export function activate(context: vscode.ExtensionContext) {
         makeScriptExecutable(document, true);
     });
 
-
     let onSaveShellScriptFile = vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (document.languageId === "shellscript" && document.uri.scheme === "file") {
             const check = vscode.workspace.getConfiguration().get<boolean>("shellscript.sheller.onSave.makeExecutable");
             if (check) {
                 makeScriptExecutable(document, false);
             }
+        }
+    });
+
+    let lowercaseAndHyphenate = vscode.commands.registerCommand("sheller.lowercaseAndHyphenate", function () {
+        const editor = vscode.window.activeTextEditor;
+    
+        if (editor) {
+            const document = editor.document;
+            const selection = editor.selection;
+    
+            // Get the word within the selection
+            let word = document.getText(selection);
+            // Lowercase the string
+            word = word.toLowerCase();
+            // Replace whitespaces with hyphens
+            word = word.replace(/\s+/g, '-');
+            // Replace invalid chars (non-alphanumeric, non-underscore, non-hyphen) with underscores
+            word = word.replace(/[^\w-]/g, '_');
+            // Remove leading underscores, and replace double hyphens or double underscores with single ones
+            word = word.replace(/^_+/, '').replace(/-{2,}/g, '-').replace(/_{2,}/g, '_');
+            editor.edit((editBuilder) => {
+                editBuilder.replace(selection, word);
+            });
         }
     });
 
@@ -279,6 +297,7 @@ export function activate(context: vscode.ExtensionContext) {
         disposable5,
         disposable6,
         onSaveShellScriptFile,
+        lowercaseAndHyphenate,
         onDidOpenTextDocument,
         onDidChangeActiveTextEditor
     );

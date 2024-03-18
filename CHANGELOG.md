@@ -2,6 +2,16 @@
 
 All notable changes to the "sheller" extension are documented in this file.
 
+## [1.3.9]
+
+### Added
+
+  - Snippets
+    - StringTrailingNumber: `string extract trailing number` - Extract trailing numbers from a string
+  - Commands
+    - `Transform to Branch Name: Convert Selection to Lowercase and Hyphenate` Converts selected test to a valid git branch name by converting text to lowercase and replacing spaces with hyphens and invalid characters with underscores.
+
+
 ## [1.3.8]
 
   - Small fixes to boilerplate 4 snippet

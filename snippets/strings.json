@@ -142,6 +142,15 @@
         ],
         "description": "Create a text file with multiple lines"
     },
+    "StringTrailingNumber": {
+        "prefix": "string extract trailing number",
+        "body": [
+            "STRING=\"abcd1234\"",
+            "NUMBER=\\$( echo \"\\$STRING\" |grep -Eo [0-9]+\\$ )",
+            "echo \"STRING: \\$STRING has trailing number: \\$NUMBER\""
+        ],
+        "description": "Extract trailing numbers from a string"
+    },
     "String remove trailing numbers": {
         "prefix": "string remove trailing numbers",
         "body": [

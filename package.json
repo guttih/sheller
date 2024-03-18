@@ -2,7 +2,7 @@
   "name": "sheller",
   "displayName": "sheller",
   "description": "Snippets and helpers when working with bash shell scripts",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "publisher": "guttih",
   "author": "Gudjon Holm Sigurdsson",
   "icon": "sheller.png",
@@ -78,6 +78,10 @@
       {
         "command": "sheller.GenerateGuid",
         "title": "Create a GUID text string"
+      },
+      {
+        "command": "sheller.lowercaseAndHyphenate",
+        "title": "Transform to Branch Name: Convert Selection to Lowercase and Hyphenate"
       }
     ],
     "keybindings": [
